@@ -1,0 +1,83 @@
+{
+  "navigation": [
+    { "text": "Inicio", "link": "/" },
+    { "text": "Ubicación", "link": "/ubicacion" },
+    { "text": "Contacto", "link": "/contacto" }
+  ],
+  "hero": {
+    "title": "¿Quieres destacar con tus clientes?",
+    "subtitle": "Notaría Pública 123. Profesionalismo, experiencia y confianza a su servicio.",
+    "button": {
+      "text": "Conozca Nuestros Servicios",
+      "link": "/servicios"
+    }
+  },
+  "about": {
+    "title": "Más de 20 Años de Experiencia",
+    "text": "Así es como tus clientes puedes conocer más a fondo tu historia, misión y visión, generando confianza y credibilidad.",
+    "imageUrl": "https://images.pexels.com/photos/6803433/pexels-photo-6803433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  "mainContact": {
+    "title": "Inicie su Trámite Hoy",
+    "text": "Contáctenos para recibir asesoría personalizada.",
+    "button": {
+      "text": "Ir a Contacto",
+      "link": "/contacto"
+    }
+  },
+  "locationPage": {
+    "address": "Av. de la Reforma 456, Piso 10, Cuauhtémoc, 06600, Ciudad de México, CDMX",
+    "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.533939994898!2d-99.168923!3d19.432607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8b34a8d9d2b%3A0x4b6d4b6d4b6d4b6d!2sEl%20%C3%81ngel%20de%20la%20Independencia!5e0!3m2!1ses-419!2smx!4v1678886400000!5m2!1ses-419!2smx"
+  },
+  "contactPage": {
+    "title": "Centro de Contacto",
+    "vCardUrl": "#",
+    "actions": [
+      {
+        "iconUrl": "/file.svg",
+        "text": "Tarjeta de contacto",
+        "link": "#" 
+      },
+      {
+        "iconUrl": "/globe.svg",
+        "text": "WhatsApp",
+        "link": "https://wa.me/5215512345678"
+      },
+      {
+        "iconUrl": "/window.svg",
+        "text": "Llamar Ahora",
+        "link": "tel:+525512345678"
+      },
+      {
+        "iconUrl": "/next.svg",
+        "text": "Enviar Email",
+        "link": "mailto:contacto@notaria123.com"
+      }
+    ]
+  },
+  "servicesPage": {
+    "title": "Nuestros Servicios",
+    "services": [
+      {
+        "title": "Testamentos y Sucesiones",
+        "description": "Asegure la correcta transmisión de su patrimonio a sus seres queridos. Le asesoramos en la redacción de su testamento y en la gestión de juicios sucesorios."
+      },
+      {
+        "title": "Compraventa de Inmuebles",
+        "description": "Brindamos seguridad y certeza jurídica en la compra o venta de su propiedad, revisando la situación legal del inmueble y elaborando el contrato y la escritura pública."
+      },
+      {
+        "title": "Constitución de Sociedades",
+        "description": "Formalice su emprendimiento. Le guiamos en la elección del tipo de sociedad más conveniente y en la elaboración del acta constitutiva para su inscripción."
+      },
+      {
+        "title": "Poderes y Mandatos",
+        "description": "Otorgue facultades a un tercero para que actúe en su nombre en actos jurídicos específicos, con la formalidad y seguridad que un poder notarial requiere."
+      },
+      {
+        "title": "Fe de Hechos",
+        "description": "Damos constancia legal de hechos y situaciones materiales para que puedan ser utilizados como prueba en procedimientos administrativos o judiciales."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+.header {
+  position: fixed;
+  bottom: 20px; /* Position at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: auto; /* Auto-width based on content */
+  height: 48px; /* Make it thinner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  z-index: 1000;
+  
+  /* Floating & Glass effect */
+  background-color: rgba(25, 25, 25, 0.6);
+  backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 980px; /* Pill shape */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 0 10px; /* Padding inside the pill */
+}
+
+.nav {
+  display: flex;
+  gap: 8px; /* Space between links */
+}
+
+.link {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 980px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
