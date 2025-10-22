@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header';
 import db from '../../db.json';
 import styles from './Home.module.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Reusable Button Component
 const ActionButton = ({ text, link }: { text: string, link: string }) => (
