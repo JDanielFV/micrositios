@@ -26,17 +26,17 @@
     }
   },
   "locationPage": {
-    "address": "Av. de la Reforma 456, Piso 10, Cuauhtémoc, 06600, Ciudad de México, CDMX",
-    "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.533939994898!2d-99.168923!3d19.432607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8b34a8d9d2b%3A0x4b6d4b6d4b6d4b6d!2sEl%20%C3%81ngel%20de%20la%20Independencia!5e0!3m2!1ses-419!2smx!4v1678886400000!5m2!1ses-419!2smx"
+    "address": "Tulipanes 29, Izcalli Ecatepec, 55030 Ecatepec de Morelos, Méx.",
+    "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.8565696835017!2d-99.05214049999996!3d19.590644600000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fbd972ec6b37%3A0x7d7f5d7cb90084c5!2sPapeler%C3%ADa%20Notarial%20y%20Corporativa%20A%26G!5e0!3m2!1ses-419!2smx!4v1761348840767!5m2!1ses-419!2smx"
   },
   "contactPage": {
     "title": "Centro de Contacto",
-    "vCardUrl": "#",
+    "vCardUrl": "/vcard.vcf",
     "actions": [
       {
         "iconUrl": "/card.png",
         "text": "Tarjeta de contacto",
-        "link": "#" 
+        "link": "/vcard.vcf" 
       },
       {
         "iconUrl": "/wh.png",
@@ -51,7 +51,7 @@
       {
         "iconUrl": "/ml.webp",
         "text": "Enviar Email",
-        "link": "mailto:contacto@notaria123.com"
+        "link": "mailto:contacto@papelerianotarial.com"
       }
     ]
   },
