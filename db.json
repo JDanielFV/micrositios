@@ -5,21 +5,21 @@
     { "text": "Contacto", "link": "/contacto" }
   ],
   "hero": {
-    "title": "¿Quieres destacar con tus clientes?",
-    "subtitle": "Notaría Pública 123. Profesionalismo, experiencia y confianza a su servicio.",
+    "title": "Not. Victor Alfonso Varela Velazco",
+    "subtitle": "este sitio es una muestra de lo que sus clientes podrían ver al escanear el código QR impreso en su papelería.",
     "button": {
-      "text": "Conozca Nuestros Servicios",
+      "text": "Sus servicios van aquí",
       "link": "/servicios"
     }
   },
   "about": {
-    "title": "Más de 20 Años de Experiencia",
-    "text": "Así es como tus clientes puedes conocer más a fondo tu historia, misión y visión, generando confianza y credibilidad.",
+    "title": "¿Cual es la importancia de un sitio como esté?",
+    "text": "La idea es simple: transformar cada folder, tarjeta o documento en una herramienta digital que refuerce su imagen, facilite el contacto y proyecte innovación sin perder elegancia. Así, su papelería no solo informa… comunica quién es usted.",
     "imageUrl": "https://images.pexels.com/photos/6803433/pexels-photo-6803433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   "mainContact": {
-    "title": "Inicie su Trámite Hoy",
-    "text": "Contáctenos para recibir asesoría personalizada.",
+    "title": "Pongamonos en contacto",
+    "text": "Si tiene una idea diferente, no dude en contactarnos. Estamos aquí para ayudarle a crear una presencia en línea que refleje la profesionalidad y confianza que su notaría representa.",
     "button": {
       "text": "Ir a Contacto",
       "link": "/contacto"
@@ -34,29 +34,29 @@
     "vCardUrl": "#",
     "actions": [
       {
-        "iconUrl": "/file.svg",
+        "iconUrl": "/card.png",
         "text": "Tarjeta de contacto",
         "link": "#" 
       },
       {
-        "iconUrl": "/globe.svg",
+        "iconUrl": "/wh.png",
         "text": "WhatsApp",
-        "link": "https://wa.me/5215512345678"
+        "link": "https://wa.me/525576162856"
       },
       {
-        "iconUrl": "/window.svg",
+        "iconUrl": "/sm.webp",
         "text": "Llamar Ahora",
-        "link": "tel:+525512345678"
+        "link": "tel:+525576162856"
       },
       {
-        "iconUrl": "/next.svg",
+        "iconUrl": "/ml.webp",
         "text": "Enviar Email",
         "link": "mailto:contacto@notaria123.com"
       }
     ]
   },
   "servicesPage": {
-    "title": "Nuestros Servicios",
+    "title": "Así se pueden ver sus servicios",
     "services": [
       {
         "title": "Testamentos y Sucesiones",
