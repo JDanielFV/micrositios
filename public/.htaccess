@@ -1,0 +1,86 @@
+# Este .htaccess es para una aplicación Next.js con exportación estática en un subdirectorio.
+# Funciona en conjunto con el .htaccess de WordPress en el directorio raíz.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Establece la ruta base para las reglas de reescritura.
+  RewriteBase /muestras/
+
+  # 1. No reescribir solicitudes a archivos o directorios existentes.
+  # Esto asegura que las imágenes, CSS, JS, etc., se sirvan directamente.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 2. Reescribir URLs "limpias" a su archivo .html correspondiente.
+  # Ejemplo: /muestras/servicios servirá el archivo /muestras/servicios.html.
+  RewriteCond %{DOCUMENT_ROOT}/muestras%{REQUEST_URI}.html -f
+  RewriteRule (.*) %{REQUEST_URI}.html [L]
+
+  # 3. Si todo lo demás falla, redirigir a index.html.
+  # Esto maneja la ruta raíz (/) y posibles 404 dentro de la aplicación.
+  RewriteRule . index.html [L]
+</IfModule>
+
+
+#htaccess del servidor principal
+# BEGIN LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+<IfModule LiteSpeed>
+RewriteEngine on
+CacheLookup on
+RewriteRule .* - [E=Cache-Control:no-autoflush]
+RewriteRule litespeed/debug/.*\.log$ - [F,L]
+RewriteRule \.litespeed_conf\.dat - [F,L]
+
+### marker ASYNC start ###
+RewriteCond %{REQUEST_URI} /wp-admin/admin-ajax\.php
+RewriteCond %{QUERY_STRING} action=async_litespeed
+RewriteRule .* - [E=noabort:1]
+### marker ASYNC end ###
+
+### marker DROPQS start ###
+CacheKeyModify -qs:fbclid
+CacheKeyModify -qs:gclid
+CacheKeyModify -qs:utm*
+CacheKeyModify -qs:_ga
+### marker DROPQS end ###
+
+</IfModule>
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END LSCACHE
+# BEGIN NON_LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END NON_LSCACHE
+# HTTPS forced by SG-Optimizer
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+# END HTTPS
+RewriteEngine On
+
+# Redirige /qr/abc123 a /qr/index.php?id=abc123
+RewriteRule ^qr/([a-zA-Z0-9]{6})$ /qr/index.php?id=$1 [L,QSA]
+
+# BEGIN WordPress
+# Las directivas (líneas) entre «BEGIN WordPress» y «END WordPress» son
+# generadas dinámicamente y solo deberían ser modificadas mediante filtros de WordPress.
+# Cualquier cambio en las directivas que hay entre esos marcadores serán sobrescritas.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_URI} !^/muestras/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

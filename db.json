@@ -1,15 +1,15 @@
 {
   "navigation": [
     { "text": "Inicio", "link": "/" },
-    { "text": "Ubicación", "link": "/ubicacion" },
-    { "text": "Contacto", "link": "/contacto" }
+    { "text": "Ubicación", "link": "https://tuqr.com.mx/muestras/ubicacion.html" },
+    { "text": "Contacto", "link": "https://tuqr.com.mx/muestras/contacto.html" }
   ],
   "hero": {
     "title": "Not. Victor Alfonso Varela Velazco",
     "subtitle": "este sitio es una muestra de lo que sus clientes podrían ver al escanear el código QR impreso en su papelería.",
     "button": {
       "text": "Sus servicios van aquí",
-      "link": "/servicios"
+      "link": "https://tuqr.com.mx/muestras/servicios.html"
     }
   },
   "about": {
@@ -22,7 +22,7 @@
     "text": "Si tiene una idea diferente, no dude en contactarnos. Estamos aquí para ayudarle a crear una presencia en línea que refleje la profesionalidad y confianza que su notaría representa.",
     "button": {
       "text": "Ir a Contacto",
-      "link": "/contacto"
+      "link": "https://tuqr.com.mx/muestras/contacto.html"
     }
   },
   "locationPage": {
@@ -34,22 +34,22 @@
     "vCardUrl": "/vcard.vcf",
     "actions": [
       {
-        "iconUrl": "/card.png",
+        "iconUrl": "/muestras/card.png",
         "text": "Tarjeta de contacto",
         "link": "/vcard.vcf" 
       },
       {
-        "iconUrl": "/wh.png",
+        "iconUrl": "/muestras/wh.png",
         "text": "WhatsApp",
         "link": "https://wa.me/525576162856"
       },
       {
-        "iconUrl": "/sm.webp",
+        "iconUrl": "/muestras/sm.webp",
         "text": "Llamar Ahora",
         "link": "tel:+525576162856"
       },
       {
-        "iconUrl": "/ml.webp",
+        "iconUrl": "/muestras/ml.webp",
         "text": "Enviar Email",
         "link": "mailto:contacto@papelerianotarial.com"
       }
