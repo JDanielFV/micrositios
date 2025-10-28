@@ -1,7 +1,9 @@
+"use client";
 import Header from '../components/Header/Header';
 import db from '../../db.json';
 import styles from './Home.module.css';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { useState } from 'react';
 
 // Reusable Button Component
 const ActionButton = ({ text, link }: { text: string, link: string }) => (
@@ -9,18 +11,30 @@ const ActionButton = ({ text, link }: { text: string, link: string }) => (
 );
 
 // Hero Section Component
-const Hero = ({ content }: { content: typeof db.hero }) => (
-  <section className={`${styles.section} ${styles.hero}`}>
-    <video autoPlay loop muted playsInline className={styles.heroVideo}>
-      <source src="./fondo.mov" type="video/mp4" />
-    </video>
-    <div className={styles.heroContent}>
-      <h1 className={styles.heroTitle}>{content.title}</h1>
-      <p className={styles.heroSubtitle}>{content.subtitle}</p>
-      <ActionButton text={content.button.text} link={content.button.link} />
-    </div>
-  </section>
-);
+const Hero = ({ content }: { content: typeof db.hero }) => {
+  const [audioPlayed, setAudioPlayed] = useState(false);
+
+  const playAudio = () => {
+    if (!audioPlayed) {
+      const audio = new Audio('/not178/audio.mp3'); // Assuming audio.mp3 is in the public folder
+      audio.play().catch(e => console.error("Error playing audio:", e));
+      setAudioPlayed(true);
+    }
+  };
+
+  return (
+    <section className={`${styles.section} ${styles.hero}`} onClick={playAudio}>
+      <video autoPlay loop muted playsInline className={styles.heroVideo}>
+        <source src="/not178/fondo.mov" type="video/mp4" />
+      </video>
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>{content.title}</h1>
+        <p className={styles.heroSubtitle}>{content.subtitle}</p>
+        <ActionButton text={content.button.text} link={content.button.link} />
+      </div>
+    </section>
+  );
+};
 
 // About Section Component
 const About = ({ content }: { content: typeof db.about }) => (

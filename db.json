@@ -1,15 +1,15 @@
 {
   "navigation": [
-    { "text": "Inicio", "link": "/" },
-    { "text": "Ubicación", "link": "https://tuqr.com.mx/muestras/ubicacion.html" },
-    { "text": "Contacto", "link": "https://tuqr.com.mx/muestras/contacto.html" }
+    { "text": "Inicio", "link": "https://tuqr.com.mx/not178/" },
+    { "text": "Ubicación", "link": "https://tuqr.com.mx/not178/ubicacion.html" },
+    { "text": "Contacto", "link": "https://tuqr.com.mx/not178/contacto.html" }
   ],
   "hero": {
-    "title": "Not. Victor Alfonso Varela Velazco",
+    "title": "Notaría publica 178",
     "subtitle": "este sitio es una muestra de lo que sus clientes podrían ver al escanear el código QR impreso en su papelería.",
     "button": {
       "text": "Sus servicios van aquí",
-      "link": "https://tuqr.com.mx/muestras/servicios.html"
+      "link": "https://tuqr.com.mx/not178/servicios.html"
     }
   },
   "about": {
@@ -22,7 +22,7 @@
     "text": "Si tiene una idea diferente, no dude en contactarnos. Estamos aquí para ayudarle a crear una presencia en línea que refleje la profesionalidad y confianza que su notaría representa.",
     "button": {
       "text": "Ir a Contacto",
-      "link": "https://tuqr.com.mx/muestras/contacto.html"
+      "link": "https://tuqr.com.mx/not178/contacto.html"
     }
   },
   "locationPage": {
@@ -31,25 +31,25 @@
   },
   "contactPage": {
     "title": "Centro de Contacto",
-    "vCardUrl": "/vcard.vcf",
+    "vCardUrl": "/not178/vcard.vcf",
     "actions": [
       {
-        "iconUrl": "/muestras/card.png",
+        "iconUrl": "/not178/not178/card.png",
         "text": "Tarjeta de contacto",
-        "link": "/vcard.vcf" 
+        "link": "/not178/vcard.vcf" 
       },
       {
-        "iconUrl": "/muestras/wh.png",
+        "iconUrl": "/not178/not178/wh.png",
         "text": "WhatsApp",
         "link": "https://wa.me/525576162856"
       },
       {
-        "iconUrl": "/muestras/sm.webp",
+        "iconUrl": "/not178/not178/sm.webp",
         "text": "Llamar Ahora",
         "link": "tel:+525576162856"
       },
       {
-        "iconUrl": "/muestras/ml.webp",
+        "iconUrl": "/not178/not178/ml.webp",
         "text": "Enviar Email",
         "link": "mailto:contacto@papelerianotarial.com"
       }
