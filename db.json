@@ -34,22 +34,22 @@
     "vCardUrl": "/not178/vcard.vcf",
     "actions": [
       {
-        "iconUrl": "/not178/not178/card.png",
+        "iconUrl": "/not178/card.png",
         "text": "Tarjeta de contacto",
         "link": "/not178/vcard.vcf" 
       },
       {
-        "iconUrl": "/not178/not178/wh.png",
+        "iconUrl": "/not178/wh.png",
         "text": "WhatsApp",
         "link": "https://wa.me/525576162856"
       },
       {
-        "iconUrl": "/not178/not178/sm.webp",
+        "iconUrl": "/not178/sm.webp",
         "text": "Llamar Ahora",
         "link": "tel:+525576162856"
       },
       {
-        "iconUrl": "/not178/not178/ml.webp",
+        "iconUrl": "/not178/ml.webp",
         "text": "Enviar Email",
         "link": "mailto:contacto@papelerianotarial.com"
       }

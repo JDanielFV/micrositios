@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Notaría Pública 103",
+  title: "Notaría Pública 178",
   description: "Certeza y Seguridad Jurídica a su Alcance",
 };
 
