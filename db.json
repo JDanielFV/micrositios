@@ -1,28 +1,28 @@
 {
   "navigation": [
-    { "text": "Inicio", "link": "https://tuqr.com.mx/not178/" },
-    { "text": "Ubicación", "link": "https://tuqr.com.mx/not178/ubicacion.html" },
-    { "text": "Contacto", "link": "https://tuqr.com.mx/not178/contacto.html" }
+    { "text": "Inicio", "link": "https://tuqr.com.mx/not214c/" },
+    { "text": "Ubicación", "link": "https://tuqr.com.mx/not214c/ubicacion.html" },
+    { "text": "Contacto", "link": "https://tuqr.com.mx/not214c/contacto.html" }
   ],
   "hero": {
-    "title": "Notaría publica 178",
-    "subtitle": "este sitio es una muestra de lo que sus clientes podrían ver al escanear el código QR impreso en su papelería.",
+    "title": "Lic. Ana Gabriela Hernández Cortés",
+    "subtitle": "Notaria titular No. 214 ",
     "button": {
-      "text": "Sus servicios van aquí",
-      "link": "https://tuqr.com.mx/not178/servicios.html"
+      "text": "Conoce mis servicios",
+      "link": "https://tuqr.com.mx/not214c/servicios.html"
     }
   },
   "about": {
-    "title": "¿Cual es la importancia de un sitio como esté?",
-    "text": "La idea es simple: transformar cada folder, tarjeta o documento en una herramienta digital que refuerce su imagen, facilite el contacto y proyecte innovación sin perder elegancia. Así, su papelería no solo informa… comunica quién es usted.",
+    "title": "Experiencia que destaca",
+    "text": "Con años de experiencia en el ámbito notarial, la Lic. Ana Gabriela Hernández Cortés se ha consolidado como una profesional confiable y dedicada. Su compromiso con la excelencia y la atención personalizada la convierten en la elección ideal para quienes buscan servicios notariales de alta calidad.",
     "imageUrl": "https://images.pexels.com/photos/6803433/pexels-photo-6803433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   "mainContact": {
     "title": "Pongamonos en contacto",
-    "text": "Si tiene una idea diferente, no dude en contactarnos. Estamos aquí para ayudarle a crear una presencia en línea que refleje la profesionalidad y confianza que su notaría representa.",
+    "text": "¿Tienes alguna pregunta o necesitas más información sobre mis servicios? No dudes en contactarme. Estoy aquí para ayudarte en todo lo que necesites.",
     "button": {
       "text": "Ir a Contacto",
-      "link": "https://tuqr.com.mx/not178/contacto.html"
+      "link": "https://tuqr.com.mx/not214c/contacto.html"
     }
   },
   "locationPage": {
@@ -31,25 +31,25 @@
   },
   "contactPage": {
     "title": "Centro de Contacto",
-    "vCardUrl": "/not178/vcard.vcf",
+    "vCardUrl": "/not214c/vcard.vcf",
     "actions": [
       {
-        "iconUrl": "/not178/not178/card.png",
+        "iconUrl": "/not214c/card.png",
         "text": "Tarjeta de contacto",
-        "link": "/not178/vcard.vcf" 
+        "link": "/not214c/vcard.vcf" 
       },
       {
-        "iconUrl": "/not178/not178/wh.png",
+        "iconUrl": "/not214c/wh.png",
         "text": "WhatsApp",
         "link": "https://wa.me/525576162856"
       },
       {
-        "iconUrl": "/not178/not178/sm.webp",
+        "iconUrl": "/not214c/sm.webp",
         "text": "Llamar Ahora",
         "link": "tel:+525576162856"
       },
       {
-        "iconUrl": "/not178/not178/ml.webp",
+        "iconUrl": "/not214c/ml.webp",
         "text": "Enviar Email",
         "link": "mailto:contacto@papelerianotarial.com"
       }
