@@ -5,7 +5,8 @@
     { "text": "Contacto", "link": "https://tuqr.com.mx/not214c/contacto.html" }
   ],
   "hero": {
-    "title": "Lic. Rosario",
+    "profileImage": "/not214c/ph.jpg",
+    "title": "Lic. Rosario Apellido Apellido",
     "subtitle": "Notaria titular No. 214 ",
     "button": {
       "text": "Conoce mis servicios",

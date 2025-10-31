@@ -73,6 +73,17 @@
   align-items: center;
 }
 
+.profileImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 124, 240, 0.4);
+}
+
+
 .heroTitle {
   font-size: clamp(2.8rem, 7vw, 4.5rem);
   font-weight: 800;

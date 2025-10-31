@@ -16,7 +16,7 @@ const Hero = ({ content }: { content: typeof db.hero }) => {
 
   const playAudio = () => {
     if (!audioPlayed) {
-      const audio = new Audio('/not178/audio.mp3'); // Assuming audio.mp3 is in the public folder
+      const audio = new Audio('/not214c/audio.mp3'); // Assuming audio.mp3 is in the public folder
       audio.play().catch(e => console.error("Error playing audio:", e));
       setAudioPlayed(true);
     }
@@ -25,9 +25,10 @@ const Hero = ({ content }: { content: typeof db.hero }) => {
   return (
     <section className={`${styles.section} ${styles.hero}`} onClick={playAudio}>
       <video autoPlay loop muted playsInline className={styles.heroVideo}>
-        <source src="/not178/fondo.mov" type="video/mp4" />
+        <source src="/not214c/fondo.mov" type="video/mp4" />
       </video>
       <div className={styles.heroContent}>
+        <img src={content.profileImage} alt="Profile" className={styles.profileImage} />
         <h1 className={styles.heroTitle}>{content.title}</h1>
         <p className={styles.heroSubtitle}>{content.subtitle}</p>
         <ActionButton text={content.button.text} link={content.button.link} />
