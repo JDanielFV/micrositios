@@ -6,16 +6,16 @@
   ],
   "hero": {
     "profileImage": "/not214c/ph.jpg",
-    "title": "Lic. Rosario Apellido Apellido",
-    "subtitle": "Notaria titular No. 214 ",
+    "title": "Lic. Rosario Andrade Rodriguez",
+    "subtitle": "Notaria titular No. 214",
     "button": {
       "text": "Conoce mis servicios",
       "link": "https://tuqr.com.mx/not214c/servicios.html"
     }
   },
   "about": {
-    "title": "Experiencia que destaca",
-    "text": "Con años de experiencia en el ámbito notarial, la Lic. Rosario se ha consolidado como una profesional confiable y dedicada. Su compromiso con la excelencia y la atención personalizada la convierten en la elección ideal para quienes buscan servicios notariales de alta calidad.",
+    "title": "Mi Experiencia y Compromiso",
+    "text": "Cuento con una sólida trayectoria en el ámbito notarial, brindando seguridad y certeza jurídica a mis clientes. Mi profesionalismo y trato personalizado son el sello de mi notaría.",
     "imageUrl": "https://images.pexels.com/photos/6803433/pexels-photo-6803433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
   "mainContact": {
@@ -57,27 +57,27 @@
     ]
   },
   "servicesPage": {
-    "title": "Así se pueden ver sus servicios",
+    "title": "Mis Servicios",
     "services": [
       {
         "title": "Testamentos y Sucesiones",
-        "description": "Asegure la correcta transmisión de su patrimonio a sus seres queridos. Le asesoramos en la redacción de su testamento y en la gestión de juicios sucesorios."
+        "description": "Aseguro la correcta transmisión de su patrimonio a sus seres queridos. Le asesoro en la redacción de su testamento y en la gestión de juicios sucesorios."
       },
       {
         "title": "Compraventa de Inmuebles",
-        "description": "Brindamos seguridad y certeza jurídica en la compra o venta de su propiedad, revisando la situación legal del inmueble y elaborando el contrato y la escritura pública."
+        "description": "Brindo seguridad y certeza jurídica en la compra o venta de su propiedad, revisando la situación legal del inmueble y elaborando el contrato y la escritura pública."
       },
       {
         "title": "Constitución de Sociedades",
-        "description": "Formalice su emprendimiento. Le guiamos en la elección del tipo de sociedad más conveniente y en la elaboración del acta constitutiva para su inscripción."
+        "description": "Formalizo su emprendimiento. Le guío en la elección del tipo de sociedad más conveniente y en la elaboración del acta constitutiva para su inscripción."
       },
       {
         "title": "Poderes y Mandatos",
-        "description": "Otorgue facultades a un tercero para que actúe en su nombre en actos jurídicos específicos, con la formalidad y seguridad que un poder notarial requiere."
+        "description": "Otorguo facultades a un tercero para que actúe en su nombre en actos jurídicos específicos, con la formalidad y seguridad que un poder notarial requiere."
       },
       {
         "title": "Fe de Hechos",
-        "description": "Damos constancia legal de hechos y situaciones materiales para que puedan ser utilizados como prueba en procedimientos administrativos o judiciales."
+        "description": "Doy constancia legal de hechos y situaciones materiales para que puedan ser utilizados como prueba en procedimientos administrativos o judiciales."
       }
     ]
   }

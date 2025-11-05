@@ -1,10 +1,19 @@
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .container {
-  padding-bottom: 100px; /* Space for bottom nav */
   background-color: #000;
 }
 
@@ -17,23 +26,8 @@
   justify-content: center;
   padding: 80px 24px;
   text-align: center;
-  min-height: 60vh;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   background-color: #000;
-}
-
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
-  background-image: linear-gradient(to right, transparent, var(--accent-color), transparent);
-  opacity: 0.3;
-  animation: pulse 8s ease-in-out infinite;
 }
 
 /* --- Hero Section --- */
@@ -42,27 +36,19 @@
   justify-content: center;
   position: relative; /* For video positioning */
   padding: 120px 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero::after {
-  content: '';
+.heroOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
   z-index: 1;
-}
-
-.heroVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
 }
 
 .heroContent {
@@ -71,18 +57,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 200px;
 }
-
-.profileImage {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border: 3px solid var(--accent-color);
-  box-shadow: 0 0 20px rgba(0, 124, 240, 0.4);
-}
-
 
 .heroTitle {
   font-size: clamp(2.8rem, 7vw, 4.5rem);
@@ -92,6 +68,7 @@
   max-width: 900px;
   margin-bottom: 20px;
   text-shadow: 0 0 30px rgba(0,0,0,0.7);
+  opacity: 0; /* Initially hidden for animation */
 }
 
 .heroSubtitle {
@@ -100,6 +77,7 @@
   color: #ffffff;
   max-width: 680px;
   margin-bottom: 50px; /* Increased space */
+  opacity: 0; /* Initially hidden for animation */
 }
 
 .sectionTitle {
@@ -124,6 +102,7 @@
   font-weight: 500;
   transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(0, 124, 240, 0.4);
+  opacity: 0; /* Initially hidden for animation */
 }
 
 .actionButton:hover {
@@ -131,4 +110,24 @@
   color: #000; /* Changed back to black for contrast */
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+/* --- About Section --- */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.aboutContent {
+  text-align: left;
+}
+
+.aboutImage {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
 }
