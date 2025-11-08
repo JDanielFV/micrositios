@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: '/not178',
-  output: 'export',
+  basePath: '/qr',
+  // output: 'export',
   images: {
     unoptimized: true,
     remotePatterns: [

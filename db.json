@@ -1,83 +1,259 @@
 {
-  "navigation": [
-    { "text": "Inicio", "link": "https://tuqr.com.mx/not178/" },
-    { "text": "Ubicación", "link": "https://tuqr.com.mx/not178/ubicacion.html" },
-    { "text": "Contacto", "link": "https://tuqr.com.mx/not178/contacto.html" }
-  ],
-  "hero": {
-    "title": "Notaría publica 178",
-    "subtitle": "este sitio es una muestra de lo que sus clientes podrían ver al escanear el código QR impreso en su papelería.",
-    "button": {
-      "text": "Sus servicios van aquí",
-      "link": "https://tuqr.com.mx/not178/servicios.html"
-    }
-  },
-  "about": {
-    "title": "¿Cual es la importancia de un sitio como esté?",
-    "text": "La idea es simple: transformar cada folder, tarjeta o documento en una herramienta digital que refuerce su imagen, facilite el contacto y proyecte innovación sin perder elegancia. Así, su papelería no solo informa… comunica quién es usted.",
-    "imageUrl": "https://images.pexels.com/photos/6803433/pexels-photo-6803433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-  },
-  "mainContact": {
-    "title": "Pongamonos en contacto",
-    "text": "Si tiene una idea diferente, no dude en contactarnos. Estamos aquí para ayudarle a crear una presencia en línea que refleje la profesionalidad y confianza que su notaría representa.",
-    "button": {
-      "text": "Ir a Contacto",
-      "link": "https://tuqr.com.mx/not178/contacto.html"
-    }
-  },
-  "locationPage": {
-    "address": "Tulipanes 29, Izcalli Ecatepec, 55030 Ecatepec de Morelos, Méx.",
-    "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.8565696835017!2d-99.05214049999996!3d19.590644600000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fbd972ec6b37%3A0x7d7f5d7cb90084c5!2sPapeler%C3%ADa%20Notarial%20y%20Corporativa%20A%26G!5e0!3m2!1ses-419!2smx!4v1761348840767!5m2!1ses-419!2smx"
-  },
-  "contactPage": {
-    "title": "Centro de Contacto",
-    "vCardUrl": "/not178/vcard.vcf",
-    "actions": [
-      {
-        "iconUrl": "/not178/card.png",
-        "text": "Tarjeta de contacto",
-        "link": "/not178/vcard.vcf" 
-      },
-      {
-        "iconUrl": "/not178/wh.png",
-        "text": "WhatsApp",
-        "link": "https://wa.me/525576162856"
-      },
-      {
-        "iconUrl": "/not178/sm.webp",
-        "text": "Llamar Ahora",
-        "link": "tel:+525576162856"
-      },
-      {
-        "iconUrl": "/not178/ml.webp",
-        "text": "Enviar Email",
-        "link": "mailto:contacto@papelerianotarial.com"
+  "sites": [
+    {
+      "id": "loes",
+      "slug": "loes",
+      "data": {
+        "theme": {
+          "backgroundColor": "#000000",
+          "fontImportUrl": "",
+          "fontFamily": "",
+          "color2": "#005224",
+          "angle": "0",
+          "color1": "#000000"
+        },
+        "metadata": {
+          "title": "Loes Atorneys",
+          "description": "We are committed to legal excellence in the paradise of the Riviera Maya"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Trabaja con los mejores abogados en la Riviera Maya",
+          "subtitle": "Aseguramos el mayor estándar de calidad para brinda la mejor asistencia y seguridad legar que nuestros clientes se merecen.",
+          "videoUrl": "/uploads/loes/16902338-sd_960_540_30fps.mp4",
+          "logoUrl": "/uploads/loes/AttorneysBlanco-300x300.png",
+          "button": {
+            "text": "Conozca nuestros servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Sobre Loes",
+          "text": "Estamos comprometidos con la excelencia legal en el paraíso de la Riviera Maya. Nuestra misión es clara: guiar a nuestros clientes a través de los desafíos legales con el más alto nivel de servicio. Con un profundo entendimiento de la ley y un conocimiento único de las complejidades de la región, somos tu socio de confianza en cada paso del camino.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "¡Esperamos trabajar con usted!",
+          "text": "Su viaje con nosotros comienza con un simple \"hola\". \nComience la conversación hoy y logremos grandes cosas juntos.",
+          "button": {
+            "text": "Reservar una reunión",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Golf drive 302, Playacar, 77717 Playa del Carmen, Q.R.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.34782724058!2d-87.0926814!3d20.6146745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e43ab548ac489%3A0x9988eb585a76c573!2sLOES%20Attorneys!5e0!3m2!1ses-419!2smx!4v1762532248914!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/loes/vcard.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.png",
+              "text": "WhatsApp",
+              "link": "http://wa.me/+529842315330"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:9842315330"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:iestrada@loesatorneys.com"
+            }
+          ],
+          "vCard": {
+            "name": "Loes Atorneys",
+            "whatsappNumber": "9842315330",
+            "callNumber": "9842315330",
+            "email": "iestrada@loesatorneys.com"
+          }
+        },
+        "servicesPage": {
+          "title": "Áreas de práctica legal",
+          "services": [
+            {
+              "title": "Fideicomiso",
+              "description": "Nuestros meticulosos servicios de depósito en garantía garantizan transacciones seguras, ofreciendo tranquilidad tanto a compradores como a vendedores. Sus fondos están en buenas manos."
+            },
+            {
+              "title": "Inmuebles",
+              "description": "Desde contratos hasta cierres, nuestros expertos legales de bienes raíces lo tienen cubierto. Confíe en nosotros para salvaguardar sus intereses de propiedad."
+            },
+            {
+              "title": "Inmigración",
+              "description": "Navegue por el complejo panorama de la inmigración con confianza. Proporcionamos orientación experta para una transición sin problemas a México."
+            },
+            {
+              "title": "Servicios Corporativo",
+              "description": "Eleve su negocio con nuestros servicios corporativos integrales. Nos encargamos de las complejidades legales para que pueda centrarse en el crecimiento y el éxito."
+            },
+            {
+              "title": "Adquirir propiedades como extranjero",
+              "description": "Camino sin complicaciones hacia la propiedad de la propiedad. Nuestra guía paso a paso simplifica el proceso, haciendo realidad la propiedad de sus sueños"
+            }
+          ]
+        }
       }
-    ]
-  },
-  "servicesPage": {
-    "title": "Así se pueden ver sus servicios",
-    "services": [
-      {
-        "title": "Testamentos y Sucesiones",
-        "description": "Asegure la correcta transmisión de su patrimonio a sus seres queridos. Le asesoramos en la redacción de su testamento y en la gestión de juicios sucesorios."
-      },
-      {
-        "title": "Compraventa de Inmuebles",
-        "description": "Brindamos seguridad y certeza jurídica en la compra o venta de su propiedad, revisando la situación legal del inmueble y elaborando el contrato y la escritura pública."
-      },
-      {
-        "title": "Constitución de Sociedades",
-        "description": "Formalice su emprendimiento. Le guiamos en la elección del tipo de sociedad más conveniente y en la elaboración del acta constitutiva para su inscripción."
-      },
-      {
-        "title": "Poderes y Mandatos",
-        "description": "Otorgue facultades a un tercero para que actúe en su nombre en actos jurídicos específicos, con la formalidad y seguridad que un poder notarial requiere."
-      },
-      {
-        "title": "Fe de Hechos",
-        "description": "Damos constancia legal de hechos y situaciones materiales para que puedan ser utilizados como prueba en procedimientos administrativos o judiciales."
+    },
+    {
+      "id": "not23edomex",
+      "slug": "not23edomex",
+      "data": {
+        "theme": {
+          "color1": "#000000",
+          "color2": "#926384",
+          "angle": "0",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría 23 - Estado de México",
+          "description": "Certeza jurídica"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría 23 - Estado de México",
+          "subtitle": "Altamirano - Altamirano - Kiwan",
+          "videoUrl": "/uploads/not23edomex/Fondos23.m4v",
+          "logoUrl": "/uploads/not23edomex/hero_logo.png",
+          "button": {
+            "text": "Conoce nuestros servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Conóncenos",
+          "text": "Nuestra Notaría se distingue por contar con profesionales del derecho formados en valores de honestidad, calidad y confiabilidad, enfocados en la satisfacción total del cliente. Esto garantiza una atención eficaz y seguridad jurídica.\n",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctanos",
+          "text": "Contamos con un equipo administrativo altamente calificado y tecnología avanzada, lo que nos permite ofrecer un servicio rápido y eficiente, manteniendo siempre el contacto directo y asesoría personalizada para asegurar certeza jurídica en cada proceso.",
+          "button": {
+            "text": "Envíanos un mensaje",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Av Cuauhtémoc 13, Col. México 1a Sección, 57620 Cdad. Nezahualcóyotl, Méx., México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60213.743153262534!2d-99.047474!3d19.396891!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fcfb60ddbf93%3A0x82e2147a058b3c32!2sNotaria%2023%20del%20Estado%20de%20M%C3%A9xico!5e0!3m2!1ses-419!2sus!4v1762552734394!5m2!1ses-419!2sus"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.png",
+              "text": "WhatsApp",
+              "link": "http://wa.me/+525519637213"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:5557971096"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:contacto@notaria23edomex.com.mx"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/web.svg",
+              "text": "Pagina Web",
+              "link": "https://notaria23edomex.com.mx"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/facebook-square-social-logo.svg",
+              "text": "Facebook",
+              "link": "https://www.facebook.com/Notaria23"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/tiktok.svg",
+              "text": "TikTok",
+              "link": "https://www.tiktok.com/@flor.kiwan"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/instagram.svg",
+              "text": "Instagram",
+              "link": "https://www.tiktok.com/@flor.kiwan"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/Youtube_Logo.svg",
+              "text": "Youtube",
+              "link": "https://www.youtube.com/@florkiwan2680"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/linkedin.svg",
+              "text": "LinkedIn",
+              "link": "https://www.linkedin.com/in/flor-kiwan-738a7099/"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Conoce nuestros servicios",
+          "services": [
+            {
+              "title": "Sociedades y corporativos",
+              "description": "Los tramites relativos a las sociedades civiles y mercantiles desde su creación, funcionamiento, disolución y liquidación."
+            },
+            {
+              "title": "Personales",
+              "description": "Los tramites personales pueden ser de distinta índole como son: Testamentos, poderes, sucesiones, divorcios, etc."
+            },
+            {
+              "title": "Inmobiliarios",
+              "description": "Todos los tramites relativos a los bienes inmuebles como son: Compra venta de casas, créditos, donaciones, fusión de predios, etc."
+            },
+            {
+              "title": "Tramites notariales y solución de controversias.",
+              "description": "Tramites generales como son: Notificaciones, ratificación de contenido y firma."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": "/uploads/not23edomex/23-anim.mp4"
+        }
       }
-    ]
-  }
+    }
+  ]
 }

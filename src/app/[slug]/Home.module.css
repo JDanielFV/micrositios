@@ -1,0 +1,118 @@
+.container {
+  padding-bottom: 100px; /* Space for bottom nav */
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100dvh; /* Full dynamic viewport height */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden; /* Ensures video doesn't spill out */
+}
+
+.heroVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: absolute; /* Changed to absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5); /* This is the overlay color */
+  padding: 40px;
+  border-radius: 0; /* Remove border-radius as it's a full overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically within the overlay */
+}
+
+.heroLogo {
+  max-width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: #e0e0e0;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* --- Generic Section Styling --- */
+.section {
+  padding: 60px 24px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: transparent; /* Make it fully transparent */
+  /* Temporarily remove backdrop-filter and border to isolate background issue */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
+  margin: 0 20px; /* Add some horizontal margin */
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.section p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #b0b0b0;
+  max-w: 750px;
+  margin: 0 auto 1.5rem;
+}
+
+.aboutImage {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* --- Action Button --- */
+.actionButton {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: #1a1a1a;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton:hover {
+  transform: scale(1.05);
+  background-color: #fff;
+}
