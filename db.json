@@ -250,7 +250,7 @@
           ]
         },
         "splashScreen": {
-          "enabled": false,
+          "enabled": true,
           "videoUrl": "/uploads/not23edomex/23-anim.mp4"
         }
       }
