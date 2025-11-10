@@ -43,7 +43,7 @@ export default function SplashScreen({ enabled, videoUrl, children }: SplashScre
       {videoUrl && (
         <video
           className={styles.splashVideo}
-          src={`/qr${videoUrl}`} // Prepend /qr for basePath
+          src={`/qrs${videoUrl}`} // Prepend /qrs for basePath
           autoPlay
           loop
           muted

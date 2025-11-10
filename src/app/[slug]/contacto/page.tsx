@@ -63,12 +63,12 @@ export default async function ContactoPage({ params }: { params: { slug: string 
               return (
                 <a
                   key={index}
-                  href={`/qr${site.data.contactPage.vCardUrl}`}
+                  href={`/qrs${site.data.contactPage.vCardUrl}`}
                   className={styles.actionButton}
                   download
                 >
                   <img
-                    src={`/qr${action.iconUrl}`}
+                    src={`/qrs${action.iconUrl}`}
                     alt={`${action.text} icon`}
                     width={36}
                     height={36}
@@ -87,7 +87,7 @@ export default async function ContactoPage({ params }: { params: { slug: string 
                 className={styles.actionButton}
               >
                 <img
-                  src={`/qr${action.iconUrl}`}
+                  src={`/qrs${action.iconUrl}`}
                   alt={`${action.text} icon`}
                   width={36}
                   height={36}

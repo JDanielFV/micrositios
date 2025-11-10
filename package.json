@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "mv src/app/admin admin_temp && mv src/app/api api_temp && npm run build && mv admin_temp src/app/admin && mv api_temp src/app/api",
+    "export": "./scripts/build.sh",
     "start": "next start"
   },
   "dependencies": {

@@ -4,7 +4,7 @@ Este documento resume el estado actual y las funcionalidades implementadas en el
 
 ## Objetivo General
 
-Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio escalable con una interfaz de administración web para gestionar la creación, edición y contenido de sitios. El proyecto está configurado para despliegue estático bajo el subpath `/qr`.
+Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio escalable con una interfaz de administración web para gestionar la creación, edición y contenido de sitios. El proyecto está configurado para despliegue estático bajo el subpath `/qrs`.
 
 ## Tecnologías Clave
 
@@ -18,7 +18,7 @@ Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio esca
 ### 1. Generación Multi-sitio
 
 *   **Estructura Dinámica:** Utiliza la generación dinámica de sitios a través de `app/[slug]` para servir múltiples micrositios desde una única base de código.
-*   **Configuración de Rutas:** Cada sitio se accede a través de `/qr/[slug]`.
+*   **Configuración de Rutas:** Cada sitio se accede a través de `/qrs/[slug]`.
 
 ### 2. Panel de Administración Web
 
@@ -61,7 +61,7 @@ Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio esca
 
 ### 6. Despliegue Estático
 
-*   **`basePath: '/qr'`:** Configurado en `next.config.mjs` para servir la aplicación desde un subdirectorio `/qr`.
+*   **`basePath: '/qrs'`:** Configurado en `next.config.mjs` para servir la aplicación desde un subdirectorio `/qrs`.
 *   **Script `npm run export`:** Maneja el proceso de build para despliegues estáticos, moviendo temporalmente las carpetas `/admin` y `/api` para evitar conflictos.
 
 ## Correcciones Recientes y Mejoras

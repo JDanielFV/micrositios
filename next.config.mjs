@@ -9,8 +9,9 @@ const nextConfig = {
     }
     return config;
   },
-  basePath: '/qr',
-  // output: 'export',
+  // Apply output: 'export' only for production builds
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  basePath: '/qrs',
   images: {
     unoptimized: true,
     remotePatterns: [

@@ -47,10 +47,10 @@ export default async function HomePage({ params }: { params: { slug: string } })
       {/* Hero Section */}
       <section className={styles.hero}>
         {hero.videoUrl && (
-          <video className={styles.heroVideo} autoPlay loop muted playsInline src={`/qr${hero.videoUrl}`} />
+          <video className={styles.heroVideo} autoPlay loop muted playsInline src={`/qrs${hero.videoUrl}`} />
         )}
         <div className={styles.heroContent}>
-          {hero.logoUrl && <img src={`/qr${hero.logoUrl}`} alt="Logo" className={styles.heroLogo} />}
+          {hero.logoUrl && <img src={`/qrs${hero.logoUrl}`} alt="Logo" className={styles.heroLogo} />}
           <h1 className={styles.heroTitle}>{hero.title}</h1>
           <p className={styles.heroSubtitle}>{hero.subtitle}</p>
           {hero.button && hero.button.text && (
@@ -64,7 +64,7 @@ export default async function HomePage({ params }: { params: { slug: string } })
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>{about.title}</h2>
           <p>{about.text}</p>
-          {about.imageUrl && <img src={`/qr${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
+          {about.imageUrl && <img src={`/qrs${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
         </section>
       )}
 
@@ -80,4 +80,4 @@ export default async function HomePage({ params }: { params: { slug: string } })
       )}
     </div>
   );
-}
+}1

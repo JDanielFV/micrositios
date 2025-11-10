@@ -63,7 +63,7 @@ export default function EditSitePage() {
       const fetchSiteData = async () => {
         try {
           setLoading(true);
-          const response = await fetch(`/qr/api/sites/${slug}`);
+          const response = await fetch(`/qrs/api/sites/${slug}`);
           if (response.ok) {
             const data = await response.json();
             setSiteData(data.data);
@@ -230,7 +230,7 @@ export default function EditSitePage() {
     });
 
     try {
-      const response = await fetch(`/qr/api/sites/${slug}`,
+      const response = await fetch(`/qrs/api/sites/${slug}`,
         {
           method: 'PUT',
           body: formData,
@@ -480,7 +480,7 @@ export default function EditSitePage() {
               onChange={handleFileChange}
             />
             {siteData.contactPage.vCardUrl && (
-              <p>Archivo actual: <a href={`/qr${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
+              <p>Archivo actual: <a href={`/qrs${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
             )}
           </div>
 
@@ -499,7 +499,7 @@ export default function EditSitePage() {
                 />
                 {action.iconUrl && (
                   <div className={styles.iconPreview}>
-                    <img src={`/qr${action.iconUrl}`} alt="Icono actual" width={24} height={24} />
+                    <img src={`/qrs${action.iconUrl}`} alt="Icono actual" width={24} height={24} />
                     <span>{action.iconUrl}</span>
                   </div>
                 )}

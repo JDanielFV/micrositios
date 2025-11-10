@@ -96,7 +96,7 @@ export default function AdminPage() {
 
   const fetchSites = async () => {
     try {
-      const response = await fetch('/qr/api/sites');
+      const response = await fetch('/qrs/api/sites');
       if (response.ok) {
         const data = await response.json();
         setSites(data);
@@ -236,7 +236,7 @@ export default function AdminPage() {
   const handleDelete = async (slug: string) => {
     if (window.confirm(`¿Estás seguro de que quieres eliminar el sitio "${slug}"? Esta acción no se puede deshacer.`)) {
       try {
-        const response = await fetch(`/qr/api/sites/${slug}`, {
+        const response = await fetch(`/qrs/api/sites/${slug}`, {
           method: 'DELETE',
         });
         const result = await response.json();
@@ -278,7 +278,7 @@ export default function AdminPage() {
     });
 
     try {
-      const response = await fetch('/qr/api/sites', {
+      const response = await fetch('/qrs/api/sites', {
         method: 'POST',
         body: formData, // No headers needed, browser sets it
       });
@@ -636,7 +636,7 @@ export default function AdminPage() {
               onChange={handleFileChange}
             />
             {siteData.contactPage.vCardUrl && (
-              <p>Archivo actual: <a href={`/qr${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
+              <p>Archivo actual: <a href={`/qrs${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
             )}
           </div>
 
@@ -655,7 +655,7 @@ export default function AdminPage() {
                 />
                 {action.iconUrl && (
                   <div className={styles.iconPreview}>
-                    <img src={`/qr${action.iconUrl}`} alt="Icono actual" width={24} height={24} />
+                    <img src={`/qrs${action.iconUrl}`} alt="Icono actual" width={24} height={24} />
                     <span>{action.iconUrl}</span>
                   </div>
                 )}
