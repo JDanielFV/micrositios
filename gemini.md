@@ -55,6 +55,7 @@ Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio esca
 ### 5. Pantalla de Bienvenida (Splash Screen)
 
 *   **Opcional:** Se puede habilitar/deshabilitar por sitio desde el panel de administración.
+*   **Una sola vez por sesión:** El splash screen solo se muestra la primera vez que un usuario visita el sitio. Navegaciones posteriores dentro del mismo sitio no lo volverán a mostrar.
 *   **Duración y Desvanecimiento:** Dura 5 segundos y comienza a desvanecerse a los 4.5 segundos.
 *   **Video de Fondo:** Soporta la reproducción de un video como fondo del splash screen.
 *   **Texto "Cargando...":** Muestra un texto de carga durante el splash.
@@ -76,3 +77,4 @@ Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio esca
 *   **Posicionamiento del Video del Splash Screen:** Corregido para que ocupe el 100% del ancho y alto de la pantalla.
 *   **Centrado de Contenido del Hero:** Ajustes CSS para asegurar que los elementos del hero estén centrados y visibles sobre el video.
 *   **Formato de Secciones:** Ajustes CSS para asegurar que las secciones "About" y "Main Contact" tengan un formato adecuado.
+*   **Comportamiento del Splash Screen:** Corregido para que se muestre solo una vez por sesión de navegador, utilizando `sessionStorage`. Se refinó la implementación para evitar un "flash" del splash screen en cargas de página subsecuentes.

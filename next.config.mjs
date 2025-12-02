@@ -12,6 +12,7 @@ const nextConfig = {
   // Apply output: 'export' only for production builds
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   basePath: '/qrs',
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [

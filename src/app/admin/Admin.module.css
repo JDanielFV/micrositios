@@ -45,6 +45,7 @@
 .siteList {
   list-style: none;
   padding: 0;
+  color: #000000;
 }
 
 .siteItem {

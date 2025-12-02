@@ -128,8 +128,8 @@
           "fontFamily": ""
         },
         "metadata": {
-          "title": "Notaría 23 - Estado de México",
-          "description": "Certeza jurídica"
+          "title": "Flor Kiwan",
+          "description": "Notaría 23 del Estado de México"
         },
         "navigation": [
           {
@@ -146,25 +146,25 @@
           }
         ],
         "hero": {
-          "title": "Notaría 23 - Estado de México",
-          "subtitle": "Altamirano - Altamirano - Kiwan",
+          "title": "M. en D. Flor Kiwan",
+          "subtitle": "Titular Notaría 23 del Estado de México",
           "videoUrl": "/uploads/not23edomex/Fondos23.m4v",
-          "logoUrl": "/uploads/not23edomex/hero_logo.png",
+          "logoUrl": "/uploads/not-23-edomex/hero_logo.png",
           "button": {
-            "text": "Conoce nuestros servicios",
+            "text": "Pongamonos en contacto",
             "link": "/servicios"
           }
         },
         "about": {
-          "title": "Conóncenos",
-          "text": "Nuestra Notaría se distingue por contar con profesionales del derecho formados en valores de honestidad, calidad y confiabilidad, enfocados en la satisfacción total del cliente. Esto garantiza una atención eficaz y seguridad jurídica.\n",
+          "title": "Quien soy",
+          "text": "Tercera Generación de una familia de Notarios, con experiencia en el ámbito Notarial por más de 12 años, nombrada como Notaria de la Notaria 23 del Estado de México en el año de 2011 y desempeñando ese cargo hasta la fecha.",
           "imageUrl": ""
         },
         "mainContact": {
-          "title": "Contáctanos",
+          "title": "Trabajemos juntos",
           "text": "Contamos con un equipo administrativo altamente calificado y tecnología avanzada, lo que nos permite ofrecer un servicio rápido y eficiente, manteniendo siempre el contacto directo y asesoría personalizada para asegurar certeza jurídica en cada proceso.",
           "button": {
-            "text": "Envíanos un mensaje",
+            "text": "Conoce nuestros servicios",
             "link": "/contacto"
           }
         },
@@ -174,7 +174,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "",
+          "vCardUrl": "/uploads/not-23-edomex/Flor Kiwan.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -184,6 +184,11 @@
             {
               "iconUrl": "/wh.png",
               "text": "WhatsApp",
+              "link": "http://wa.me/+525554038548"
+            },
+            {
+              "iconUrl": "/uploads/not-23-edomex/icons/Logo not 23.svg",
+              "text": "Whatsapp Notaría 23",
               "link": "http://wa.me/+525519637213"
             },
             {
@@ -214,7 +219,7 @@
             {
               "iconUrl": "/uploads/not23edomex/icons/instagram.svg",
               "text": "Instagram",
-              "link": "https://www.tiktok.com/@flor.kiwan"
+              "link": "https://www.instagram.com/notaria23edomex"
             },
             {
               "iconUrl": "/uploads/not23edomex/icons/Youtube_Logo.svg",
@@ -252,6 +257,190 @@
         "splashScreen": {
           "enabled": true,
           "videoUrl": "/uploads/not23edomex/23-anim.mp4"
+        }
+      }
+    },
+    {
+      "id": "not-1-cunduacan",
+      "slug": "not-1-cunduacan",
+      "data": {
+        "theme": {
+          "color1": "#212529",
+          "color2": "#8F1336",
+          "angle": "0",
+          "fontImportUrl": "",
+          "fontFamily": "outfit"
+        },
+        "metadata": {
+          "title": "Notaría Publica UNO",
+          "description": "Protegemos tu patrimonio"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Publica Uno - Cunduacan",
+          "subtitle": "somos profesionales del Derecho investidos de fe pública, para hacer constar e intervenir en la elaboración de actos o hechos jurídicos a los que se deba dar autenticidad conforme a la Ley.",
+          "videoUrl": "",
+          "logoUrl": "/uploads/not-1-cunduacan/hero_logo.png",
+          "button": {
+            "text": "Conozca nuestros servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "",
+          "text": "",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "",
+          "text": "",
+          "button": {
+            "text": "",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "",
+          "mapIframeUrl": ""
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/file.svg",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/whatsapp.svg",
+              "text": "WhatsApp",
+              "link": ""
+            },
+            {
+              "iconUrl": "/phone.svg",
+              "text": "Llamar Ahora",
+              "link": ""
+            },
+            {
+              "iconUrl": "/mail.svg",
+              "text": "Enviar Email",
+              "link": ""
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "",
+          "services": []
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "not-8-poza-rica",
+      "slug": "not-8-poza-rica",
+      "data": {
+        "theme": {
+          "color1": "#ffffff",
+          "color2": "#f0f0f0",
+          "angle": 90,
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "",
+          "description": ""
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "",
+          "videoUrl": "",
+          "logoUrl": "",
+          "button": {
+            "text": "",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "",
+          "text": "",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "",
+          "text": "",
+          "button": {
+            "text": "",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "",
+          "mapIframeUrl": ""
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/file.svg",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/whatsapp.svg",
+              "text": "WhatsApp",
+              "link": ""
+            },
+            {
+              "iconUrl": "/phone.svg",
+              "text": "Llamar Ahora",
+              "link": ""
+            },
+            {
+              "iconUrl": "/mail.svg",
+              "text": "Enviar Email",
+              "link": ""
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "",
+          "services": []
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
         }
       }
     }

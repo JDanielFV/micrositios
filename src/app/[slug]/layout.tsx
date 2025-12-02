@@ -39,10 +39,9 @@ export default async function SiteLayout({ children, params }: { children: React
         <ThemeInjector styles={dynamicStyles} />
       </head>
       <body>
-        <SplashScreen enabled={splashScreenEnabled} videoUrl={splashScreenVideoUrl}>
-          <Header links={navLinks} />
-          {children}
-        </SplashScreen>
+        <SplashScreen enabled={splashScreenEnabled} videoUrl={splashScreenVideoUrl} />
+        <Header links={navLinks} />
+        {children}
       </body>
     </html>
   );
