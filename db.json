@@ -182,7 +182,7 @@
               "link": ""
             },
             {
-              "iconUrl": "/wh.png",
+              "iconUrl": "/wh.svg",
               "text": "WhatsApp",
               "link": "http://wa.me/+525554038548"
             },
@@ -358,14 +358,240 @@
       "data": {
         "theme": {
           "color1": "#ffffff",
-          "color2": "#f0f0f0",
-          "angle": 90,
+          "color2": "#70542F",
+          "angle": "180",
           "fontImportUrl": "",
           "fontFamily": ""
         },
         "metadata": {
-          "title": "",
-          "description": ""
+          "title": "Notaría Publica 8 - Poza Rica",
+          "description": "Servicios notariales de excelencia en Poza Rica, Veracruz."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Pública 8",
+          "subtitle": "Lic. Arturo Hernández Gómez - Titular",
+          "videoUrl": "/uploads/not-8-poza-rica/Fondo-not-8-pr.mp4",
+          "logoUrl": "/uploads/not-8-poza-rica/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Sobre Nosotros",
+          "text": "Somos una notaría comprometida con la seguridad jurídica y la excelencia en el servicio. Ubicados en Poza Rica, Veracruz, ofrecemos una amplia gama de servicios notariales para particulares y empresas, garantizando profesionalismo y confianza en cada trámite.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Estamos para servirle",
+          "text": "Contáctenos para agendar una cita o recibir asesoría personalizada sobre sus trámites legales.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Avenida 6 Norte 508, Colonia Obrera, C.P. 93260, Poza Rica de Hidalgo, Veracruz, México.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.378687654321!2d-97.456789!3d20.534567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDMyJzA0LjQiTiA5N8KwMjcnMjQuNCJX!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/not-8-poza-rica/Notaría Publica 8.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/527821318457"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:7828220454"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:notariaocho@prodigy.net.mx"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Asesoría y redacción de testamentos para asegurar su patrimonio."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Otorgamiento de poderes para actos de dominio, administración y pleitos y cobranzas."
+            },
+            {
+              "title": "Compraventas",
+              "description": "Formalización de contratos de compraventa de bienes inmuebles."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Trámites para la creación de empresas y sociedades civiles o mercantiles."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación de hechos presenciados por el notario."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "not-31-tulum",
+      "slug": "not-31-tulum",
+      "data": {
+        "theme": {
+          "color1": "#abc5d1",
+          "color2": "#002752",
+          "angle": "180",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría Publica 31 - Tulum",
+          "description": "Servicios notariales en Tulum, Quintana Roo."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Pública 31",
+          "subtitle": "Servicios Notariales en Tulum",
+          "videoUrl": "/uploads/not-31-tulum/853857-sd_960_540_24fps.mp4",
+          "logoUrl": "/uploads/not-31-tulum/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Sobre Nosotros",
+          "text": "Ofrecemos servicios notariales integrales en el corazón de Tulum, comprometidos con la legalidad y la certeza jurídica de nuestros clientes.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos a su disposición para atender sus necesidades legales y notariales.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Calle Orión Nte., Tulum Centro, 77760 Tulum, Q.R., México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.234567890123!2d-87.463254!3d20.211234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDEyJzQwLjQiTiA4N8KwMjcnNDcuNyJX!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/not-31-tulum/Notaría Publica 31.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/529832671225"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:9848025432"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "agner73@hotmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Asesoría y redacción de testamentos."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de poderes notariales."
+            },
+            {
+              "title": "Compraventas",
+              "description": "Formalización de operaciones inmobiliarias."
+            },
+            {
+              "title": "Sociedades",
+              "description": "Constitución y actas de asamblea de sociedades."
+            },
+            {
+              "title": "Certificaciones",
+              "description": "Cotejo y certificación de documentos."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "not-3-bcs",
+      "slug": "not-3-bcs",
+      "data": {
+        "theme": {
+          "color1": "#012659",
+          "color2": "#19273a",
+          "angle": "180",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría Publica 3 - Baja California Sur",
+          "description": "Servicios notariales en La Paz, Baja California Sur."
         },
         "navigation": [
           {
@@ -383,60 +609,86 @@
         ],
         "hero": {
           "title": "",
-          "subtitle": "",
-          "videoUrl": "",
-          "logoUrl": "",
+          "subtitle": "Licenciado Carlos Aramburo Romero - Titular",
+          "videoUrl": "/uploads/not-3-bcs/fondo-not-3-bcs.m4v",
+          "logoUrl": "/uploads/not-3-bcs/hero_logo.png",
           "button": {
-            "text": "",
+            "text": "Nuestros Servicios",
             "link": "/servicios"
           }
         },
         "about": {
-          "title": "",
-          "text": "",
+          "title": "Sobre Nosotros",
+          "text": "Brindamos seguridad y certeza jurídica en La Paz, Baja California Sur, con un servicio profesional y personalizado.",
           "imageUrl": ""
         },
         "mainContact": {
-          "title": "",
-          "text": "",
+          "title": "Contáctenos",
+          "text": "Estamos listos para asistirle en todos sus trámites notariales.",
           "button": {
-            "text": "",
+            "text": "Contactar",
             "link": "/contacto"
           }
         },
         "locationPage": {
-          "address": "",
-          "mapIframeUrl": ""
+          "address": "Isabel La Católica 2100-1, Zona Central, 23000 La Paz, B.C.S.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.567890123456!2d-110.312345!3d24.156789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDA5JzI0LjQiTiAxMTDCsDE4JzQ0LjQiVw!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
         },
         "contactPage": {
           "title": "Centro de Contacto",
           "vCardUrl": "",
           "actions": [
             {
-              "iconUrl": "/file.svg",
+              "iconUrl": "/card.png",
               "text": "Guardar contacto",
               "link": ""
             },
             {
-              "iconUrl": "/whatsapp.svg",
+              "iconUrl": "/wh.svg",
               "text": "WhatsApp",
               "link": ""
             },
             {
-              "iconUrl": "/phone.svg",
+              "iconUrl": "/sm.webp",
               "text": "Llamar Ahora",
-              "link": ""
+              "link": "tel:6121752700"
             },
             {
-              "iconUrl": "/mail.svg",
+              "iconUrl": "/ml.webp",
               "text": "Enviar Email",
-              "link": ""
+              "link": "mailto:info@notaria3bcs.com"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/facebook-square-social-logo.svg",
+              "text": "Facebook",
+              "link": "https://www.facebook.com/Notaria3BCS/?locale=es_LA"
             }
           ]
         },
         "servicesPage": {
-          "title": "",
-          "services": []
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Asesoría y redacción de testamentos."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de poderes notariales."
+            },
+            {
+              "title": "Compraventas",
+              "description": "Formalización de operaciones inmobiliarias."
+            },
+            {
+              "title": "Sociedades",
+              "description": "Constitución y actas de asamblea de sociedades."
+            },
+            {
+              "title": "Certificaciones",
+              "description": "Cotejo y certificación de documentos."
+            }
+          ]
         },
         "splashScreen": {
           "enabled": false,

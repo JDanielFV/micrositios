@@ -307,6 +307,21 @@ export default function AdminPage() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.section} style={{ marginBottom: '3rem' }}>
+        <h2 className={styles.sectionTitle}>Sitios Existentes</h2>
+        <ul className={styles.siteList}>
+          {sites.map(site => (
+            <li key={site.id} className={styles.siteItem}>
+              <span>{site.data.metadata.title} ({site.slug})</span>
+              <div className={styles.siteActions}>
+                <Link href={`/admin/edit/${site.slug}`} className={styles.editButton}>Editar</Link>
+                <button onClick={() => handleDelete(site.slug)} className={styles.removeButton}>Borrar</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <h1 className={styles.title}>Añadir Nuevo Sitio</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.section}>
@@ -723,25 +738,12 @@ export default function AdminPage() {
           </div>
         </div>
 
+
         <button type="submit" className={styles.button}>Crear Sitio</button>
       </form>
       {message && <p className={styles.successMessage}>{message}</p>}
       {error && <p className={styles.errorMessage}>{error}</p>}
 
-      <div className={styles.section} style={{ marginTop: '3rem' }}>
-        <h2 className={styles.sectionTitle}>Sitios Existentes</h2>
-        <ul className={styles.siteList}>
-          {sites.map(site => (
-            <li key={site.id} className={styles.siteItem}>
-              <span>{site.data.metadata.title} ({site.slug})</span>
-              <div className={styles.siteActions}>
-                <Link href={`/admin/edit/${site.slug}`} className={styles.editButton}>Editar</Link>
-                <button onClick={() => handleDelete(site.slug)} className={styles.removeButton}>Borrar</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }

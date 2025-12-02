@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import styles from './Home.module.css';
 
+import { getStaticParams } from '../../utils/getStaticParams';
+
 const dbPath = path.join(process.cwd(), 'db.json');
 
 async function getData(slug: string) {
@@ -13,12 +15,10 @@ async function getData(slug: string) {
   return site;
 }
 
+
+
 export async function generateStaticParams() {
-  const dbData = await fs.readFile(dbPath, 'utf-8');
-  const db = JSON.parse(dbData);
-  return db.sites.map((site: any) => ({
-    slug: site.slug,
-  }));
+  return getStaticParams();
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -80,4 +80,4 @@ export default async function HomePage({ params }: { params: { slug: string } })
       )}
     </div>
   );
-}1
+} 1

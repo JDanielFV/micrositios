@@ -10,10 +10,10 @@ async function getData(slug: string) {
   return site;
 }
 
+import { getStaticParams } from '../../../utils/getStaticParams';
+
 export async function generateStaticParams() {
-  return db.sites.map((site) => ({
-    slug: site.slug,
-  }));
+  return getStaticParams();
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {

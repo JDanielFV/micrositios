@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "export": "./scripts/build.sh",
+    "dev:clean": "./scripts/clean-dev.sh",
+    "build": "./scripts/build.sh",
+    "build:core": "next build",
     "start": "next start"
   },
   "dependencies": {

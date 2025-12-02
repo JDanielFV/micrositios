@@ -31,12 +31,14 @@ const defaultSiteData = {
   about: { title: "", text: "", imageUrl: "" },
   mainContact: { title: "", text: "", button: { text: "", link: "" } },
   locationPage: { address: "", mapIframeUrl: "" },
-  contactPage: { title: "", vCardUrl: "", actions: [
-    { iconUrl: "/file.svg", text: "Guardar contacto", link: "" },
-    { iconUrl: "/whatsapp.svg", text: "WhatsApp", link: "" },
-    { iconUrl: "/phone.svg", text: "Llamar Ahora", link: "" },
-    { iconUrl: "/mail.svg", text: "Enviar Email", link: "" }
-  ] },
+  contactPage: {
+    title: "", vCardUrl: "", actions: [
+      { iconUrl: "/file.svg", text: "Guardar contacto", link: "" },
+      { iconUrl: "/whatsapp.svg", text: "WhatsApp", link: "" },
+      { iconUrl: "/phone.svg", text: "Llamar Ahora", link: "" },
+      { iconUrl: "/mail.svg", text: "Enviar Email", link: "" }
+    ]
+  },
   servicesPage: { title: "", services: [] as Service[] },
   splashScreen: { enabled: false, videoUrl: "" }
 };
@@ -48,15 +50,15 @@ export default function EditSitePage() {
 
   const [siteData, setSiteData] = useState(defaultSiteData);
   const [id, setId] = useState('');
-    const [imageFile, setImageFile] = useState<File | null>(null);
-    const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
-    const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
-    const [vCardFile, setVCardFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
+  const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
+  const [vCardFile, setVCardFile] = useState<File | null>(null);
   const [splashVideoFile, setSplashVideoFile] = useState<File | null>(null);
   const [iconFiles, setIconFiles] = useState<File[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (slug) {
@@ -219,7 +221,7 @@ export default function EditSitePage() {
     }
 
     formData.append('siteData', JSON.stringify(updatedSiteData));
-    
+
     if (imageFile) formData.append('imageFile', imageFile);
     if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
     if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
@@ -242,7 +244,7 @@ export default function EditSitePage() {
       if (response.ok) {
         setMessage(result.message);
         // Optionally redirect or update UI
-        router.push('/admin'); // Redirect to admin list after successful update
+        // router.push('/admin'); // Redirect to admin list after successful update
       } else {
         setError(result.message);
       }
