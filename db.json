@@ -1,122 +1,6 @@
 {
   "sites": [
     {
-      "id": "loes",
-      "slug": "loes",
-      "data": {
-        "theme": {
-          "backgroundColor": "#000000",
-          "fontImportUrl": "",
-          "fontFamily": "",
-          "color2": "#005224",
-          "angle": "0",
-          "color1": "#000000"
-        },
-        "metadata": {
-          "title": "Loes Atorneys",
-          "description": "We are committed to legal excellence in the paradise of the Riviera Maya"
-        },
-        "navigation": [
-          {
-            "text": "Inicio",
-            "link": "/"
-          },
-          {
-            "text": "Ubicación",
-            "link": "/ubicacion"
-          },
-          {
-            "text": "Contacto",
-            "link": "/contacto"
-          }
-        ],
-        "hero": {
-          "title": "Trabaja con los mejores abogados en la Riviera Maya",
-          "subtitle": "Aseguramos el mayor estándar de calidad para brinda la mejor asistencia y seguridad legar que nuestros clientes se merecen.",
-          "videoUrl": "/uploads/loes/16902338-sd_960_540_30fps.mp4",
-          "logoUrl": "/uploads/loes/AttorneysBlanco-300x300.png",
-          "button": {
-            "text": "Conozca nuestros servicios",
-            "link": "/servicios"
-          }
-        },
-        "about": {
-          "title": "Sobre Loes",
-          "text": "Estamos comprometidos con la excelencia legal en el paraíso de la Riviera Maya. Nuestra misión es clara: guiar a nuestros clientes a través de los desafíos legales con el más alto nivel de servicio. Con un profundo entendimiento de la ley y un conocimiento único de las complejidades de la región, somos tu socio de confianza en cada paso del camino.",
-          "imageUrl": ""
-        },
-        "mainContact": {
-          "title": "¡Esperamos trabajar con usted!",
-          "text": "Su viaje con nosotros comienza con un simple \"hola\". \nComience la conversación hoy y logremos grandes cosas juntos.",
-          "button": {
-            "text": "Reservar una reunión",
-            "link": "/contacto"
-          }
-        },
-        "locationPage": {
-          "address": "Golf drive 302, Playacar, 77717 Playa del Carmen, Q.R.",
-          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.34782724058!2d-87.0926814!3d20.6146745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e43ab548ac489%3A0x9988eb585a76c573!2sLOES%20Attorneys!5e0!3m2!1ses-419!2smx!4v1762532248914!5m2!1ses-419!2smx"
-        },
-        "contactPage": {
-          "title": "Centro de Contacto",
-          "vCardUrl": "/uploads/loes/vcard.vcf",
-          "actions": [
-            {
-              "iconUrl": "/card.png",
-              "text": "Guardar contacto",
-              "link": ""
-            },
-            {
-              "iconUrl": "/wh.png",
-              "text": "WhatsApp",
-              "link": "http://wa.me/+529842315330"
-            },
-            {
-              "iconUrl": "/sm.webp",
-              "text": "Llamar Ahora",
-              "link": "tel:9842315330"
-            },
-            {
-              "iconUrl": "/ml.webp",
-              "text": "Enviar Email",
-              "link": "mailto:iestrada@loesatorneys.com"
-            }
-          ],
-          "vCard": {
-            "name": "Loes Atorneys",
-            "whatsappNumber": "9842315330",
-            "callNumber": "9842315330",
-            "email": "iestrada@loesatorneys.com"
-          }
-        },
-        "servicesPage": {
-          "title": "Áreas de práctica legal",
-          "services": [
-            {
-              "title": "Fideicomiso",
-              "description": "Nuestros meticulosos servicios de depósito en garantía garantizan transacciones seguras, ofreciendo tranquilidad tanto a compradores como a vendedores. Sus fondos están en buenas manos."
-            },
-            {
-              "title": "Inmuebles",
-              "description": "Desde contratos hasta cierres, nuestros expertos legales de bienes raíces lo tienen cubierto. Confíe en nosotros para salvaguardar sus intereses de propiedad."
-            },
-            {
-              "title": "Inmigración",
-              "description": "Navegue por el complejo panorama de la inmigración con confianza. Proporcionamos orientación experta para una transición sin problemas a México."
-            },
-            {
-              "title": "Servicios Corporativo",
-              "description": "Eleve su negocio con nuestros servicios corporativos integrales. Nos encargamos de las complejidades legales para que pueda centrarse en el crecimiento y el éxito."
-            },
-            {
-              "title": "Adquirir propiedades como extranjero",
-              "description": "Camino sin complicaciones hacia la propiedad de la propiedad. Nuestra guía paso a paso simplifica el proceso, haciendo realidad la propiedad de sus sueños"
-            }
-          ]
-        }
-      }
-    },
-    {
       "id": "not-23-edomex",
       "slug": "not-23-edomex",
       "data": {
@@ -152,7 +36,7 @@
           "logoUrl": "/uploads/not-23-edomex/hero_logo.png",
           "button": {
             "text": "Pongamonos en contacto",
-            "link": "/servicios"
+            "link": "/contacto"
           }
         },
         "about": {
@@ -165,7 +49,7 @@
           "text": "Contamos con un equipo administrativo altamente calificado y tecnología avanzada, lo que nos permite ofrecer un servicio rápido y eficiente, manteniendo siempre el contacto directo y asesoría personalizada para asegurar certeza jurídica en cada proceso.",
           "button": {
             "text": "Conoce nuestros servicios",
-            "link": "/contacto"
+            "link": "/servicios"
           }
         },
         "locationPage": {
@@ -174,7 +58,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "/uploads/not-23-edomex/Flor Kiwan.vcf",
+          "vCardUrl": "/uploads/not-23-edomex/Flor-Kiwan.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -187,7 +71,7 @@
               "link": "http://wa.me/+525554038548"
             },
             {
-              "iconUrl": "/uploads/not-23-edomex/icons/Logo not 23.svg",
+              "iconUrl": "/uploads/not-23-edomex/icons/Logo-not-23.svg",
               "text": "Whatsapp Notaría 23",
               "link": "http://wa.me/+525519637213"
             },
@@ -410,7 +294,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "/uploads/not-8-poza-rica/Notaría Publica 8.vcf",
+          "vCardUrl": "/uploads/not-8-poza-rica/Notaría-Publica-8.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -523,7 +407,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "/uploads/not-31-tulum/Notaría Publica 31.vcf",
+          "vCardUrl": "/uploads/not-31-tulum/Notaría-Publica-31.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -662,6 +546,11 @@
               "iconUrl": "/uploads/not23edomex/icons/facebook-square-social-logo.svg",
               "text": "Facebook",
               "link": "https://www.facebook.com/Notaria3BCS/?locale=es_LA"
+            },
+            {
+              "iconUrl": "/web.svg",
+              "text": "Página Web",
+              "link": "https://notaria3bcs.com/"
             }
           ]
         },

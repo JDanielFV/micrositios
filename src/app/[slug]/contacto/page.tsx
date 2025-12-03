@@ -63,7 +63,7 @@ export default async function ContactoPage({ params }: { params: { slug: string 
               return (
                 <a
                   key={index}
-                  href={`/qrs${site.data.contactPage.vCardUrl}`}
+                  href={`/qrs${encodeURI(site.data.contactPage.vCardUrl)}`}
                   className={styles.actionButton}
                   download
                 >

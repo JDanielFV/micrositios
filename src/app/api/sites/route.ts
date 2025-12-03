@@ -20,7 +20,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    
+
     const id = formData.get('id') as string;
     const slug = formData.get('slug') as string;
     const siteDataString = formData.get('siteData') as string;
@@ -45,176 +45,186 @@ export async function POST(request: Request) {
     if (imageFile) {
       const siteUploadsPath = path.join(uploadsPath, slug);
       await fs.mkdir(siteUploadsPath, { recursive: true });
-      
+
       const fileBuffer = Buffer.from(await imageFile.arrayBuffer());
-      const filePath = path.join(siteUploadsPath, imageFile.name);
-      
+      const sanitizedFileName = imageFile.name.replace(/\s+/g, '-');
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
+
       await fs.writeFile(filePath, fileBuffer);
-      
-      siteData.about.imageUrl = `/uploads/${slug}/${imageFile.name}`;
+
+      siteData.about.imageUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
     if (heroVideoFile) {
       const siteUploadsPath = path.join(uploadsPath, slug);
       await fs.mkdir(siteUploadsPath, { recursive: true });
-      
+
       const fileBuffer = Buffer.from(await heroVideoFile.arrayBuffer());
-      const filePath = path.join(siteUploadsPath, heroVideoFile.name);
-      
+      const sanitizedFileName = heroVideoFile.name.replace(/\s+/g, '-');
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
+
       await fs.writeFile(filePath, fileBuffer);
-      
-      siteData.hero.videoUrl = `/uploads/${slug}/${heroVideoFile.name}`;
+
+      siteData.hero.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
-            if (heroLogoFile) {
+    if (heroLogoFile) {
 
-              const siteUploadsPath = path.join(uploadsPath, slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
-              await fs.mkdir(siteUploadsPath, { recursive: true });
+      await fs.mkdir(siteUploadsPath, { recursive: true });
 
-              const fileBuffer = Buffer.from(await heroLogoFile.arrayBuffer());
+      const fileBuffer = Buffer.from(await heroLogoFile.arrayBuffer());
 
-              const logoFileName = 'hero_logo.png'; // Fixed PNG filename
+      const logoFileName = 'hero_logo.png'; // Fixed PNG filename
 
-              const filePath = path.join(siteUploadsPath, logoFileName);
+      const filePath = path.join(siteUploadsPath, logoFileName);
 
-              await fs.writeFile(filePath, fileBuffer);
+      await fs.writeFile(filePath, fileBuffer);
 
-              siteData.hero.logoUrl = `/uploads/${slug}/${logoFileName}`;
+      siteData.hero.logoUrl = `/uploads/${slug}/${logoFileName}`;
 
-            }
+    }
 
-    
 
-        const vCardFile = formData.get('vCardFile') as File | null;
 
-                if (vCardFile) {
+    const vCardFile = formData.get('vCardFile') as File | null;
 
-                  const siteUploadsPath = path.join(uploadsPath, slug);
+    if (vCardFile) {
 
-                  await fs.mkdir(siteUploadsPath, { recursive: true });
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
-                  const fileBuffer = Buffer.from(await vCardFile.arrayBuffer());
+      await fs.mkdir(siteUploadsPath, { recursive: true });
 
-                  const filePath = path.join(siteUploadsPath, vCardFile.name);
+      const fileBuffer = Buffer.from(await vCardFile.arrayBuffer());
 
-                  await fs.writeFile(filePath, fileBuffer);
+      const sanitizedFileName = vCardFile.name.replace(/\s+/g, '-');
 
-                  siteData.contactPage.vCardUrl = `/uploads/${slug}/${vCardFile.name}`;
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
 
-                }
+      await fs.writeFile(filePath, fileBuffer);
 
-            
+      siteData.contactPage.vCardUrl = `/uploads/${slug}/${sanitizedFileName}`;
 
-                const splashVideoFile = formData.get('splashVideoFile') as File | null;
+    }
 
-                if (splashVideoFile) {
 
-                  const siteUploadsPath = path.join(uploadsPath, slug);
 
-                  await fs.mkdir(siteUploadsPath, { recursive: true });
+    const splashVideoFile = formData.get('splashVideoFile') as File | null;
 
-                  const fileBuffer = Buffer.from(await splashVideoFile.arrayBuffer());
+    if (splashVideoFile) {
 
-                  const filePath = path.join(siteUploadsPath, splashVideoFile.name);
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
-                  await fs.writeFile(filePath, fileBuffer);
+      await fs.mkdir(siteUploadsPath, { recursive: true });
 
-                  siteData.splashScreen.videoUrl = `/uploads/${slug}/${splashVideoFile.name}`;
+      const fileBuffer = Buffer.from(await splashVideoFile.arrayBuffer());
 
-                }
+      const sanitizedFileName = splashVideoFile.name.replace(/\s+/g, '-');
 
-        
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
 
-                // Handle icon file uploads
+      await fs.writeFile(filePath, fileBuffer);
 
-        
+      siteData.splashScreen.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
 
-                const iconFileEntries = Array.from(formData.entries()).filter(([key]) => key.startsWith('iconFile-'));
+    }
 
-        
 
-            
 
-        
+    // Handle icon file uploads
 
-                for (const [key, value] of iconFileEntries) {
 
-        
 
-                  const indexMatch = key.match(/iconFile-(\d+)/);
+    const iconFileEntries = Array.from(formData.entries()).filter(([key]) => key.startsWith('iconFile-'));
 
-        
 
-                  if (!indexMatch) continue;
 
-        
 
-            
 
-        
 
-                  const index = parseInt(indexMatch[1], 10);
 
-        
+    for (const [key, value] of iconFileEntries) {
 
-                  const iconFile = value as File;
 
-        
 
-            
+      const indexMatch = key.match(/iconFile-(\d+)/);
 
-        
 
-                  if (iconFile && iconFile.size > 0) { // Check if a file was actually uploaded
 
-        
+      if (!indexMatch) continue;
 
-                    const siteIconsUploadsPath = path.join(uploadsPath, slug, 'icons');
 
-        
 
-                    await fs.mkdir(siteIconsUploadsPath, { recursive: true });
 
-        
 
-                    const fileBuffer = Buffer.from(await iconFile.arrayBuffer());
 
-        
 
-                    const filePath = path.join(siteIconsUploadsPath, iconFile.name);
+      const index = parseInt(indexMatch[1], 10);
 
-        
 
-                    await fs.writeFile(filePath, fileBuffer);
 
-        
+      const iconFile = value as File;
 
-                    
 
-        
 
-                    // Update the iconUrl in siteData
 
-        
 
-                    if (siteData.contactPage.actions[index]) {
 
-        
 
-                      siteData.contactPage.actions[index].iconUrl = `/uploads/${slug}/icons/${iconFile.name}`;
+      if (iconFile && iconFile.size > 0) { // Check if a file was actually uploaded
 
-        
 
-                    }
 
-        
+        const siteIconsUploadsPath = path.join(uploadsPath, slug, 'icons');
 
-                  }
 
-        
 
-                }
+        await fs.mkdir(siteIconsUploadsPath, { recursive: true });
+
+
+
+        const fileBuffer = Buffer.from(await iconFile.arrayBuffer());
+
+
+
+        const sanitizedFileName = iconFile.name.replace(/\s+/g, '-');
+
+
+
+        const filePath = path.join(siteIconsUploadsPath, sanitizedFileName);
+
+
+
+        await fs.writeFile(filePath, fileBuffer);
+
+
+
+
+
+
+
+        // Update the iconUrl in siteData
+
+
+
+        if (siteData.contactPage.actions[index]) {
+
+
+
+          siteData.contactPage.actions[index].iconUrl = `/uploads/${slug}/icons/${sanitizedFileName}`;
+
+
+
+        }
+
+
+
+      }
+
+
+
+    }
 
     const newSite = {
       id,
