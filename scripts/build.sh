@@ -1,25 +1,29 @@
 #!/bin/bash
 set -e
 
-echo "Fetching available sites..."
-# Get slugs from db.json
-SLUGS=$(node -e "try { const db = require('./db.json'); console.log(db.sites.map(s => s.slug).join(' ')); } catch (e) { process.exit(1); }")
+if [ -z "$BUILD_SLUG" ]; then
+  echo "Fetching available sites..."
+  # Get slugs from db.json
+  SLUGS=$(node -e "try { const db = require('./db.json'); console.log(db.sites.map(s => s.slug).join(' ')); } catch (e) { process.exit(1); }")
 
-echo "Select a site to build (type the number):"
-select opt in $SLUGS "All"; do
-    if [ "$opt" = "All" ]; then
-        SLUG=""
-        echo "Building all sites..."
-        break
-    elif [ -n "$opt" ]; then
-        SLUG=$opt
-        echo "Building only for slug: $SLUG"
-        export BUILD_SLUG=$SLUG
-        break
-    else
-        echo "Invalid option. Try again."
-    fi
-done
+  echo "Select a site to build (type the number):"
+  select opt in $SLUGS "All"; do
+      if [ "$opt" = "All" ]; then
+          SLUG=""
+          echo "Building all sites..."
+          break
+      elif [ -n "$opt" ]; then
+          SLUG=$opt
+          echo "Building only for slug: $SLUG"
+          export BUILD_SLUG=$SLUG
+          break
+      else
+          echo "Invalid option. Try again."
+      fi
+  done
+else
+  echo "BUILD_SLUG is set to '$BUILD_SLUG'. Skipping interactive selection."
+fi
 
 # Function to move directories back
 cleanup() {
