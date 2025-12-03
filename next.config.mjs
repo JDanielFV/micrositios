@@ -9,8 +9,8 @@ const nextConfig = {
     }
     return config;
   },
-  // Apply output: 'export' only for production builds
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  // Apply output: 'export' only for production builds, but NOT on Vercel
+  output: (process.env.NODE_ENV === 'production' && !process.env.VERCEL) ? 'export' : undefined,
   basePath: '/qrs',
   trailingSlash: true,
   images: {
