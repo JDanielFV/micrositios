@@ -363,7 +363,14 @@ export default function AdminPage() {
           <ul className={styles.siteList}>
             {sites.map(site => (
               <li key={site.id} className={styles.siteItem}>
-                <span>{site.data.metadata.title} ({site.slug})</span>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span>{site.data.metadata.title} ({site.slug})</span>
+                  {site.data.lastModification && (
+                    <span translate="no" style={{ fontSize: '0.8rem', color: '#888', marginTop: '4px' }}>
+                      Última mod: {new Date(site.data.lastModification.timestamp).toLocaleString()}
+                    </span>
+                  )}
+                </div>
                 <div className={styles.siteActions}>
                   <Link href={`/admin/edit/${site.slug}`} className={styles.editButton}>Editar</Link>
                   <button onClick={() => handleDelete(site.slug)} className={styles.removeButton}>Borrar</button>

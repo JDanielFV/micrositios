@@ -9,8 +9,9 @@ async function getSite(slug: string) {
   return site;
 }
 
-export default async function SiteLayout({ children, params }: { children: React.ReactNode, params: { slug: string } }) {
-  const site = await getSite(params.slug);
+export default async function SiteLayout({ children, params }: { children: React.ReactNode, params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const site = await getSite(slug);
 
   if (!site) {
     return <>{children}</>; // Or a specific not-found layout

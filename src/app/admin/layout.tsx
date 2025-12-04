@@ -13,6 +13,7 @@ export default function AdminLayout({
 }) {
     return (
         <div className={styles.adminWrapper}>
+            <style>{`html { scroll-behavior: smooth; }`}</style>
             {children}
         </div>
     );

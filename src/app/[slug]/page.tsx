@@ -21,8 +21,9 @@ export async function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const site = await getData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const site = await getData(slug);
   return {
     title: site?.data.metadata.title,
     description: site?.data.metadata.description,
@@ -33,8 +34,9 @@ const ActionButton = ({ text, link }: { text: string, link: string }) => (
   <Link href={link} className={styles.actionButton}>{text}</Link>
 );
 
-export default async function HomePage({ params }: { params: { slug: string } }) {
-  const site = await getData(params.slug);
+export default async function HomePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const site = await getData(slug);
 
   if (!site) {
     return <div>Sitio no encontrado</div>;
@@ -45,7 +47,7 @@ export default async function HomePage({ params }: { params: { slug: string } })
   return (
     <div className={styles.container}>
       {/* Hero Section */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} animate-slide-up`} style={{ backgroundImage: `url(${hero.videoUrl ? '' : hero.imageUrl})` }}>
         {hero.videoUrl && (
           <video className={styles.heroVideo} autoPlay loop muted playsInline src={`/qrs${hero.videoUrl}`} />
         )}
@@ -54,14 +56,14 @@ export default async function HomePage({ params }: { params: { slug: string } })
           <h1 className={styles.heroTitle}>{hero.title}</h1>
           <p className={styles.heroSubtitle}>{hero.subtitle}</p>
           {hero.button && hero.button.text && (
-            <ActionButton text={hero.button.text} link={`/${params.slug}${hero.button.link}`} />
+            <ActionButton text={hero.button.text} link={`/${slug}${hero.button.link}`} />
           )}
         </div>
       </section>
 
       {/* About Section */}
       {about && about.title && (
-        <section className={styles.section}>
+        <section className={`${styles.section} animate-slide-up delay-200`}>
           <h2 className={styles.sectionTitle}>{about.title}</h2>
           <p>{about.text}</p>
           {about.imageUrl && <img src={`/qrs${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
@@ -70,11 +72,11 @@ export default async function HomePage({ params }: { params: { slug: string } })
 
       {/* Main Contact Section */}
       {mainContact && mainContact.title && (
-        <section className={styles.section}>
+        <section className={`${styles.section} animate-slide-up delay-300`}>
           <h2 className={styles.sectionTitle}>{mainContact.title}</h2>
           <p>{mainContact.text}</p>
           {mainContact.button && mainContact.button.text && (
-            <ActionButton text={mainContact.button.text} link={`/${params.slug}${mainContact.button.link}`} />
+            <ActionButton text={mainContact.button.text} link={`/${slug}${mainContact.button.link}`} />
           )}
         </section>
       )}

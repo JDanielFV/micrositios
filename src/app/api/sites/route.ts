@@ -226,6 +226,11 @@ export async function POST(request: Request) {
 
     }
 
+    // Add last modification tracking
+    siteData.lastModification = {
+      timestamp: new Date().toISOString()
+    };
+
     const newSite = {
       id,
       slug,

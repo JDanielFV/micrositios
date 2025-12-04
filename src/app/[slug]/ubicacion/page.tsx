@@ -14,16 +14,18 @@ export async function generateStaticParams() {
   return getStaticParams();
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const site = await getData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const site = await getData(slug);
   return {
     title: `Ubicación - ${site?.data.metadata.title}`,
     description: site?.data.metadata.description,
   };
 }
 
-export default async function UbicacionPage({ params }: { params: { slug: string } }) {
-  const site = await getData(params.slug);
+export default async function UbicacionPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const site = await getData(slug);
 
   if (!site) {
     return <div>Sitio no encontrado</div>;
@@ -34,7 +36,7 @@ export default async function UbicacionPage({ params }: { params: { slug: string
 
   const navLinks = data.navigation.map(link => ({
     ...link,
-    link: `/${params.slug}${link.link}`
+    link: `/${slug}${link.link}`
   }));
 
   return (
@@ -42,9 +44,9 @@ export default async function UbicacionPage({ params }: { params: { slug: string
       <Header links={navLinks} />
       <main className={styles.container}>
         <section className={styles.content}>
-          <h1 className={styles.title}>Nuestra Ubicación</h1>
+          <h1 className={`${styles.title} animate-slide-up`}>Nuestra Ubicación</h1>
           <p className={styles.address}>{address}</p>
-          <div className={styles.mapContainer}>
+          <div className={`${styles.mapContainer} animate-fade-in delay-200`}>
             <iframe
               src={mapIframeUrl}
               width="100%"

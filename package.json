@@ -12,10 +12,10 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@vercel/speed-insights": "^1.2.0",
-    "next": "14.2.3",
-    "react": "^18",
+    "next": "latest",
+    "react": "latest",
     "react-colorful": "^5.6.1",
-    "react-dom": "^18"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

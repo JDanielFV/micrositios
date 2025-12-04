@@ -7,7 +7,7 @@
         "theme": {
           "color1": "#000000",
           "color2": "#926384",
-          "angle": "0",
+          "angle": "1",
           "fontImportUrl": "",
           "fontFamily": ""
         },
@@ -141,6 +141,9 @@
         "splashScreen": {
           "enabled": true,
           "videoUrl": "/uploads/not23edomex/23-anim.mp4"
+        },
+        "lastModification": {
+          "timestamp": "2025-12-04T17:09:58.552Z"
         }
       }
     },
@@ -154,6 +157,9 @@
           "angle": "180",
           "fontImportUrl": "",
           "fontFamily": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-04T10:58:00-06:00"
         },
         "metadata": {
           "title": "Notaría Publica 8 - Poza Rica",
@@ -268,6 +274,9 @@
           "fontImportUrl": "",
           "fontFamily": ""
         },
+        "lastModification": {
+          "timestamp": "2025-12-04T10:58:00-06:00"
+        },
         "metadata": {
           "title": "Notaría Publica 31 - Tulum",
           "description": "Servicios notariales en Tulum, Quintana Roo."
@@ -380,6 +389,9 @@
           "angle": "180",
           "fontImportUrl": "",
           "fontFamily": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-04T10:58:00-06:00"
         },
         "metadata": {
           "title": "Notaría Publica 3 - Baja California Sur",
@@ -504,6 +516,9 @@
           "fontImportUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
           "fontFamily": "'Roboto', sans-serif"
         },
+        "lastModification": {
+          "timestamp": "2025-12-04T10:58:00-06:00"
+        },
         "metadata": {
           "title": "Notaría Pública 1 - Cunduacán",
           "description": "Servicios notariales integrales en Cunduacán, Tabasco. Escrituras, testamentos, poderes y más. Confíe en la experiencia y profesionalismo de la Notaría Pública número 1."
@@ -613,9 +628,12 @@
         "theme": {
           "color1": "#e69244",
           "color2": "#fdfcf2",
-          "angle": 135,
+          "angle": "134",
           "fontImportUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
           "fontFamily": "'Roboto', sans-serif"
+        },
+        "lastModification": {
+          "timestamp": "2025-12-04T17:28:33.744Z"
         },
         "metadata": {
           "title": "Notaría Pública 19 - Tijuana",

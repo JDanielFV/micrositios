@@ -263,9 +263,8 @@ export default function EditSitePage() {
 
   return (
     <div className={styles.container}>
-      <Link href="/admin" className={styles.backLink}>&larr; Volver a la lista</Link>
       <h1 className={styles.title}>Editando Sitio: {id}</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form id="edit-site-form" onSubmit={handleSubmit} className={styles.form}>
         {/* Form sections copied from AdminPage */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Datos Generales</h2>
@@ -569,10 +568,29 @@ export default function EditSitePage() {
           </div>
         </div>
 
-        <button type="submit" className={styles.button}>Guardar Cambios</button>
       </form>
-      {message && <p className={styles.successMessage}>{message}</p>}
+      {message && <p className={styles.successMessage}>{message}</p>
+      }
       {error && <p className={styles.errorMessage}>{error}</p>}
-    </div>
+
+      <div className={styles.bottomBar}>
+        <button
+          type="button"
+          onClick={() => router.push('/admin')}
+          className={`${styles.bottomBarButton} ${styles.cancelButton}`}
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+          <span>Volver</span>
+        </button>
+        <button type="submit" form="edit-site-form" className={`${styles.bottomBarButton} ${styles.saveButton}`}>
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
+          </svg>
+          <span>Guardar</span>
+        </button>
+      </div>
+    </div >
   );
 }

@@ -6,12 +6,13 @@ const dbPath = path.join(process.cwd(), 'db.json');
 const uploadsPath = path.join(process.cwd(), 'public', 'uploads');
 
 // GET a single site by slug
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
+    const { slug } = await params;
     const dbData = await fs.readFile(dbPath, 'utf-8');
     const db = JSON.parse(dbData);
 
-    const site = db.sites.find((site: any) => site.slug === params.slug);
+    const site = db.sites.find((site: any) => site.slug === slug);
 
     if (!site) {
       return NextResponse.json({ message: 'Sitio no encontrado' }, { status: 404 });
@@ -26,8 +27,9 @@ export async function GET(request: Request, { params }: { params: { slug: string
 }
 
 // UPDATE a site by slug
-export async function PUT(request: Request, { params }: { params: { slug: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
+    const { slug } = await params;
     const formData = await request.formData();
     const siteDataString = formData.get('siteData') as string;
     const imageFile = formData.get('imageFile') as File | null;
@@ -42,35 +44,35 @@ export async function PUT(request: Request, { params }: { params: { slug: string
     const dbData = await fs.readFile(dbPath, 'utf-8');
     const db = JSON.parse(dbData);
 
-    const siteIndex = db.sites.findIndex((site: any) => site.slug === params.slug);
+    const siteIndex = db.sites.findIndex((site: any) => site.slug === slug);
 
     if (siteIndex === -1) {
       return NextResponse.json({ message: 'Sitio no encontrado para actualizar' }, { status: 404 });
     }
 
     if (imageFile) {
-      const siteUploadsPath = path.join(uploadsPath, params.slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
       await fs.mkdir(siteUploadsPath, { recursive: true });
       const fileBuffer = Buffer.from(await imageFile.arrayBuffer());
       const sanitizedFileName = imageFile.name.replace(/\s+/g, '-');
       const filePath = path.join(siteUploadsPath, sanitizedFileName);
       await fs.writeFile(filePath, fileBuffer);
-      siteData.about.imageUrl = `/uploads/${params.slug}/${sanitizedFileName}`;
+      siteData.about.imageUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
     if (heroVideoFile) {
-      const siteUploadsPath = path.join(uploadsPath, params.slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
       await fs.mkdir(siteUploadsPath, { recursive: true });
       const fileBuffer = Buffer.from(await heroVideoFile.arrayBuffer());
       const sanitizedFileName = heroVideoFile.name.replace(/\s+/g, '-');
       const filePath = path.join(siteUploadsPath, sanitizedFileName);
       await fs.writeFile(filePath, fileBuffer);
-      siteData.hero.videoUrl = `/uploads/${params.slug}/${sanitizedFileName}`;
+      siteData.hero.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
     if (heroLogoFile) {
 
-      const siteUploadsPath = path.join(uploadsPath, params.slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
       await fs.mkdir(siteUploadsPath, { recursive: true });
 
@@ -82,7 +84,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
       await fs.writeFile(filePath, fileBuffer);
 
-      siteData.hero.logoUrl = `/uploads/${params.slug}/${logoFileName}`;
+      siteData.hero.logoUrl = `/uploads/${slug}/${logoFileName}`;
 
     }
 
@@ -92,7 +94,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
     if (vCardFile) {
 
-      const siteUploadsPath = path.join(uploadsPath, params.slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
       await fs.mkdir(siteUploadsPath, { recursive: true });
 
@@ -104,7 +106,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
       await fs.writeFile(filePath, fileBuffer);
 
-      siteData.contactPage.vCardUrl = `/uploads/${params.slug}/${sanitizedFileName}`;
+      siteData.contactPage.vCardUrl = `/uploads/${slug}/${sanitizedFileName}`;
 
     }
 
@@ -114,7 +116,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
     if (splashVideoFile) {
 
-      const siteUploadsPath = path.join(uploadsPath, params.slug);
+      const siteUploadsPath = path.join(uploadsPath, slug);
 
       await fs.mkdir(siteUploadsPath, { recursive: true });
 
@@ -126,7 +128,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
       await fs.writeFile(filePath, fileBuffer);
 
-      siteData.splashScreen.videoUrl = `/uploads/${params.slug}/${sanitizedFileName}`;
+      siteData.splashScreen.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
 
     }
 
@@ -176,7 +178,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
 
 
-        const siteIconsUploadsPath = path.join(uploadsPath, params.slug, 'icons');
+        const siteIconsUploadsPath = path.join(uploadsPath, slug, 'icons');
 
 
 
@@ -212,7 +214,7 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
 
 
-          siteData.contactPage.actions[index].iconUrl = `/uploads/${params.slug}/icons/${sanitizedFileName}`;
+          siteData.contactPage.actions[index].iconUrl = `/uploads/${slug}/icons/${sanitizedFileName}`;
 
 
 
@@ -225,6 +227,11 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 
 
     }
+
+    // Add last modification tracking
+    siteData.lastModification = {
+      timestamp: new Date().toISOString()
+    };
 
     const originalSite = db.sites[siteIndex];
     db.sites[siteIndex] = {
@@ -244,12 +251,13 @@ export async function PUT(request: Request, { params }: { params: { slug: string
 }
 
 // DELETE a site by slug
-export async function DELETE(request: Request, { params }: { params: { slug: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   try {
+    const { slug } = await params;
     const dbData = await fs.readFile(dbPath, 'utf-8');
     const db = JSON.parse(dbData);
 
-    const siteIndex = db.sites.findIndex((site: any) => site.slug === params.slug);
+    const siteIndex = db.sites.findIndex((site: any) => site.slug === slug);
 
     if (siteIndex === -1) {
       return NextResponse.json({ message: 'Sitio no encontrado para eliminar' }, { status: 404 });
@@ -260,7 +268,7 @@ export async function DELETE(request: Request, { params }: { params: { slug: str
     await fs.writeFile(dbPath, JSON.stringify(db, null, 2));
 
     // Delete uploads folder
-    const siteUploadsPath = path.join(uploadsPath, params.slug);
+    const siteUploadsPath = path.join(uploadsPath, slug);
     try {
       await fs.rm(siteUploadsPath, { recursive: true, force: true });
     } catch (folderError) {
