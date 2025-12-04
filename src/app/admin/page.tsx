@@ -64,10 +64,10 @@ const defaultSiteData = {
     title: "Centro de Contacto",
     vCardUrl: "",
     actions: [
-      { iconUrl: "/file.svg", text: "Guardar contacto", link: "" },
-      { iconUrl: "/whatsapp.svg", text: "WhatsApp", link: "" },
-      { iconUrl: "/phone.svg", text: "Llamar Ahora", link: "" },
-      { iconUrl: "/mail.svg", text: "Enviar Email", link: "" }
+      { iconUrl: "/card.png", text: "Guardar contacto", link: "" },
+      { iconUrl: "/wh.svg", text: "WhatsApp", link: "" },
+      { iconUrl: "/sm.webp", text: "Llamar Ahora", link: "" },
+      { iconUrl: "/ml.webp", text: "Enviar Email", link: "" }
     ]
   },
   servicesPage: {
@@ -97,6 +97,46 @@ export default function AdminPage() {
   const [isExistingSitesOpen, setIsExistingSitesOpen] = useState(true);
   const [isNewSiteOpen, setIsNewSiteOpen] = useState(false);
 
+  // AI Generation State
+  const [isAiOpen, setIsAiOpen] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiUrl, setAiUrl] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleGenerate = async () => {
+    if (!aiPrompt.trim()) return;
+
+    setIsGenerating(true);
+    setMessage('');
+    setError('');
+
+    try {
+      const response = await fetch('/qrs/api/generate-site', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: aiPrompt, url: aiUrl }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSiteData(prev => ({
+          ...prev,
+          ...result.data,
+          // Preserve empty file states as they can't be generated
+        }));
+        setMessage('¡Sitio generado con IA exitosamente! Revisa los campos.');
+        setIsAiOpen(false);
+      } else {
+        setError(result.message || 'Error al generar con IA');
+      }
+    } catch (err) {
+      setError('Error de conexión con el servicio de IA');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   const fetchSites = async () => {
     try {
       const response = await fetch('/qrs/api/sites');
@@ -112,8 +152,6 @@ export default function AdminPage() {
   useEffect(() => {
     fetchSites();
   }, []);
-
-  // ... (rest of the handlers remain the same until return)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -236,8 +274,6 @@ export default function AdminPage() {
     }));
   };
 
-
-
   const handleDelete = async (slug: string) => {
     if (window.confirm(`¿Estás seguro de que quieres eliminar el sitio "${slug}"? Esta acción no se puede deshacer.`)) {
       try {
@@ -313,7 +349,7 @@ export default function AdminPage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.mainTitle}>Constructor de micrositios</h1>
-      <br></br>
+      <br />
       <div className={styles.section} style={{ marginBottom: '3rem' }}>
         <h2
           className={styles.sectionTitle}
@@ -339,14 +375,59 @@ export default function AdminPage() {
       </div>
 
       <div className={styles.section}>
-        <h2
-          className={styles.sectionTitle}
-          onClick={() => setIsNewSiteOpen(!isNewSiteOpen)}
-          style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-        >
-          Añadir Nuevo Sitio
-          <span>{isNewSiteOpen ? '▼' : '▶'}</span>
-        </h2>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2
+            className={styles.sectionTitle}
+            onClick={() => setIsNewSiteOpen(!isNewSiteOpen)}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', margin: 0, flex: 1 }}
+          >
+            Añadir Nuevo Sitio
+            <span style={{ marginLeft: '10px' }}>{isNewSiteOpen ? '▼' : '▶'}</span>
+          </h2>
+
+          <button
+            type="button"
+            className={styles.aiButton}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsNewSiteOpen(true); // Ensure section is open
+              setIsAiOpen(!isAiOpen);
+            }}
+          >
+            Gemini AI
+          </button>
+        </div>{/* Header End */}
+
+        {isAiOpen && (
+          <div className={styles.aiContainer}>
+            <p style={{ color: 'white', marginBottom: '0.5rem' }}>Describe tu negocio y la IA buscará información real y creará el sitio:</p>
+            <div className={styles.aiInputGroup}>
+              <input
+                type="text"
+                className={styles.aiInput}
+                placeholder="Ej: Notaría 178 en Cancún, Lic. Gustavo Rivero..."
+                value={aiPrompt}
+                onChange={(e) => setAiPrompt(e.target.value)}
+              />
+              <input
+                type="text"
+                className={styles.aiInput}
+                placeholder="URL del sitio web existente (opcional, para extraer datos)"
+                value={aiUrl}
+                onChange={(e) => setAiUrl(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
+              />
+              <button
+                type="button"
+                className={styles.aiButton}
+                onClick={handleGenerate}
+                disabled={isGenerating}
+              >
+                {isGenerating ? 'Generando...' : 'Generar Sitio'}
+              </button>
+            </div>
+          </div>
+        )}
 
         {isNewSiteOpen && (
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -772,6 +853,6 @@ export default function AdminPage() {
       {message && <p className={styles.successMessage}>{message}</p>}
       {error && <p className={styles.errorMessage}>{error}</p>}
 
-    </div>
+    </div >
   );
 }

@@ -145,98 +145,6 @@
       }
     },
     {
-      "id": "not-1-cunduacan",
-      "slug": "not-1-cunduacan",
-      "data": {
-        "theme": {
-          "color1": "#212529",
-          "color2": "#8F1336",
-          "angle": "0",
-          "fontImportUrl": "",
-          "fontFamily": "outfit"
-        },
-        "metadata": {
-          "title": "Notaría Publica UNO",
-          "description": "Protegemos tu patrimonio"
-        },
-        "navigation": [
-          {
-            "text": "Inicio",
-            "link": "/"
-          },
-          {
-            "text": "Ubicación",
-            "link": "/ubicacion"
-          },
-          {
-            "text": "Contacto",
-            "link": "/contacto"
-          }
-        ],
-        "hero": {
-          "title": "Notaría Publica Uno - Cunduacan",
-          "subtitle": "somos profesionales del Derecho investidos de fe pública, para hacer constar e intervenir en la elaboración de actos o hechos jurídicos a los que se deba dar autenticidad conforme a la Ley.",
-          "videoUrl": "",
-          "logoUrl": "/uploads/not-1-cunduacan/hero_logo.png",
-          "button": {
-            "text": "Conozca nuestros servicios",
-            "link": "/servicios"
-          }
-        },
-        "about": {
-          "title": "",
-          "text": "",
-          "imageUrl": ""
-        },
-        "mainContact": {
-          "title": "",
-          "text": "",
-          "button": {
-            "text": "",
-            "link": "/contacto"
-          }
-        },
-        "locationPage": {
-          "address": "",
-          "mapIframeUrl": ""
-        },
-        "contactPage": {
-          "title": "Centro de Contacto",
-          "vCardUrl": "",
-          "actions": [
-            {
-              "iconUrl": "/file.svg",
-              "text": "Guardar contacto",
-              "link": ""
-            },
-            {
-              "iconUrl": "/whatsapp.svg",
-              "text": "WhatsApp",
-              "link": ""
-            },
-            {
-              "iconUrl": "/phone.svg",
-              "text": "Llamar Ahora",
-              "link": ""
-            },
-            {
-              "iconUrl": "/mail.svg",
-              "text": "Enviar Email",
-              "link": ""
-            }
-          ]
-        },
-        "servicesPage": {
-          "title": "",
-          "services": []
-        },
-        "splashScreen": {
-          "enabled": false,
-          "videoUrl": ""
-        }
-      }
-    },
-    {
       "id": "not-8-poza-rica",
       "slug": "not-8-poza-rica",
       "data": {
@@ -576,6 +484,235 @@
             {
               "title": "Certificaciones",
               "description": "Cotejo y certificación de documentos."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "not-1-vh",
+      "slug": "not-1-vh",
+      "data": {
+        "theme": {
+          "color1": "#2c3e50",
+          "color2": "#3498db",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
+          "fontFamily": "'Roboto', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 1 - Cunduacán",
+          "description": "Servicios notariales integrales en Cunduacán, Tabasco. Escrituras, testamentos, poderes y más. Confíe en la experiencia y profesionalismo de la Notaría Pública número 1."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Pública 1",
+          "subtitle": "Su Confianza, Nuestra Prioridad",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "Con años de experiencia en el ámbito notarial, la Notaría Pública 1 en Cunduacán se distingue por su compromiso con la legalidad, la transparencia y la atención personalizada. Nos esforzamos por brindar soluciones integrales a nuestros clientes, asegurando la validez y seguridad jurídica de sus actos. Nuestro equipo altamente capacitado está a su disposición para asesorarle en cada paso del proceso."
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos para servirle via WhatsApp o teléfono.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Calle Gregorio Méndez Magaña 304, Centro, 86690 Cunduacán, Tab., México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.471298952419!2d-93.06897518552307!3d17.96428638650475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85efc395f8888889%3A0x7f44d2d1a9a2289e!2sNotaria%20Publica%20Numero%20Uno!5e0!3m2!1ses-419!2smx!4v1702757278616!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/529143361008"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar",
+              "link": "tel:+529143361008"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Email",
+              "link": "mailto:notaria1cunduacan@hotmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Escrituración de Inmuebles",
+              "description": "Elaboración y formalización de escrituras públicas de compraventa, donación, permuta, dación en pago y adjudicación de inmuebles."
+            },
+            {
+              "title": "Testamentos y Sucesiones",
+              "description": "Asesoría y redacción de testamentos, así como la tramitación de juicios sucesorios testamentarios e intestamentarios."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Otorgamiento de poderes generales y especiales para la representación legal en diversos actos jurídicos."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Asesoría y formalización de la constitución de sociedades mercantiles y civiles."
+            },
+            {
+              "title": "Contratos",
+              "description": "Elaboración y revisión de contratos de arrendamiento, compraventa, prestación de servicios y otros actos jurídicos."
+            },
+            {
+              "title": "Certificaciones y Cotejos",
+              "description": "Certificación de documentos y cotejo de copias con originales."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "not-19-tijuana",
+      "slug": "not-19-tijuana",
+      "data": {
+        "theme": {
+          "color1": "#e69244",
+          "color2": "#fdfcf2",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
+          "fontFamily": "'Roboto', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 19 - Tijuana",
+          "description": "Servicios notariales integrales en Tijuana, Baja California. Confíe en nuestra experiencia y profesionalismo para sus trámites legales."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Lic. Rafael Borquez Torres",
+          "subtitle": "Notario titutlar",
+          "button": {
+            "text": "Conoce nuestros servicios",
+            "link": "/servicios"
+          },
+          "videoUrl": "/uploads/not-19-tijuana/13502384_1280_720_60fps.mp4",
+          "logoUrl": "/uploads/not-19-tijuana/hero_logo.png"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "En Notaría Pública 19, ubicada en Tijuana, Baja California, brindamos servicios notariales con profesionalismo, eficiencia y transparencia. Nuestra misión es ofrecer soluciones legales integrales a nuestros clientes, garantizando la seguridad jurídica en cada trámite. Contamos con un equipo de expertos altamente capacitados y comprometidos con la excelencia en el servicio. El titular de la notaría es el Lic. Rafael Borquez Torres."
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos para servirle via WhatsApp o teléfono.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Paseo de los Héroes 9211, Desi. 109 Zona Río, Tijuana B.C.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.860187044018!2d-117.02592059999998!3d32.529880899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d948516c55e77f%3A0xf14c28a9cdeb7a5e!2zTm90YXLDrWEgUMO6YmxpY2EgMTk!5e0!3m2!1ses-419!2smx!4v1764864412588!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/526646342919"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar",
+              "link": "tel:+526646841197"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Email",
+              "link": "mailto:informacion@notaría19tj.com"
+            }
+          ],
+          "vCardUrl": "/uploads/not-19-tijuana/Notaría-Publica-19.vcf"
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Elaboración de Testamentos",
+              "description": "Redacción y protocolización de testamentos para asegurar la correcta distribución de sus bienes."
+            },
+            {
+              "title": "Compraventa de Inmuebles",
+              "description": "Asesoría y gestión en la compraventa de propiedades, desde la elaboración del contrato hasta la escrituración."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Asistencia legal en la creación y registro de sociedades mercantiles."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Elaboración y certificación de poderes para representar a personas físicas o morales."
+            },
+            {
+              "title": "Fideicomisos",
+              "description": "Constitución y administración de fideicomisos para diversos fines."
+            },
+            {
+              "title": "Certificaciones y Cotejos",
+              "description": "Certificación de documentos y cotejo de copias con originales."
             }
           ]
         },
