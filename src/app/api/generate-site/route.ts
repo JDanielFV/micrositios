@@ -49,14 +49,22 @@ export async function POST(request: Request) {
         "title": "Notaría Pública [Number] - [City]",
         "description": "Professional description for SEO"
       },
+      "navigation": [
+        { "text": "Inicio", "link": "/" },
+        { "text": "Ubicación", "link": "/ubicacion" },
+        { "text": "Contacto", "link": "/contacto" }
+      ],
       "hero": {
         "title": "Notaría Pública [Number]",
         "subtitle": "[Titular Name] or [Slogan]",
+        "videoUrl": "",
+        "logoUrl": "",
         "button": { "text": "Nuestros Servicios", "link": "/servicios" }
       },
       "about": {
         "title": "Acerca de Nosotros",
-        "text": "Detailed, professional description of the notary's history and values."
+        "text": "Detailed, professional description of the notary's history and values.",
+        "imageUrl": ""
       },
       "mainContact": {
         "title": "Contáctenos",
@@ -69,9 +77,10 @@ export async function POST(request: Request) {
       },
       "contactPage": {
         "title": "Centro de Contacto",
+        "vCardUrl": "",
         "actions": [
-           { "iconUrl": "/file.svg", "text": "Guardar contacto", "link": "#" },
-           { "iconUrl": "/whatsapp.svg", "text": "WhatsApp", "link": "https://wa.me/52[REAL_NUMBER]" },
+           { "iconUrl": "/card.png", "text": "Guardar contacto", "link": "#" },
+           { "iconUrl": "/wh.svg", "text": "WhatsApp", "link": "https://wa.me/52[REAL_NUMBER]" },
            { "iconUrl": "/phone.svg", "text": "Llamar", "link": "tel:+52[REAL_NUMBER]" },
            { "iconUrl": "/mail.svg", "text": "Email", "link": "mailto:[REAL_EMAIL]" }
         ]
@@ -81,6 +90,10 @@ export async function POST(request: Request) {
         "services": [
           { "title": "Service Name", "description": "Description" }
         ]
+      },
+      "splashScreen": {
+        "enabled": false,
+        "videoUrl": ""
       }
     }
     

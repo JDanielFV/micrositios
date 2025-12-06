@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "./scripts/clean-dev.sh",
+    "date": "npm run build && npm run dev:clean",
     "build": "./scripts/build.sh",
     "build:core": "next build",
     "start": "next start"

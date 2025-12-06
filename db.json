@@ -148,6 +148,122 @@
       }
     },
     {
+      "id": "loes",
+      "slug": "loes",
+      "data": {
+        "theme": {
+          "color1": "#000000",
+          "color2": "#005224",
+          "angle": "1",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Loes Attorneys",
+          "description": "We are committed to legal excellence in the paradise of the Riviera Maya"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Trabaja con los mejores abogados en la Riviera Maya",
+          "subtitle": "Aseguramos el mayor estándar de calidad para brindar la mejor asistencia y seguridad legal que nuestros clientes se merecen.",
+          "videoUrl": "/uploads/loes/16902338-sd_960_540_30fps.mp4",
+          "logoUrl": "/uploads/loes/AttorneysBlanco-300x300.png",
+          "button": {
+            "text": "Conozca nuestros servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Sobre Loes",
+          "text": "Estamos comprometidos con la excelencia legal en el paraíso de la Riviera Maya. Nuestra misión es clara: guiar a nuestros clientes a través de los desafíos legales con el más alto nivel de servicio. Con un profundo entendimiento de la ley y un conocimiento único de las complejidades de la región, somos tu socio de confianza en cada paso del camino.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "¡Esperamos trabajar con usted!",
+          "text": "Su viaje con nosotros comienza con un simple \"hola\". \nComience la conversación hoy y logremos grandes cosas juntos.",
+          "button": {
+            "text": "Reservar una reunión",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Golf drive 302, Playacar, 77717 Playa del Carmen, Q.R.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.34782724058!2d-87.0926814!3d20.6146745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f4e43ab548ac489%3A0x9988eb585a76c573!2sLOES%20Attorneys!5e0!3m2!1ses-419!2smx!4v1762532248914!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/loes/vcard.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "http://wa.me/+529842315330"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:9842315330"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:iestrada@loesatorneys.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Áreas de práctica legal",
+          "services": [
+            {
+              "title": "Fideicomiso",
+              "description": "Nuestros meticulosos servicios de depósito en garantía garantizan transacciones seguras, ofreciendo tranquilidad tanto a compradores como a vendedores. Sus fondos están en buenas manos."
+            },
+            {
+              "title": "Inmuebles",
+              "description": "Desde contratos hasta cierres, nuestros expertos legales de bienes raíces lo tienen cubierto. Confíe en nosotros para salvaguardar sus intereses de propiedad."
+            },
+            {
+              "title": "Inmigración",
+              "description": "Navegue por el complejo panorama de la inmigración con confianza. Proporcionamos orientación experta para una transición sin problemas a México."
+            },
+            {
+              "title": "Servicios Corporativo",
+              "description": "Eleve su negocio con nuestros servicios corporativos integrales. Nos encargamos de las complejidades legales para que pueda centrarse en el crecimiento y el éxito."
+            },
+            {
+              "title": "Adquirir propiedades como extranjero",
+              "description": "Camino sin complicaciones hacia la propiedad de la propiedad. Nuestra guía paso a paso simplifica el proceso, haciendo realidad la propiedad de sus sueños"
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-05T02:35:23.417Z"
+        }
+      }
+    },
+    {
       "id": "not-8-poza-rica",
       "slug": "not-8-poza-rica",
       "data": {
@@ -159,7 +275,7 @@
           "fontFamily": ""
         },
         "lastModification": {
-          "timestamp": "2025-12-04T10:58:00-06:00"
+          "timestamp": "2025-12-04T23:58:05.108Z"
         },
         "metadata": {
           "title": "Notaría Publica 8 - Poza Rica",
@@ -204,7 +320,7 @@
         },
         "locationPage": {
           "address": "Avenida 6 Norte 508, Colonia Obrera, C.P. 93260, Poza Rica de Hidalgo, Veracruz, México.",
-          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.378687654321!2d-97.456789!3d20.534567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDMyJzA0LjQiTiA5N8KwMjcnMjQuNCJX!5e0!3m2!1ses!2smx!4v1625000000000!5m2!1ses!2smx"
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4592.741978702676!2d-97.4607238!3d20.5280173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85da6ac01dc201eb%3A0x35903691a38c83de!2sNotaria%20Ocho!5e1!3m2!1ses-419!2smx!4v1764892666533!5m2!1ses-419!2smx"
         },
         "contactPage": {
           "title": "Centro de Contacto",
@@ -737,6 +853,123 @@
         "splashScreen": {
           "enabled": false,
           "videoUrl": ""
+        }
+      }
+    },
+    {
+      "id": "papnot",
+      "slug": "papnot",
+      "data": {
+        "theme": {
+          "color1": "#d4af37",
+          "color2": "#0a0a0a",
+          "angle": "135",
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap",
+          "fontFamily": "'Outfit', sans-serif"
+        },
+        "metadata": {
+          "title": "Papelería Notarial A&G",
+          "description": "Soluciones premium de papelería notarial con los más altos estándares de calidad y seguridad."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Papelería Notarial A&G",
+          "subtitle": "Elegancia y Seguridad",
+          "videoUrl": "/uploads/papnot/Fondo-A&G.m4v",
+          "logoUrl": "/uploads/papnot/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Somos A&G",
+          "text": "Más que carpetas, creamos confianza. Piezas diseñadas para proteger los actos que definen vidas, patrimonios y legados. En Papelería Notarial A&G, nos dedicamos a ofrecer soluciones de alta seguridad y elegancia para notarios en todo México.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "¿Listo para Elevar tu Notaría?",
+          "text": "Contáctanos hoy mismo para descubrir cómo podemos satisfacer tus necesidades con productos de la más alta calidad.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Tulipanes 29, Izcalli Ecatepec, 55030 Ecatepec de Morelos, Méx.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4419.592946247232!2d-99.0521405!3d19.590644599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fbd972ec6b37%3A0x7d7f5d7cb90084c5!2sPapeler%C3%ADa%20Notarial%20y%20Corporativa%20A%26G!5e1!3m2!1ses-419!2smx!4v1764969192330!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/525576162856"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar",
+              "link": "tel:+525576162856"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Email",
+              "link": "mailto:contacto@papelerianotarial.net"
+            },
+            {
+              "iconUrl": "/web.svg",
+              "text": "Sitio Web",
+              "link": "https://papelerianotarial.vercel.app/"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Articulos de Papelería",
+              "description": "Elegancia y durabilidad en un diseño atemporal."
+            },
+            {
+              "title": "Carpetas",
+              "description": "Máxima seguridad y presentación para tus documentos."
+            },
+            {
+              "title": "Articulos Promocionales",
+              "description": "Impulsa tu marca con productos de calidad."
+            },
+            {
+              "title": "Articulos Personalizados",
+              "description": "Diseño exclusivo y personalización a medida."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": true,
+          "videoUrl": "/uploads/papnot/Splash-A&G-2.m4v"
+        },
+        "lastModification": {
+          "timestamp": "2025-12-05T23:32:30.554Z"
         }
       }
     }

@@ -3,86 +3,90 @@
 .adminWrapper {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: #050505;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 255, 255, 0.02) 0px, transparent 50%);
   padding: 2rem 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 3rem;
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  color: #f5f5f5;
 }
 
 .title {
   text-align: center;
   margin-bottom: 3rem;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 2.5rem;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
 }
 
 .mainTitle {
   text-align: center;
   margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
+  color: #f0f0f0;
+  font-weight: 500;
   font-size: 1.8rem;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .backLink {
   display: inline-flex;
   align-items: center;
   margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
   transition: all 0.2s ease;
   padding: 0.5rem 1rem;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .backLink:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Sections */
+/* Sections */
 .section {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.015);
   padding: 2rem;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   margin-bottom: 2rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .section:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .sectionTitle {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.5px;
 }
 
 .subSectionTitle {
@@ -118,21 +122,21 @@
 .formGroup input,
 .formGroup textarea {
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-family: inherit;
-  color: #fff;
+  color: #f0f0f0;
   transition: all 0.2s ease;
   outline: none;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: none;
 }
 
 .formGroup textarea {
@@ -143,8 +147,8 @@
 
 /* Dynamic Items */
 .dynamicItem {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
   padding: 1.5rem;
   border-radius: 16px;
   margin-top: 1rem;
@@ -153,73 +157,75 @@
 /* Buttons */
 .button {
   padding: 1.2rem;
-  background: linear-gradient(135deg, #007AFF, #0051A8);
+  background: rgba(255, 255, 255, 0.05);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+  box-shadow: none;
   margin-top: 1rem;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
-  filter: brightness(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
 }
 
 .addButton {
-  background: rgba(50, 215, 75, 0.15);
-  color: #32d74b;
-  border: 1px solid rgba(50, 215, 75, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  color: #a0a0a0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.8rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
   margin-top: 1rem;
 }
 
 .addButton:hover {
-  background: rgba(50, 215, 75, 0.25);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .removeButton {
-  background: rgba(255, 69, 58, 0.15);
-  color: #ff453a;
-  border: 1px solid rgba(255, 69, 58, 0.3);
+  background: rgba(255, 69, 58, 0.05);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 69, 58, 0.1);
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
   margin-top: 1rem;
 }
 
 .removeButton:hover {
-  background: rgba(255, 69, 58, 0.25);
-  transform: translateY(-1px);
+  background: rgba(255, 69, 58, 0.1);
+  border-color: rgba(255, 69, 58, 0.3);
 }
 
 .editButton {
-  background: rgba(255, 159, 10, 0.15);
-  color: #ff9f0a;
-  border: 1px solid rgba(255, 159, 10, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d0d0d0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s;
   font-size: 0.9rem;
 }
 
 .editButton:hover {
-  background: rgba(255, 159, 10, 0.25);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Site List */
@@ -358,10 +364,11 @@
 }
 
 /* AI Generator */
+/* AI Generator */
 .aiButton {
-  background: linear-gradient(135deg, #FF0080, #7928CA);
-  color: white;
-  border: none;
+  background: rgba(78, 117, 246, 0.15);
+  color: #62C6F8;
+  border: 1px solid rgba(78, 117, 246, 0.3);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 600;
@@ -371,20 +378,22 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(121, 40, 202, 0.3);
+  box-shadow: 0 0 15px rgba(78, 117, 246, 0.1);
 }
 
 .aiButton:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 20px rgba(121, 40, 202, 0.5);
-  filter: brightness(1.2);
+  background: rgba(78, 117, 246, 0.25);
+  border-color: rgba(78, 117, 246, 0.5);
+  box-shadow: 0 0 20px rgba(78, 117, 246, 0.3);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .aiContainer {
   margin-top: 1.5rem;
   padding: 1.5rem;
-  background: rgba(121, 40, 202, 0.1);
-  border: 1px solid rgba(121, 40, 202, 0.3);
+  background: rgba(78, 117, 246, 0.05);
+  border: 1px solid rgba(78, 117, 246, 0.15);
   border-radius: 16px;
   animation: fadeIn 0.3s ease;
 }
@@ -399,17 +408,18 @@
 .aiInput {
   flex: 1;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color: white;
+  color: #fff;
   font-size: 1rem;
 }
 
 .aiInput:focus {
   outline: none;
-  border-color: #7928CA;
-  box-shadow: 0 0 0 2px rgba(121, 40, 202, 0.3);
+  border-color: #4E75F6;
+  box-shadow: 0 0 0 1px rgba(78, 117, 246, 0.3);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 @keyframes fadeIn {
@@ -570,4 +580,73 @@
 
 .cancelButton:hover {
   color: #fff;
+}
+
+/* Analytics */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.analyticsTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.analyticsTable th,
+.analyticsTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.analyticsTable th {
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.analyticsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.analyticsTable tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
 }

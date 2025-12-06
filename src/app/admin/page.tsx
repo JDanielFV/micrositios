@@ -103,6 +103,10 @@ export default function AdminPage() {
   const [aiUrl, setAiUrl] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
+  // Analytics State
+  const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
+  const [visits, setVisits] = useState<any[]>([]);
+
   const handleGenerate = async () => {
     if (!aiPrompt.trim()) return;
 
@@ -149,8 +153,23 @@ export default function AdminPage() {
     }
   };
 
+  const fetchVisits = async () => {
+    try {
+      const response = await fetch('https://tuqr.com.mx/qrs/tracker.php');
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setVisits(data.reverse()); // Show newest first
+        }
+      }
+    } catch (err) {
+      console.error("Error fetching visits:", err);
+    }
+  };
+
   useEffect(() => {
     fetchSites();
+    fetchVisits();
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -350,6 +369,94 @@ export default function AdminPage() {
     <div className={styles.container}>
       <h1 className={styles.mainTitle}>Constructor de micrositios</h1>
       <br />
+
+      {/* Analytics Section */}
+      <div className={styles.section} style={{ marginBottom: '3rem' }}>
+        <h2
+          className={styles.sectionTitle}
+          onClick={() => setIsAnalyticsOpen(!isAnalyticsOpen)}
+          style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+        >
+          Estadísticas de Visitas
+          <span>{isAnalyticsOpen ? '▼' : '▶'}</span>
+        </h2>
+        {isAnalyticsOpen && (
+          <div>
+            <div className={styles.statsGrid}>
+              <div className={styles.statCard}>
+                <div className={styles.statValue}>{visits.length}</div>
+                <div className={styles.statLabel}>Visitas Totales</div>
+              </div>
+              <div className={styles.statCard}>
+                <div className={styles.statValue}>
+                  {new Set(visits.map(v => v.ip)).size}
+                </div>
+                <div className={styles.statLabel}>Usuarios Únicos</div>
+              </div>
+              <div className={styles.statCard}>
+                <div className={styles.statValue}>
+                  {visits.filter(v => {
+                    const date = new Date(v.timestamp);
+                    const now = new Date();
+                    return date.getDate() === now.getDate() &&
+                      date.getMonth() === now.getMonth() &&
+                      date.getFullYear() === now.getFullYear();
+                  }).length}
+                </div>
+                <div className={styles.statLabel}>Visitas Hoy</div>
+              </div>
+            </div>
+
+            <h3 className={styles.subSectionTitle}>Páginas Más Visitadas</h3>
+            <div className={styles.tableContainer}>
+              <table className={styles.analyticsTable}>
+                <thead>
+                  <tr>
+                    <th>Página</th>
+                    <th>Visitas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(visits.reduce((acc, curr) => {
+                    acc[curr.page] = (acc[curr.page] || 0) + 1;
+                    return acc;
+                  }, {} as Record<string, number>))
+                    .sort(([, a], [, b]) => (b as number) - (a as number))
+                    .slice(0, 5)
+                    .map(([page, count]) => (
+                      <tr key={page}>
+                        <td>{page}</td>
+                        <td>{count as number}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className={styles.subSectionTitle}>Registro Reciente</h3>
+            <div className={styles.tableContainer}>
+              <table className={styles.analyticsTable}>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Página</th>
+                    <th>IP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visits.slice(0, 10).map((visit, index) => (
+                    <tr key={index}>
+                      <td>{visit.timestamp}</td>
+                      <td>{visit.page}</td>
+                      <td>{visit.ip}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
       <div className={styles.section} style={{ marginBottom: '3rem' }}>
         <h2
           className={styles.sectionTitle}

@@ -12,7 +12,7 @@ export default function VisitTracker() {
 
         const trackVisit = async () => {
             try {
-                await fetch('/tracker.php', {
+                await fetch('https://tuqr.com.mx/qrs/tracker.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
