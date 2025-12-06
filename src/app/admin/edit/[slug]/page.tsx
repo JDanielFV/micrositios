@@ -52,6 +52,7 @@ export default function EditSitePage() {
   const [id, setId] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
+  const [heroAudioFile, setHeroAudioFile] = useState<File | null>(null);
   const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
   const [vCardFile, setVCardFile] = useState<File | null>(null);
   const [splashVideoFile, setSplashVideoFile] = useState<File | null>(null);
@@ -120,6 +121,8 @@ export default function EditSitePage() {
         setImageFile(file);
       } else if (name === 'heroVideoFile') {
         setHeroVideoFile(file);
+      } else if (name === 'heroAudioFile') {
+        setHeroAudioFile(file);
       } else if (name === 'heroLogoFile') {
         setHeroLogoFile(file);
       } else if (name === 'vCardFile') {
@@ -224,6 +227,7 @@ export default function EditSitePage() {
 
     if (imageFile) formData.append('imageFile', imageFile);
     if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
+    if (heroAudioFile) formData.append('heroAudioFile', heroAudioFile);
     if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
     if (vCardFile) formData.append('vCardFile', vCardFile);
     if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
@@ -376,6 +380,12 @@ export default function EditSitePage() {
             <label htmlFor="heroVideoFile">Nuevo Video de Fondo (Opcional)</label>
             <input type="file" id="heroVideoFile" name="heroVideoFile" accept="video/*" onChange={handleFileChange} />
             {siteData.hero.videoUrl && <p>Video actual: {siteData.hero.videoUrl}</p>}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="heroAudioFile">Nuevo Audio (Opcional - se reproduce al interactuar)</label>
+            <input type="file" id="heroAudioFile" name="heroAudioFile" accept="audio/*" onChange={handleFileChange} />
+            {(siteData.hero as any).audioUrl && <p>Audio actual: {(siteData.hero as any).audioUrl}</p>}
           </div>
         </div>
 

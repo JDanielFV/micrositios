@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import styles from './Home.module.css';
 
 import { getStaticParams } from '../../utils/getStaticParams';
+import HeroSection from '../../components/HeroSection';
 
 const dbPath = path.join(process.cwd(), 'db.json');
 
@@ -47,39 +48,31 @@ export default async function HomePage({ params }: { params: Promise<{ slug: str
   return (
     <div className={styles.container}>
       {/* Hero Section */}
-      <section className={`${styles.hero} animate-slide-up`} style={{ backgroundImage: `url(${hero.videoUrl ? '' : hero.imageUrl})` }}>
-        {hero.videoUrl && (
-          <video className={styles.heroVideo} autoPlay loop muted playsInline src={`/qrs${hero.videoUrl}`} />
-        )}
-        <div className={styles.heroContent}>
-          {hero.logoUrl && <img src={`/qrs${hero.logoUrl}`} alt="Logo" className={styles.heroLogo} />}
-          <h1 className={styles.heroTitle}>{hero.title}</h1>
-          <p className={styles.heroSubtitle}>{hero.subtitle}</p>
-          {hero.button && hero.button.text && (
-            <ActionButton text={hero.button.text} link={`/${slug}${hero.button.link}`} />
-          )}
-        </div>
-      </section>
+      <HeroSection hero={hero} slug={slug} />
 
       {/* About Section */}
-      {about && about.title && (
-        <section className={`${styles.section} animate-slide-up delay-200`}>
-          <h2 className={styles.sectionTitle}>{about.title}</h2>
-          <p>{about.text}</p>
-          {about.imageUrl && <img src={`/qrs${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
-        </section>
-      )}
+      {
+        about && about.title && (
+          <section className={`${styles.section} animate-slide-up delay-200`}>
+            <h2 className={styles.sectionTitle}>{about.title}</h2>
+            <p>{about.text}</p>
+            {about.imageUrl && <img src={`/qrs${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
+          </section>
+        )
+      }
 
       {/* Main Contact Section */}
-      {mainContact && mainContact.title && (
-        <section className={`${styles.section} animate-slide-up delay-300`}>
-          <h2 className={styles.sectionTitle}>{mainContact.title}</h2>
-          <p>{mainContact.text}</p>
-          {mainContact.button && mainContact.button.text && (
-            <ActionButton text={mainContact.button.text} link={`/${slug}${mainContact.button.link}`} />
-          )}
-        </section>
-      )}
-    </div>
+      {
+        mainContact && mainContact.title && (
+          <section className={`${styles.section} animate-slide-up delay-300`}>
+            <h2 className={styles.sectionTitle}>{mainContact.title}</h2>
+            <p>{mainContact.text}</p>
+            {mainContact.button && mainContact.button.text && (
+              <ActionButton text={mainContact.button.text} link={`/${slug}${mainContact.button.link}`} />
+            )}
+          </section>
+        )
+      }
+    </div >
   );
 } 1

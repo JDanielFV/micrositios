@@ -26,6 +26,7 @@ export async function POST(request: Request) {
     const siteDataString = formData.get('siteData') as string;
     const imageFile = formData.get('imageFile') as File | null;
     const heroVideoFile = formData.get('heroVideoFile') as File | null;
+    const heroAudioFile = formData.get('heroAudioFile') as File | null;
     const heroLogoFile = formData.get('heroLogoFile') as File | null;
 
     if (!id || !slug || !siteDataString) {
@@ -66,6 +67,19 @@ export async function POST(request: Request) {
       await fs.writeFile(filePath, fileBuffer);
 
       siteData.hero.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
+    }
+
+    if (heroAudioFile) {
+      const siteUploadsPath = path.join(uploadsPath, slug);
+      await fs.mkdir(siteUploadsPath, { recursive: true });
+
+      const fileBuffer = Buffer.from(await heroAudioFile.arrayBuffer());
+      const sanitizedFileName = heroAudioFile.name.replace(/\s+/g, '-');
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
+
+      await fs.writeFile(filePath, fileBuffer);
+
+      siteData.hero.audioUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
     if (heroLogoFile) {

@@ -861,7 +861,7 @@
       "slug": "papnot",
       "data": {
         "theme": {
-          "color1": "#d4af37",
+          "color1": "#393939",
           "color2": "#0a0a0a",
           "angle": "135",
           "fontImportUrl": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap",
@@ -886,14 +886,15 @@
           }
         ],
         "hero": {
-          "title": "Papelería Notarial A&G",
+          "title": "",
           "subtitle": "Elegancia y Seguridad",
           "videoUrl": "/uploads/papnot/Fondo-A&G.m4v",
           "logoUrl": "/uploads/papnot/hero_logo.png",
           "button": {
             "text": "Nuestros Servicios",
             "link": "/servicios"
-          }
+          },
+          "audioUrl": "/uploads/papnot/audio-papnot.mp3"
         },
         "about": {
           "title": "Somos A&G",
@@ -939,7 +940,7 @@
             {
               "iconUrl": "/web.svg",
               "text": "Sitio Web",
-              "link": "https://papelerianotarial.vercel.app/"
+              "link": "https://papelerianotarial.net/"
             }
           ]
         },
@@ -966,10 +967,10 @@
         },
         "splashScreen": {
           "enabled": true,
-          "videoUrl": "/uploads/papnot/Splash-A&G-2.m4v"
+          "videoUrl": "/uploads/papnot/Splash-A&G-3.m4v"
         },
         "lastModification": {
-          "timestamp": "2025-12-05T23:32:30.554Z"
+          "timestamp": "2025-12-06T16:14:17.660Z"
         }
       }
     }

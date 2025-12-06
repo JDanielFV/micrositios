@@ -86,6 +86,7 @@ export default function AdminPage() {
   const [siteData, setSiteData] = useState(defaultSiteData);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
+  const [heroAudioFile, setHeroAudioFile] = useState<File | null>(null);
   const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
   const [vCardFile, setVCardFile] = useState<File | null>(null);
   const [splashVideoFile, setSplashVideoFile] = useState<File | null>(null);
@@ -209,6 +210,8 @@ export default function AdminPage() {
         setImageFile(file);
       } else if (name === 'heroVideoFile') {
         setHeroVideoFile(file);
+      } else if (name === 'heroAudioFile') {
+        setHeroAudioFile(file);
       } else if (name === 'heroLogoFile') {
         setHeroLogoFile(file);
       } else if (name === 'vCardFile') {
@@ -330,6 +333,7 @@ export default function AdminPage() {
 
     if (imageFile) formData.append('imageFile', imageFile);
     if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
+    if (heroAudioFile) formData.append('heroAudioFile', heroAudioFile);
     if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
     if (vCardFile) formData.append('vCardFile', vCardFile);
     if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
@@ -659,6 +663,28 @@ export default function AdminPage() {
                   name="heroLogoFile"
                   accept="image/*"
                   onChange={handleFileChange}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Video de fondo (opcional)</label>
+                <input
+                  type="file"
+                  name="heroVideoFile"
+                  onChange={handleFileChange}
+                  accept="video/*"
+                  className={styles.input}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Audio de interacción (opcional - mp3)</label>
+                <input
+                  type="file"
+                  name="heroAudioFile"
+                  onChange={handleFileChange}
+                  accept="audio/*"
+                  className={styles.input}
                 />
               </div>
 

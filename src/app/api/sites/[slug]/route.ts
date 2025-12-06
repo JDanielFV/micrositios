@@ -36,6 +36,8 @@ export async function PUT(request: Request, { params }: { params: Promise<{ slug
     const heroVideoFile = formData.get('heroVideoFile') as File | null;
     const heroLogoFile = formData.get('heroLogoFile') as File | null;
 
+    const heroAudioFile = formData.get('heroAudioFile') as File | null;
+
     if (!siteDataString) {
       return NextResponse.json({ message: 'Datos incompletos' }, { status: 400 });
     }
@@ -68,6 +70,16 @@ export async function PUT(request: Request, { params }: { params: Promise<{ slug
       const filePath = path.join(siteUploadsPath, sanitizedFileName);
       await fs.writeFile(filePath, fileBuffer);
       siteData.hero.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
+    }
+
+    if (heroAudioFile) {
+      const siteUploadsPath = path.join(uploadsPath, slug);
+      await fs.mkdir(siteUploadsPath, { recursive: true });
+      const fileBuffer = Buffer.from(await heroAudioFile.arrayBuffer());
+      const sanitizedFileName = heroAudioFile.name.replace(/\s+/g, '-');
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
+      await fs.writeFile(filePath, fileBuffer);
+      siteData.hero.audioUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
     if (heroLogoFile) {
