@@ -915,7 +915,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "",
+          "vCardUrl": "/uploads/papnot/Máximo-Alcalá.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -970,7 +970,265 @@
           "videoUrl": "/uploads/papnot/Splash-A&G-3.m4v"
         },
         "lastModification": {
-          "timestamp": "2025-12-06T16:14:17.660Z"
+          "timestamp": "2025-12-06T17:41:30.239Z"
+        }
+      }
+    },
+    {
+      "id": "not-2-aca",
+      "slug": "not-2-aca",
+      "data": {
+        "theme": {
+          "color1": "#0A2240",
+          "color2": "#A3C6E7",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap",
+          "fontFamily": "Montserrat"
+        },
+        "metadata": {
+          "title": "Notaría Pública 2 - Acapulco",
+          "description": "Notaría Pública 2 en Acapulco, Guerrero. Servicios notariales profesionales con la experiencia del Lic. Héctor Javier Astudillo Calvo. Seguridad jurídica para tu patrimonio y negocios."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Lic. Rosina Rojas Carrasco | Seguridad Jurídica y Confianza para tu Patrimonio",
+          "videoUrl": "/uploads/not-2-aca/Fondo-not-2-aca.m4v",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-2-aca/hero_logo.png",
+          "button": {
+            "text": "Descubre Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "En Notaría Pública 2 de Acapulco, bajo la dirección del Lic. Héctor Javier Astudillo Calvo, nos distinguimos por nuestra trayectoria de excelencia y compromiso. Ofrecemos asesoría y servicios notariales con la máxima profesionalidad, garantizando la seguridad y certeza jurídica en cada operación. Nuestra misión es construir relaciones duraderas basadas en la confianza y el servicio excepcional.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Estamos Listos para Atenderle",
+          "text": "Contáctenos hoy mismo para iniciar sus trámites o resolver sus dudas. Nuestro equipo está a su disposición para brindarle la atención y asesoría que usted merece.",
+          "button": {
+            "text": "Inicia tu Consulta",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Dentro del Hotel Playa Suites, Av Costera Miguel Alemán 123, Fracc Magallanes, Magallanes, 39670 Acapulco de Juárez, Gro.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4603.858042429273!2d-99.8757665!3d16.860123899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85caf7c2cf81a2e7%3A0x606ca11fc176d253!2sNotar%C3%ADa%20P%C3%BAblica%20N%C3%BAmero%202%20Rosina%20Rojas%20Carrasco!5e1!3m2!1ses-419!2smx!4v1765044130969!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/527444800043"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:+527444800043"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:notaria2.acapulco@gmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Compraventas y Bienes Inmuebles",
+              "description": "Asesoría y formalización de contratos de compraventa, donaciones, hipotecas y cualquier acto relacionado con la propiedad inmobiliaria, garantizando la certeza jurídica."
+            },
+            {
+              "title": "Testamentos y Sucesiones",
+              "description": "Elaboración de testamentos para asegurar el futuro de su patrimonio y la tranquilidad de su familia. Tramitación de juicios sucesorios testamentarios e intestamentarios."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Otorgamiento de poderes para actos de administración, dominio o pleitos y cobranzas, facultando a terceros para actuar en su representación con total validez legal."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Formalización de actas constitutivas para empresas de diversas índoles, modificaciones estatutarias y todo lo referente al derecho corporativo y mercantil."
+            },
+            {
+              "title": "Fideicomisos",
+              "description": "Creación y administración de fideicomisos para la gestión de bienes, inversiones o cumplimiento de fines específicos, con la seguridad que la figura jurídica ofrece."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación de hechos presenciados por el Notario, como estados de inmuebles, notificaciones, sorteos o cualquier situación que requiera una constancia oficial."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-06T18:42:00.661Z"
+        }
+      }
+    },
+    {
+      "id": "not-93-ixt",
+      "slug": "not-93-ixt",
+      "data": {
+        "theme": {
+          "color1": "#0A1931",
+          "color2": "#D3B07A",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:ital@0;1&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 93 - Ciudad Ixtepec, Oaxaca",
+          "description": "Notaría Pública 93 en Ciudad Ixtepec, Oaxaca. Titular Lic. José de Jesús García Gómez. Ofrecemos servicios notariales confiables para testamentos, compraventas, poderes y constitución de sociedades."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Lic. José de Jesús García Gómez: Seguridad y Confianza en Cada Trámite",
+          "videoUrl": "/uploads/not-93-ixt/fondo-not-93-ixt.m4v",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-93-ixt/hero_logo.png",
+          "button": {
+            "text": "Conozca Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "La Notaría Pública 93, bajo la titularidad del Lic. José de Jesús García Gómez, se ha consolidado como un pilar de seguridad jurídica en Ciudad Ixtepec, Oaxaca. Con una trayectoria de profesionalismo y ética, brindamos asesoría y soluciones notariales con la máxima diligencia, protegiendo el patrimonio y los intereses de nuestros clientes. Nuestra misión es garantizar la certeza legal en cada acto jurídico.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Atención Personalizada",
+          "text": "Estamos a su disposición para cualquier consulta o trámite. Contáctenos hoy mismo y reciba asesoría experta.",
+          "button": {
+            "text": "Iniciar Consulta",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "C. Nicolás Bravo 9, Moderna, 70110 Cdad. Ixtepec, Oax.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4611.172709510295!2d-95.0955261!3d16.557104699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c001dfc5fa0fb5%3A0xcd7a8492096079fc!2zTk9UQVLDjUEgUMOaQkxJQ0EgOTM!5e1!3m2!1ses-419!2smx!4v1765047581186!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto Notarial",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar Contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/529717132790"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:+529717132790"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:notaria93@gmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Garantice la voluntad de sus seres queridos y la protección de su patrimonio a través de un testamento debidamente formalizado."
+            },
+            {
+              "title": "Compraventas e Inmuebles",
+              "description": "Asesoría y protocolización de contratos de compraventa de bienes inmuebles, donaciones, hipotecas y fideicomisos para la seguridad de su patrimonio."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Otorgue facultades a terceros para que actúen en su nombre de forma segura y legal, ya sea para asuntos generales o especiales."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Creación y formalización de personas morales, actas de asamblea, protocolización de estatutos y modificaciones sociales."
+            },
+            {
+              "title": "Sucesiones Intestamentarias",
+              "description": "Tramitamos sucesiones sin testamento, garantizando la adjudicación legal de bienes a los herederos legítimos."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Damos constancia de hechos y situaciones que pueden tener implicaciones legales, asegurando su validez jurídica."
+            },
+            {
+              "title": "Actas y Contratos",
+              "description": "Formalización de diversos tipos de contratos, actas constitutivas, de asamblea y otros documentos legales con la certeza que requiere."
+            },
+            {
+              "title": "Apertura de Crédito",
+              "description": "Protocolización de contratos de apertura de crédito y sus garantías asociadas."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-06T19:17:01.965Z"
         }
       }
     }

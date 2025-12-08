@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const systemPrompt = `
     You are an expert web developer and content strategist specializing in creating microsites for Notaries Public in Mexico.
@@ -35,6 +35,10 @@ export async function POST(request: Request) {
     2.  **USE PROVIDED URL:** If the user provides a URL, assume it is the source of truth. Extract or infer the color palette, services, and tone from that URL's context if you can.
     3.  **PROFESSIONAL TONE:** The content must be formal, trustworthy, and legally accurate for the Mexican context.
     4.  **COLORS:** Generate a "Liquid Glass" aesthetic theme. Choose 2 harmonious colors (color1, color2) based on the notary's logo or branding (if known) or use professional legal colors (navy, dark red, slate, gold).
+    5.  **CREATIVE & CONCISE:** 
+        - **Hero Subtitle:** MUST be creative and engaging (e.g., "Seguridad y Confianza para tu Patrimonio", "Tradición y Vanguardia Notarial"). ASCRIBING VALUE is better than just stating a title.
+        - **General Text:** Keep "about" and "services" descriptions concise and punchy. Avoid walls of text. concise is better.
+        - **Call to Actions (Buttons):** Use creative and compelling copy for buttons (e.g., "Inicia tu Trámite", "Agenda tu Cita", "Descubre Soluciones"). Avoid generic "Contactar" or "Ver más" if possible, but keep intent clear.
     
     JSON SCHEMA (Strictly follow this):
     {
@@ -58,6 +62,7 @@ export async function POST(request: Request) {
         "title": "Notaría Pública [Number]",
         "subtitle": "[Titular Name] or [Slogan]",
         "videoUrl": "",
+        "audioUrl": "",
         "logoUrl": "",
         "button": { "text": "Nuestros Servicios", "link": "/servicios" }
       },
@@ -80,9 +85,10 @@ export async function POST(request: Request) {
         "vCardUrl": "",
         "actions": [
            { "iconUrl": "/card.png", "text": "Guardar contacto", "link": "#" },
+           { "iconUrl": "/card.png", "text": "Guardar contacto", "link": "#" },
            { "iconUrl": "/wh.svg", "text": "WhatsApp", "link": "https://wa.me/52[REAL_NUMBER]" },
-           { "iconUrl": "/phone.svg", "text": "Llamar", "link": "tel:+52[REAL_NUMBER]" },
-           { "iconUrl": "/mail.svg", "text": "Email", "link": "mailto:[REAL_EMAIL]" }
+           { "iconUrl": "/sm.webp", "text": "Llamar", "link": "tel:+52[REAL_NUMBER]" },
+           { "iconUrl": "/ml.webp", "text": "Email", "link": "mailto:[REAL_EMAIL]" }
         ]
       },
       "servicesPage": {
