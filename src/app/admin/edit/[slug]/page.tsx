@@ -27,7 +27,7 @@ const defaultSiteData = {
     { text: "Ubicación", link: "/ubicacion" },
     { text: "Contacto", link: "/contacto" }
   ] as { text: string, link: string }[],
-  hero: { title: "", subtitle: "", videoUrl: "", logoUrl: "", button: { text: "", link: "" } },
+  hero: { title: "", subtitle: "", videoUrl: "", backgroundImageUrl: "", logoUrl: "", button: { text: "", link: "" } },
   about: { title: "", text: "", imageUrl: "" },
   mainContact: { title: "", text: "", button: { text: "", link: "" } },
   locationPage: { address: "", mapIframeUrl: "" },
@@ -54,6 +54,7 @@ export default function EditSitePage() {
   const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
   const [heroAudioFile, setHeroAudioFile] = useState<File | null>(null);
   const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
+  const [heroBackgroundImageFile, setHeroBackgroundImageFile] = useState<File | null>(null);
   const [vCardFile, setVCardFile] = useState<File | null>(null);
   const [splashVideoFile, setSplashVideoFile] = useState<File | null>(null);
   const [iconFiles, setIconFiles] = useState<File[]>([]);
@@ -129,6 +130,8 @@ export default function EditSitePage() {
         setVCardFile(file);
       } else if (name === 'splashVideoFile') {
         setSplashVideoFile(file);
+      } else if (name === 'heroBackgroundImageFile') {
+        setHeroBackgroundImageFile(file);
       }
     }
   };
@@ -231,6 +234,7 @@ export default function EditSitePage() {
     if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
     if (vCardFile) formData.append('vCardFile', vCardFile);
     if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
+    if (heroBackgroundImageFile) formData.append('heroBackgroundImageFile', heroBackgroundImageFile);
     iconFiles.forEach((file, index) => {
       if (file) formData.append(`iconFile-${index}`, file);
     });
@@ -380,6 +384,12 @@ export default function EditSitePage() {
             <label htmlFor="heroVideoFile">Nuevo Video de Fondo (Opcional)</label>
             <input type="file" id="heroVideoFile" name="heroVideoFile" accept="video/*" onChange={handleFileChange} />
             {siteData.hero.videoUrl && <p>Video actual: {siteData.hero.videoUrl}</p>}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="heroBackgroundImageFile">Imagen de Fondo del Hero (Opcional - si no hay video)</label>
+            <input type="file" id="heroBackgroundImageFile" name="heroBackgroundImageFile" accept="image/*" onChange={handleFileChange} />
+            {(siteData.hero as any).backgroundImageUrl && <p>Imagen actual: {(siteData.hero as any).backgroundImageUrl}</p>}
           </div>
 
           <div className={styles.formGroup}>

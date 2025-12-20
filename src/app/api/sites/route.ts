@@ -127,21 +127,25 @@ export async function POST(request: Request) {
     const splashVideoFile = formData.get('splashVideoFile') as File | null;
 
     if (splashVideoFile) {
-
       const siteUploadsPath = path.join(uploadsPath, slug);
-
       await fs.mkdir(siteUploadsPath, { recursive: true });
-
       const fileBuffer = Buffer.from(await splashVideoFile.arrayBuffer());
-
       const sanitizedFileName = splashVideoFile.name.replace(/\s+/g, '-');
-
       const filePath = path.join(siteUploadsPath, sanitizedFileName);
-
       await fs.writeFile(filePath, fileBuffer);
-
       siteData.splashScreen.videoUrl = `/uploads/${slug}/${sanitizedFileName}`;
+    }
 
+    const heroBackgroundImageFile = formData.get('heroBackgroundImageFile') as File | null;
+
+    if (heroBackgroundImageFile) {
+      const siteUploadsPath = path.join(uploadsPath, slug);
+      await fs.mkdir(siteUploadsPath, { recursive: true });
+      const fileBuffer = Buffer.from(await heroBackgroundImageFile.arrayBuffer());
+      const sanitizedFileName = heroBackgroundImageFile.name.replace(/\s+/g, '-');
+      const filePath = path.join(siteUploadsPath, sanitizedFileName);
+      await fs.writeFile(filePath, fileBuffer);
+      siteData.hero.backgroundImageUrl = `/uploads/${slug}/${sanitizedFileName}`;
     }
 
 

@@ -41,7 +41,8 @@ const defaultSiteData = {
     button: {
       text: "",
       link: "/servicios"
-    }
+    },
+    backgroundImageUrl: ""
   },
   about: {
     title: "",
@@ -88,6 +89,7 @@ export default function AdminPage() {
   const [heroVideoFile, setHeroVideoFile] = useState<File | null>(null);
   const [heroAudioFile, setHeroAudioFile] = useState<File | null>(null);
   const [heroLogoFile, setHeroLogoFile] = useState<File | null>(null);
+  const [heroBackgroundImageFile, setHeroBackgroundImageFile] = useState<File | null>(null);
   const [vCardFile, setVCardFile] = useState<File | null>(null);
   const [splashVideoFile, setSplashVideoFile] = useState<File | null>(null);
   const [iconFiles, setIconFiles] = useState<File[]>([]);
@@ -218,6 +220,8 @@ export default function AdminPage() {
         setVCardFile(file);
       } else if (name === 'splashVideoFile') {
         setSplashVideoFile(file);
+      } else if (name === 'heroBackgroundImageFile') {
+        setHeroBackgroundImageFile(file);
       }
     }
   };
@@ -337,6 +341,7 @@ export default function AdminPage() {
     if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
     if (vCardFile) formData.append('vCardFile', vCardFile);
     if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
+    if (heroBackgroundImageFile) formData.append('heroBackgroundImageFile', heroBackgroundImageFile);
     iconFiles.forEach((file, index) => {
       if (file) formData.append(`iconFile-${index}`, file);
     });
@@ -357,6 +362,7 @@ export default function AdminPage() {
         setSiteData(defaultSiteData);
         setImageFile(null);
         setHeroVideoFile(null);
+        setHeroBackgroundImageFile(null);
         setHeroLogoFile(null);
         setVCardFile(null);
         setSplashVideoFile(null);
@@ -673,6 +679,17 @@ export default function AdminPage() {
                   name="heroVideoFile"
                   onChange={handleFileChange}
                   accept="video/*"
+                  className={styles.input}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Imagen de fondo (opcional - si no hay video)</label>
+                <input
+                  type="file"
+                  name="heroBackgroundImageFile"
+                  onChange={handleFileChange}
+                  accept="image/*"
                   className={styles.input}
                 />
               </div>

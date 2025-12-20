@@ -507,7 +507,7 @@
           "fontFamily": ""
         },
         "lastModification": {
-          "timestamp": "2025-12-04T10:58:00-06:00"
+          "timestamp": "2025-12-15T22:21:11.064Z"
         },
         "metadata": {
           "title": "Notaría Publica 3 - Baja California Sur",
@@ -556,7 +556,7 @@
         },
         "contactPage": {
           "title": "Centro de Contacto",
-          "vCardUrl": "",
+          "vCardUrl": "/uploads/not-3-bcs/Notaría-Publica-3.vcf",
           "actions": [
             {
               "iconUrl": "/card.png",
@@ -566,12 +566,12 @@
             {
               "iconUrl": "/wh.svg",
               "text": "WhatsApp",
-              "link": ""
+              "link": "http://wa.me/526121770008"
             },
             {
               "iconUrl": "/sm.webp",
               "text": "Llamar Ahora",
-              "link": "tel:6121752700"
+              "link": "tel:+526121752700"
             },
             {
               "iconUrl": "/ml.webp",
@@ -582,6 +582,11 @@
               "iconUrl": "/uploads/not23edomex/icons/facebook-square-social-logo.svg",
               "text": "Facebook",
               "link": "https://www.facebook.com/Notaria3BCS/?locale=es_LA"
+            },
+            {
+              "iconUrl": "/uploads/not-3-bcs/icons/instagram.svg",
+              "text": "Instagram",
+              "link": "https://www.instagram.com/notariatresbcs/"
             },
             {
               "iconUrl": "/web.svg",
@@ -633,7 +638,7 @@
           "fontFamily": "'Roboto', sans-serif"
         },
         "lastModification": {
-          "timestamp": "2025-12-04T10:58:00-06:00"
+          "timestamp": "2025-12-10T22:53:52.893Z"
         },
         "metadata": {
           "title": "Notaría Pública 1 - Cunduacán",
@@ -654,12 +659,14 @@
           }
         ],
         "hero": {
-          "title": "Notaría Pública 1",
+          "title": "",
           "subtitle": "Su Confianza, Nuestra Prioridad",
           "button": {
             "text": "Nuestros Servicios",
             "link": "/servicios"
-          }
+          },
+          "logoUrl": "/uploads/not-1-vh/hero_logo.png",
+          "backgroundImageUrl": "/uploads/not-1-vh/Cunduacan.Monumento_Batalla_Jahuactal.jpg"
         },
         "about": {
           "title": "Acerca de Nosotros",
@@ -674,8 +681,8 @@
           }
         },
         "locationPage": {
-          "address": "Calle Gregorio Méndez Magaña 304, Centro, 86690 Cunduacán, Tab., México",
-          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.471298952419!2d-93.06897518552307!3d17.96428638650475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85efc395f8888889%3A0x7f44d2d1a9a2289e!2sNotaria%20Publica%20Numero%20Uno!5e0!3m2!1ses-419!2smx!4v1702757278616!5m2!1ses-419!2smx"
+          "address": "C. Hidalgo 10, Centro, 86690 Cunduacán, Tab.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4573.459802136924!2d-93.1733314!3d18.066593199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ee8181787c9ecf%3A0xdde1933d38157fe7!2zTm90YXLDrWEgUMO6YmxpY2EgMSwgTm90YXLDrWEgVGFyYWNlbmE!5e1!3m2!1ses-419!2smx!4v1765407089615!5m2!1ses-419!2smx"
         },
         "contactPage": {
           "title": "Centro de Contacto",
@@ -696,11 +703,12 @@
               "link": "tel:+529143361008"
             },
             {
-              "iconUrl": "/ml.webp",
-              "text": "Email",
-              "link": "mailto:notaria1cunduacan@hotmail.com"
+              "iconUrl": "/sm.webp",
+              "text": "Alterno",
+              "link": "tel:+529143360796"
             }
-          ]
+          ],
+          "vCardUrl": "/uploads/not-1-vh/Notaría-Publica-1.vcf"
         },
         "servicesPage": {
           "title": "Nuestros Servicios",
@@ -1229,6 +1237,542 @@
         },
         "lastModification": {
           "timestamp": "2025-12-06T19:17:01.965Z"
+        }
+      }
+    },
+    {
+      "id": "not-11-tj",
+      "slug": "not-11-tj",
+      "data": {
+        "theme": {
+          "color1": "#0A2240",
+          "color2": "#C0D6E4",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 11 - Tijuana, Baja California",
+          "description": "Servicios notariales profesionales y confiables en Tijuana. Expertos en compraventas, testamentos, poderes, y constitución de sociedades con el Lic. Alfonso Orozco Alvarado."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Pública 11",
+          "subtitle": "Vanguardia y Seguridad Jurídica.",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-11-tj/hero_logo.png",
+          "button": {
+            "text": "Descubre Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-11-tj/seguridad-tijuana-omnibus-de-mexico-1.jpg_upscayl_2x_remacri-4x.png"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "Notaría Pública 11, bajo la dirección del Lic. Leonardo Jair Castillo Corona, se consolida como un pilar de certeza y confianza en Tijuana. Nos dedicamos a salvaguardar su patrimonio y derechos, ofreciendo asesoría experta y soluciones notariales ágiles y transparentes. Nuestro compromiso es garantizar la legalidad y la tranquilidad en cada uno de sus trámites.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Asesoría Profesional a su Alcance",
+          "text": "Estamos listos para atenderle y brindarle la orientación que necesita. Contáctenos hoy mismo para agendar una cita o resolver sus dudas.",
+          "button": {
+            "text": "Inicia tu Consulta",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Blvrd Gral Rodolfo Sánchez Taboada 10403-piso 4, interior 401, Zona Urbana Rio Tijuana, 22010 Tijuana, B.C.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4135.08572680924!2d-117.01705239999998!3d32.5224707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d949eb221ca48f%3A0x28a4f87f03433b63!2sNotar%C3%ADa%20p%C3%BAblica%20No.%2011!5e1!3m2!1ses-419!2smx!4v1765380682281!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto Notarial",
+          "vCardUrl": "/uploads/not-11-tj/Notaría-Publica-11.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar Contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/526646818420"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar a la Notaría",
+              "link": "tel:+526646818426"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Correo",
+              "link": "mailto:mmayo@prodigy.net.mx"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Compraventas y Donaciones",
+              "description": "Formalización de contratos de compraventa de inmuebles y donaciones, garantizando la seguridad jurídica para ambas partes."
+            },
+            {
+              "title": "Testamentos",
+              "description": "Asesoría y redacción de testamentos para proteger el patrimonio y asegurar la voluntad del testador sobre sus bienes."
+            },
+            {
+              "title": "Sucesiones Intestamentarias",
+              "description": "Tramitación legal para la adjudicación de bienes cuando no existe un testamento, conforme a la ley."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Creación y formalización de actas constitutivas para empresas, asociaciones y sociedades mercantiles o civiles."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de poderes generales o especiales para representación legal en diversas gestiones y trámites."
+            },
+            {
+              "title": "Fe de Hechos y Notificaciones",
+              "description": "Constancia de hechos jurídicos que requieren la intervención notarial, así como notificaciones y protestos."
+            },
+            {
+              "title": "Rectificaciones y Cotejos",
+              "description": "Corrección de errores en instrumentos públicos y cotejo de documentos con sus originales para certificar su autenticidad."
+            },
+            {
+              "title": "Hipoteca y Fideicomiso",
+              "description": "Formalización de créditos hipotecarios y constitución de fideicomisos para la administración de bienes."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-10T16:00:37.717Z"
+        }
+      }
+    },
+    {
+      "id": "not-214-sn",
+      "slug": "not-214-sn",
+      "data": {
+        "theme": {
+          "color1": "#1A2E44",
+          "color2": "#8FAECB",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 214 - Culiacán | Seguridad Jurídica",
+          "description": "Notaría Pública 214 en Culiacán, Sinaloa. Lic. José de Jesús García Salazar. Ofrecemos servicios notariales confiables para compraventas, testamentos, poderes, y constitución de sociedades. Garantizamos seguridad y certeza legal para su patrimonio y negocios."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Certeza y Confianza para su Patrimonio",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-214-sn/hero_logo.png",
+          "button": {
+            "text": "Explora Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-214-sn/653.jpg"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "En Notaría Pública 214, bajo la dirección del Lic. José de Jesús García Salazar, nos dedicamos a brindar asesoría y servicios notariales con la máxima profesionalidad y ética. Nuestro compromiso es garantizar la seguridad jurídica de sus actos y contratos, ofreciendo un trato personalizado y soluciones eficientes en cada trámite.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Atención Personalizada",
+          "text": "Estamos listos para atender sus consultas y ofrecerle la asesoría legal que necesita. Contáctenos hoy mismo.",
+          "button": {
+            "text": "Agenda tu Asesoría",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Riva Palacio 428 Net., Col. Centro, C.P. 80000, Culiacán Sinaloa",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4451.5988689862825!2d-107.4009128!3d24.807782500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86bcd0a4222bb21f%3A0x341d1f79037d291a!2sNotar%C3%ADa%20214.%20Lic.%20Marco%20C%C3%A9sar%20Garc%C3%ADa%20Bueno.!5e1!3m2!1ses-419!2smx!4v1765387578970!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/not-214-sn/Notaría-Publica-214.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar Contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/526672088600"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:+526677160812"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:notaria214sianloa@gmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Compraventa e Hipotecas",
+              "description": "Asesoría y formalización de contratos de compraventa de bienes inmuebles, constitución de hipotecas y fideicomisos."
+            },
+            {
+              "title": "Testamentos",
+              "description": "Redacción y otorgamiento de testamentos para garantizar la voluntad del testador y la tranquilidad de sus herederos."
+            },
+            {
+              "title": "Poderes",
+              "description": "Elaboración de poderes generales o especiales para la representación legal en diversos actos jurídicos."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Asesoría y formalización de actas constitutivas para todo tipo de sociedades mercantiles y civiles."
+            },
+            {
+              "title": "Sucesiones Testamentarias e Intestamentarias",
+              "description": "Tramitación de juicios sucesorios para la adjudicación de bienes a herederos o legatarios."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación de hechos presenciados por el Notario, para darles validez legal."
+            },
+            {
+              "title": "Protocolización de Actas",
+              "description": "Formalización de actas de asamblea, estatutos y otros documentos corporativos."
+            },
+            {
+              "title": "Ratificación de Firmas",
+              "description": "Certificación de la autenticidad de firmas en documentos privados, brindando seguridad jurídica."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-10T17:29:56.961Z"
+        }
+      }
+    },
+    {
+      "id": "not-8-ens",
+      "slug": "not-8-ens",
+      "data": {
+        "theme": {
+          "color1": "#1A2D4F",
+          "color2": "#4A69AD",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 8 - Ensenada, B.C.",
+          "description": "Notaría Pública No. 8 en Ensenada, Baja California. Ofrecemos certeza jurídica y asesoría profesional en testamentos, compraventas, poderes, sucesiones y constitución de sociedades."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Certeza Jurídica y Confianza para su Patrimonio en Ensenada",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-8-ens/hero_logo.png",
+          "button": {
+            "text": "Conozca Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-8-ens/libros.jpg"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "La Notaría Pública No. 8 de Ensenada, es una institución con amplia trayectoria, dedicada a brindar seguridad jurídica y asesoría experta en todos sus trámites. Nuestro compromiso es la eficiencia, la transparencia y la atención personalizada, salvaguardando su patrimonio y garantizando la legalidad de cada acto.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos para Asesoría",
+          "text": "Estamos a su disposición para resolver sus dudas y guiarle en sus trámites notariales. Comuníquese con nosotros vía WhatsApp o teléfono para una atención ágil y profesional.",
+          "button": {
+            "text": "Inicie su Consulta",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Av. Reforma #173, Fraccionamiento Bahía, C.P. 22880 Ensenada, B.C., México.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.309075775466!2d-116.61907938487928!3d31.84918458123282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9006b5a374495%3A0xcb1b6f6d65451e50!2sNotaria%20Publica%20No.%208!5e0!3m2!1ses-419!2smx!4v1678912345678!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/notaria8-contacto.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/526469776436"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:+526469784128"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:info@notaria8ens.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Garantice la voluntad de su patrimonio y la tranquilidad de sus seres queridos mediante la elaboración de su testamento."
+            },
+            {
+              "title": "Compraventa de Inmuebles",
+              "description": "Asesoría y formalización para la adquisición o enajenación segura de propiedades, brindando certeza jurídica a su inversión."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgue facultades legales a terceros para representarle en actos específicos, con total validez y seguridad."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Formalización de empresas y asociaciones, desde su creación hasta modificaciones estatutarias y asambleas."
+            },
+            {
+              "title": "Sucesiones Testamentarias e Intestamentarias",
+              "description": "Trámites para la adjudicación de bienes de una herencia, ya sea con testamento o sin él, de forma ágil y legal."
+            },
+            {
+              "title": "Donaciones",
+              "description": "Formalice la transmisión gratuita de bienes entre personas, asegurando la legalidad y validez del acto."
+            },
+            {
+              "title": "Protocolización de Actas",
+              "description": "Elevación a escritura pública de documentos privados, actas de asamblea y otros instrumentos para su validez legal."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación notarial de hechos presenciados por el fedatario, con valor probatorio en cualquier procedimiento."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-11T15:58:21.762Z"
+        }
+      }
+    },
+    {
+      "id": "Notaría 139 Estado de México",
+      "slug": "not-139-edomex",
+      "data": {
+        "theme": {
+          "color1": "#691F74",
+          "color2": "#BB83CA",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 139 - Naucalpan, Estado de México",
+          "description": "Notaría Pública 139 Ofrecemos servicios notariales integrales: testamentos, compraventas, poderes, constitución de sociedades y más. Confianza y certeza jurídica con el Lic. Luis Gabriel Lira Rivera."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "La Notaría 139 del Estado de México fue creada por acuerdo del C. Gobernador Constitucional del Estado de México, Lic. Arabela Ochoa Valdivia, el 27 de Enero del año 2006, publicado en el Periódico Oficial del Gobierno del Estado de México “Gaceta del Gobierno”, el mismo día de su expedición.",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-139-edomex/hero_logo.png",
+          "button": {
+            "text": "Descubre Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-139-edomex/notaria-portada_upscayl_4x_upscayl-standard-4x.png"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "En Notaría Pública 139, nos dedicamos a brindar asesoría y servicios notariales de la más alta calidad. Con una trayectoria sólida y un compromiso inquebrantable con la legalidad y la transparencia, somos su aliado estratégico para proteger su patrimonio y asegurar la validez de sus actos jurídicos. Nuestra misión es ofrecer soluciones eficientes y personalizadas, garantizando la paz y confianza de nuestros clientes en cada trámite.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos listos para asistirle con profesionalismo y eficacia. Comuníquese con nosotros para recibir asesoría personalizada y resolver sus dudas.",
+          "button": {
+            "text": "Inicia tu Consulta",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Av. Revolución N 40-B Primer Piso, Santa Agueda, 55025 Ecatepec de Morelos, Méx.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.204333339904!2d-99.04203629999999!3d19.602374899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f183d47b4fa7%3A0x2cd930f83edaac29!2sNotaria%20139%20del%20Estado%20de%20M%C3%A9xico!5e1!3m2!1ses-419!2smx!4v1766077735985!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/not-139-edomex/Notaría-139.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "Enviar WhatsApp",
+              "link": "https://wa.me/525525322719"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:+525558362680"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:contacto@notaria139edomex.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios Notariales",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Garantice la protección y distribución de su patrimonio según su voluntad."
+            },
+            {
+              "title": "Compraventa de Inmuebles",
+              "description": "Asesoría experta y certeza jurídica en la adquisición o enajenación de propiedades."
+            },
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Formalización legal para el inicio y desarrollo seguro de su empresa o negocio."
+            },
+            {
+              "title": "Poderes Notariales",
+              "description": "Otorgue facultades a terceros para actuar en su nombre con plena validez legal."
+            },
+            {
+              "title": "Donaciones",
+              "description": "Realice la transmisión gratuita de bienes con total seguridad y apego a la ley."
+            },
+            {
+              "title": "Sucesiones",
+              "description": "Trámites para la adjudicación de bienes por herencia de forma ágil y legal."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Constancia notarial de situaciones o hechos para probar su existencia legalmente."
+            },
+            {
+              "title": "Protocolización de Actas",
+              "description": "Integración de documentos privados al protocolo notarial para darles carácter público."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-18T17:57:06.012Z"
         }
       }
     }

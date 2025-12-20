@@ -10,6 +10,7 @@ interface HeroProps {
         subtitle: string;
         videoUrl?: string;
         imageUrl?: string;
+        backgroundImageUrl?: string;
         logoUrl?: string;
         audioUrl?: string;
         button?: {
@@ -40,12 +41,14 @@ export default function HeroSection({ hero, slug }: HeroProps) {
     return (
         <section
             className={`${styles.hero} animate-slide-up`}
-            style={{ backgroundImage: `url(${hero.videoUrl ? '' : hero.imageUrl})`, cursor: hero.audioUrl && !hasPlayed ? 'pointer' : 'default' }}
+            style={{ cursor: hero.audioUrl && !hasPlayed ? 'pointer' : 'default' }}
             onClick={handleInteraction}
         >
-            {hero.videoUrl && (
+            {hero.videoUrl ? (
                 <video className={styles.heroVideo} autoPlay loop muted playsInline src={`/qrs${hero.videoUrl}`} />
-            )}
+            ) : hero.backgroundImageUrl ? (
+                <img src={`/qrs${hero.backgroundImageUrl}`} alt="Hero Background" className={styles.heroBackgroundImage} />
+            ) : null}
             <div className={styles.heroContent}>
                 {hero.logoUrl && <img src={`/qrs${hero.logoUrl}`} alt="Logo" className={styles.heroLogo} />}
                 <h1 className={styles.heroTitle}>{hero.title}</h1>
