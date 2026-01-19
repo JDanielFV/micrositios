@@ -1775,6 +1775,237 @@
           "timestamp": "2025-12-18T17:57:06.012Z"
         }
       }
+    },
+    {
+      "id": "not-1-poz",
+      "slug": "not-1-poz",
+      "data": {
+        "theme": {
+          "color1": "#1a237e",
+          "color2": "#009bdf",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap",
+          "fontFamily": "'Lato', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 1 - Poza Rica",
+          "description": "Servicios notariales en Poza Rica, Veracruz. Titular Lic. Maythé Susana López León."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Lic. Maythé Susana López León: Compromiso y Legalidad",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-1-poz/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-1-poz/1_poza_rica_veracruz_portada.jpeg"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "La Notaría Pública Número 1 de Poza Rica, bajo la titularidad de la Lic. Maythé Susana López León, reafirma su compromiso con la sociedad ofreciendo servicios de fe pública con estricto apego a la ley, ética y profesionalismo. Estamos ubicados en la Colonia Benito Juárez para atender todas sus necesidades jurídicas.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Atención Personalizada",
+          "text": "Contáctenos para asesoría notarial experta.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Ferrocarril 101, Aviacion Vieja, 93350 Poza Rica de Hidalgo, Ver.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.8168865054095!2d-97.46063612476968!3d20.523936304926035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85da6a94e9546a79%3A0x2c347ae25bba3b14!2sFerrocarril%20101%2C%20Aviacion%20Vieja%2C%2093350%20Poza%20Rica%20de%20Hidalgo%2C%20Ver.!5e1!3m2!1ses-419!2smx!4v1766256939629!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar Contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/527821161652"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar",
+              "link": "tel:+527828266595"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:not1.pozarica.ver@gmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Certeza jurídica para su patrimonio."
+            },
+            {
+              "title": "Compraventas",
+              "description": "Seguridad en transacciones inmobiliarias."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de facultades legales."
+            },
+            {
+              "title": "Sociedades",
+              "description": "Constitución de empresas y asociaciones."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2025-12-20T19:00:51.328Z"
+        }
+      }
+    },
+    {
+      "id": "cor-36-cdmx",
+      "slug": "cor-36-cdmx",
+      "data": {
+        "theme": {
+          "color1": "#2c3e50",
+          "color2": "#95a5a6",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
+          "fontFamily": "'Roboto', sans-serif"
+        },
+        "metadata": {
+          "title": "Correduría Pública 36 - CDMX",
+          "description": "Servicios de Correduría Pública 36 en la Ciudad de México. Fe Pública Mercantil, Valuaciones y Asesoría Jurídica."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "",
+          "subtitle": "Ciudad de México",
+          "videoUrl": "",
+          "logoUrl": "/uploads/cor-36-cdmx/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/cor-36-cdmx/mansions-global-polanco-1.jpg.webp"
+        },
+        "about": {
+          "title": "Acerca de Nosotros",
+          "text": "La Correduría Pública 36 de la Ciudad de México ofrece servicios especializados en derecho mercantil. Como fedatarios públicos, brindamos certeza jurídica en actos comerciales, constitución de sociedades, avalúos y mediación mercantil. Nuestro compromiso es la eficiencia y la seguridad jurídica para su empresa.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos a su disposición para asesorarle en sus proyectos empresariales.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Calle Seneca número 134, piso 6 Colonia Polanco II sección C.P. 11560, Demarcación Territorial Miguel Hidalgo, Ciudad de México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4644.24204203298!2d-99.20229010000001!3d19.437276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2021b400b0735%3A0x2f6627b27a1493b9!2sSecci%C3%B3n%20Palmas%2C%20S%C3%A9neca%20134-piso%206%2C%20Polanco%2C%20Polanco%20I%20Secc%2C%20Miguel%20Hidalgo%2C%2011540%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e1!3m2!1ses-419!2smx!4v1768847478410!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "/uploads/cor-36-cdmx/Correduría-36.vcf",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/525571983712"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:5571983712"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:tracy@lazaropena.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Constitución de Sociedades",
+              "description": "Formalización de sociedades mercantiles (S.A., S. de R.L., S.A.P.I., etc.) con agilidad y asesoría experta."
+            },
+            {
+              "title": "Fe Pública Mercantil",
+              "description": "Formalización de actos y hechos jurídicos de naturaleza mercantil, contratos y ratificaciones."
+            },
+            {
+              "title": "Avalúos",
+              "description": "Valuación de bienes muebles, inmuebles, intangibles y empresas con valor legal."
+            },
+            {
+              "title": "Asesoría Jurídica",
+              "description": "Consultoría legal especializada en derecho corporativo y comercial."
+            },
+            {
+              "title": "Mediación Mercantil",
+              "description": "Solución alternativa de controversias comerciales."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-01-19T18:44:31.234Z"
+        }
+      }
     }
   ]
 }

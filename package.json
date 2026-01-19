@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "dev:clean": "./scripts/clean-dev.sh",
     "date": "npm run build && npm run dev:clean",
     "build": "./scripts/build.sh",
-    "build:core": "next build",
+    "build:core": "next build --webpack",
     "start": "next start"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@vercel/speed-insights": "^1.2.0",
-    "next": "latest",
+    "next": "^16.1.0",
     "react": "latest",
     "react-colorful": "^5.6.1",
     "react-dom": "latest"

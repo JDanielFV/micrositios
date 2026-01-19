@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
     const systemPrompt = `
     You are an expert web developer and content strategist specializing in creating microsites for Notaries Public in Mexico.
