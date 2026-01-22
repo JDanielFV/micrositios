@@ -2006,6 +2006,143 @@
           "timestamp": "2026-01-19T18:44:31.234Z"
         }
       }
+    },
+    {
+      "id": "not-6-ens",
+      "slug": "not-6-ens",
+      "data": {
+        "theme": {
+          "color1": "#003366",
+          "color2": "#b0c4de",
+          "angle": 135,
+          "fontImportUrl": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap",
+          "fontFamily": "'Montserrat', sans-serif"
+        },
+        "metadata": {
+          "title": "Notaría Pública 6 - Ensenada, B.C.",
+          "description": "Notaría Pública No. 6 en Ensenada, Baja California. Titular Lic. Dinorah Sayuri Hirata Chico. Certeza jurídica y profesionalismo."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Servicios",
+            "link": "/servicios"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Notaría Pública 6",
+          "subtitle": "Lic. Dinorah Sayuri Hirata Chico - Ensenada, B.C.",
+          "videoUrl": "",
+          "audioUrl": "",
+          "logoUrl": "/uploads/not-6-ens/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/not-6-ens/fondo-not-6-ens.jpg"
+        },
+        "about": {
+          "title": "Sobre Nosotros",
+          "text": "Bajo la titularidad de la Lic. Dinorah Sayuri Hirata Chico, la Notaría Pública No. 6 de Ensenada se distingue por su compromiso con la legalidad y la atención personalizada. Formamos parte de las Notarías Asociadas 4 y 6, brindando seguridad jurídica integral a la comunidad ensenadense.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos a su disposición para asesorarle en sus trámites notariales con ética y profesionalismo.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Avenida Moctezuma #671, Zona Centro, C.P. 22800, Ensenada, Baja California, México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.213251412586!2d-116.626759!3d31.851722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d889606866dc6f%3A0x6b43e86c67347a46!2sNotar%C3%ADa%20P%C3%BAblica%20N%C3%BAm.%206!5e0!3m2!1ses-419!2smx!4v1769109000000!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "#"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/526461783707"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:6461783707"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:licsayuri@notaria6ensenada.com"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/facebook-square-social-logo.svg",
+              "text": "Facebook",
+              "link": "https://www.facebook.com/notaria6Ensenada"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/instagram.svg",
+              "text": "Instagram",
+              "link": "https://www.instagram.com/notaria6ensenada/"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/tiktok.svg",
+              "text": "TikTok",
+              "link": "https://www.tiktok.com/@notaria6ensenada"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Proteja su patrimonio y asegure su voluntad con asesoría experta."
+            },
+            {
+              "title": "Compraventas",
+              "description": "Formalización segura de operaciones inmobiliarias y traslativas de dominio."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de facultades legales con validez y certeza jurídica."
+            },
+            {
+              "title": "Sociedades",
+              "description": "Constitución, asambleas y modificaciones de sociedades mercantiles y civiles."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación notarial de hechos y situaciones con valor probatorio."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-01-22T19:15:06.531Z"
+        }
+      }
     }
   ]
 }
