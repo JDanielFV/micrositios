@@ -1959,17 +1959,22 @@
             {
               "iconUrl": "/wh.svg",
               "text": "WhatsApp",
-              "link": "https://wa.me/525571983712"
+              "link": "https://wa.me/528182033008"
             },
             {
               "iconUrl": "/sm.webp",
               "text": "Llamar Ahora",
-              "link": "tel:5571983712"
+              "link": "tel:8182033008"
             },
             {
               "iconUrl": "/ml.webp",
               "text": "Enviar Email",
-              "link": "mailto:tracy@lazaropena.com"
+              "link": "mailto:asis@lazaropena.com"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/web.svg",
+              "text": "Página Web",
+              "link": "https://lazaropena.com/"
             }
           ]
         },
@@ -2003,7 +2008,7 @@
           "videoUrl": ""
         },
         "lastModification": {
-          "timestamp": "2026-01-19T18:44:31.234Z"
+          "timestamp": "2026-02-14T16:05:59.674Z"
         }
       }
     },
@@ -2141,6 +2146,123 @@
         },
         "lastModification": {
           "timestamp": "2026-01-22T19:15:06.531Z"
+        }
+      }
+    },
+    {
+      "id": "cor-8-cdmx",
+      "slug": "cor-8-cdmx",
+      "data": {
+        "theme": {
+          "color1": "#000000",
+          "color2": "#000000",
+          "angle": "1",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Correduría Pública 8 CDMX",
+          "description": "Correduría Pública 8 de la Ciudad de México - Lic. Fernando Abraham Barrita Chagoya"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Lic. Fernando Abraham Barrita Chagoya",
+          "subtitle": "Corredor Público 8 de la Ciudad de México",
+          "videoUrl": "",
+          "logoUrl": "/uploads/cor-8-cdmx/hero_logo.png",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/cor-8-cdmx/CDMX-zocalo.jpg"
+        },
+        "about": {
+          "title": "Sobre Nosotros",
+          "text": "La Correduría Pública 8 de la Ciudad de México, bajo la titularidad del Lic. Fernando Abraham Barrita Chagoya, ofrece servicios de fe pública, valuación, arbitraje y asesoría jurídica especializada en materia mercantil, garantizando certeza y seguridad jurídica en sus operaciones comerciales.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos a sus órdenes para cualquier trámite o asesoría.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Montes Urales 755, Piso 3, Col. Lomas de Chapultepec, Alcaldía Miguel Hidalgo, C.P. 11000, Ciudad de México.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661626279933!2d-99.2078500!3d19.4270100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d201f660d37549%3A0x70876127814c80!2sMontes%20Urales%20755%2C%20Lomas%20de%20Chapultepec%2C%20Miguel%20Hidalgo%2C%2011000%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1707767890123!5m2!1ses!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/525541616060"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:5541616060"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:fbarrita@cp8cd.mx"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Fe Pública",
+              "description": "Formalización de actos y hechos jurídicos mercantiles."
+            },
+            {
+              "title": "Valuación",
+              "description": "Estimación de valor de bienes, derechos y obligaciones."
+            },
+            {
+              "title": "Arbitraje",
+              "description": "Resolución de controversias mercantiles."
+            },
+            {
+              "title": "Asesoría Jurídica",
+              "description": "Consultoría especializada en derecho corporativo y mercantil."
+            },
+            {
+              "title": "Mediación",
+              "description": "Facilitación de acuerdos entre partes en conflicto."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-02-12T17:24:51.127Z"
         }
       }
     }
