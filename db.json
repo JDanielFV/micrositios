@@ -1567,8 +1567,8 @@
           }
         },
         "locationPage": {
-          "address": "Av. Reforma #173, Fraccionamiento Bahía, C.P. 22880 Ensenada, B.C., México.",
-          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.309075775466!2d-116.61907938487928!3d31.84918458123282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9006b5a374495%3A0xcb1b6f6d65451e50!2sNotaria%20Publica%20No.%208!5e0!3m2!1ses-419!2smx!4v1678912345678!5m2!1ses-419!2smx"
+          "address": "Boulevard Lazaro Cardenas #1800 Int 1B Playa Ensenada, Edificio Avila. Ensenada , Baja California , 22880, México",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3389.0127941593364!2d-116.61604119999997!3d31.851867100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8126119ae470bb6f%3A0xa48cd663aee6aa3d!2sNotar%C3%ADa%20P%C3%BAblica%20No.%208%20Ensenada!5e0!3m2!1ses-419!2smx!4v1772478487125!5m2!1ses-419!2smx"
         },
         "contactPage": {
           "title": "Centro de Contacto",
@@ -1638,7 +1638,7 @@
           "videoUrl": ""
         },
         "lastModification": {
-          "timestamp": "2025-12-11T15:58:21.762Z"
+          "timestamp": "2026-03-02T19:08:35.149Z"
         }
       }
     },
@@ -2008,7 +2008,7 @@
           "videoUrl": ""
         },
         "lastModification": {
-          "timestamp": "2026-02-14T16:05:59.674Z"
+          "timestamp": "2026-02-23T22:37:31.240Z"
         }
       }
     },
@@ -2263,6 +2263,559 @@
         },
         "lastModification": {
           "timestamp": "2026-02-12T17:24:51.127Z"
+        }
+      }
+    },
+    {
+      "id": "cor-2-oax",
+      "slug": "cor-2-oax",
+      "data": {
+        "theme": {
+          "color1": "#561C24",
+          "color2": "#041E42",
+          "angle": "135",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Correduría Pública 2 Oaxaca",
+          "description": "Correduría Pública 2 del Estado de Oaxaca - Mtra. Lorena Avilés Ángel"
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Mtra. Lorena Avilés Ángel",
+          "subtitle": "Corredora Pública 2 del Estado de Oaxaca",
+          "videoUrl": "",
+          "logoUrl": "/uploads/cor-2-oax/hero_logo.png",
+          "button": {
+            "text": "Conozca nuestros servicios",
+            "link": "/servicios"
+          },
+          "backgroundImageUrl": "/uploads/cor-2-oax/oaxaca-emblem-x53y7lncyytgxr57.jpg"
+        },
+        "about": {
+          "title": "Sobre Nosotros",
+          "text": "La Correduría Pública Número 2 del Estado de Oaxaca, a cargo de la Mtra. Lorena Avilés Ángel, brinda servicios especializados en derecho mercantil, ofreciendo fe pública, valuación y asesoría jurídica integral, comprometidos con la excelencia y la certeza jurídica.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Contáctenos",
+          "text": "Estamos a sus órdenes para cualquier trámite o asesoría.",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          }
+        },
+        "locationPage": {
+          "address": "Av. Morelos 902, Col. Centro, Oaxaca de Juárez, Oaxaca. C.P. 68000",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d379.29289338668315!2d-96.72287672558481!3d17.06238765237439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1771352905808!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "vCardUrl": "",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": ""
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/529515142148"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Oficina",
+              "link": "tel:9515142148"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Celular",
+              "link": "tel:9512733825"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:correduria2.laviles@gmail.com"
+            }
+          ]
+        },
+        "servicesPage": {
+          "title": "Nuestros Servicios",
+          "services": [
+            {
+              "title": "Fe Pública",
+              "description": "Formalización de actos y hechos jurídicos mercantiles."
+            },
+            {
+              "title": "Valuación",
+              "description": "Estimación de valor de bienes, derechos y obligaciones."
+            },
+            {
+              "title": "Asesoría Jurídica",
+              "description": "Consultoría especializada en derecho corporativo."
+            },
+            {
+              "title": "Arbitraje",
+              "description": "Resolución de controversias mercantiles."
+            },
+            {
+              "title": "Mediación",
+              "description": "Facilitación de acuerdos entre partes."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-02-17T18:29:51.643Z"
+        }
+      }
+    },
+    {
+      "id": "not-3-jalpa",
+      "slug": "not-3-jalpa",
+      "data": {
+        "theme": {
+          "color1": "#79242F",
+          "color2": "#000000",
+          "angle": "135",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría Pública 3 - Jalpa de Méndez",
+          "description": "Irma Elizabeth Pérez Lanz - Seguridad jurídica en Tabasco."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Irma Elizabeth Pérez Lanz",
+          "subtitle": "Titular de la Notaría Pública No. 3",
+          "videoUrl": "",
+          "logoUrl": "/uploads/not-3-jalpa/hero_logo.png",
+          "button": {
+            "text": "Pongámonos en contacto",
+            "link": "/contacto"
+          },
+          "backgroundImageUrl": "/uploads/not-3-jalpa/large_DSC_0785.webp"
+        },
+        "about": {
+          "title": "Experiencia y Confianza",
+          "text": "Brindamos servicios notariales con profesionalismo y calidez humana en Jalpa de Méndez, Tabasco. Nuestra prioridad es su certeza jurídica.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Trabajemos Juntos",
+          "text": "Atención personalizada para todos sus trámites legales y notariales.",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "locationPage": {
+          "address": "Calle Justo Sierra No. 62, Barrio San Luis, C.P. 86200, Jalpa de Méndez, Tabasco.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3790.44321456789!2d-93.0645678!3d18.1789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ee837777777777%3A0x7777777777777777!2sNotaria%20Tres%20Jalpa%20De%20Mendez!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "/uploads/not-3-jalpa/Irma-Elizabeth-Perez-Lanz.vcf"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/529143371649"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:9143371649"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:contacto@notaria3jalpa.com.mx"
+            }
+          ],
+          "vCardUrl": "/uploads/not-3-jalpa/Irma-Elizabeth-Perez-Lanz.vcf"
+        },
+        "servicesPage": {
+          "title": "Servicios Notariales",
+          "services": [
+            {
+              "title": "Testamentos",
+              "description": "Proteja su legado y asegure el futuro de su familia."
+            },
+            {
+              "title": "Escrituración",
+              "description": "Compraventa de inmuebles, donaciones y adjudicaciones."
+            },
+            {
+              "title": "Poderes",
+              "description": "Otorgamiento de facultades legales con total validez."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-03-02T18:20:20.367Z"
+        }
+      }
+    },
+    {
+      "id": "not-136-oax",
+      "slug": "not-136-oax",
+      "data": {
+        "theme": {
+          "color1": "#000000",
+          "color2": "#B8DA95",
+          "angle": "135",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría Pública 136 - Oaxaca",
+          "description": "Lic. Ángeles Morales Sánchez - Excelencia notarial en Oaxaca."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Lic. Ángeles Morales Sánchez",
+          "subtitle": "Titular de la Notaría Pública No. 136",
+          "videoUrl": "",
+          "logoUrl": "/uploads/not-136-oax/hero_logo.png",
+          "button": {
+            "text": "Pongámonos en contacto",
+            "link": "/contacto"
+          },
+          "backgroundImageUrl": "/uploads/not-136-oax/OK-Oax_53774753_xl-2015.jpg"
+        },
+        "about": {
+          "title": "Certeza en Oaxaca",
+          "text": "Comprometidos con la legalidad y la transparencia en cada acto jurídico.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Atención Profesional",
+          "text": "Estamos a su disposición para asesorarle en sus trámites notariales.",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "locationPage": {
+          "address": "Av. Hidalgo No. 507-A, Col. Centro, C.P. 68000, Oaxaca de Juárez, Oax.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.156543210987!2d-96.7254321!3d17.0612345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c7223f8e8e8e8e%3A0x8e8e8e8e8e8e8e8e!2sAv.%20Hidalgo%20507-A%2C%20Centro%2C%2068000%20Oaxaca%20de%20Juárez%2C%20Oax.!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "/uploads/not-136-oax/Angeles-Morales-Sanchez.vcf"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:9515287355"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:notariapublica136deoaxaca@gmail.com"
+            }
+          ],
+          "vCardUrl": "/uploads/not-136-oax/Angeles-Morales-Sanchez.vcf"
+        },
+        "servicesPage": {
+          "title": "Servicios Notariales",
+          "services": [
+            {
+              "title": "Sucesiones",
+              "description": "Tramitación legal de herencias y legados."
+            },
+            {
+              "title": "Testamentos",
+              "description": "Garantice su voluntad jurídica."
+            },
+            {
+              "title": "Fe de Hechos",
+              "description": "Certificación de situaciones con valor legal."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-03-02T18:25:49.072Z"
+        }
+      }
+    },
+    {
+      "id": "cor-43-cdmx",
+      "slug": "cor-43-cdmx",
+      "data": {
+        "theme": {
+          "color1": "#005B71",
+          "color2": "#ffffff",
+          "angle": "135",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Correduría Pública 43 - CDMX",
+          "description": "Mtro. Alejandro Pérez Corzo - Servicios mercantiles y valuación."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Mtro. Alejandro Pérez Corzo",
+          "subtitle": "Corredor Público 43 de la Ciudad de México",
+          "videoUrl": "",
+          "logoUrl": "/uploads/cor-43-cdmx/hero_logo.png",
+          "button": {
+            "text": "Agende una Cita",
+            "link": "/contacto"
+          },
+          "backgroundImageUrl": "/uploads/cor-43-cdmx/Mexico-City-GI-1064279806.jpg"
+        },
+        "about": {
+          "title": "Aliado de su Empresa",
+          "text": "Expertos en derecho mercantil, valuación y mediación. Brindamos agilidad y seguridad jurídica a sus negocios.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "¿Listo para Iniciar?",
+          "text": "Asesoría especializada para empresas y emprendedores en la Ciudad de México.",
+          "button": {
+            "text": "Ver Servicios Mercantiles",
+            "link": "/servicios"
+          }
+        },
+        "locationPage": {
+          "address": "Indiana 260, Despacho 701, Col. Ciudad de los Deportes, CDMX C.P. 03710",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.47321456789!2d-99.1804567!3d19.3856789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff7777777777%3A0x7777777777777777!2sIndiana%20260%2C%20Ciudad%20de%20los%20Deportes!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "/uploads/cor-43-cdmx/Alejandro-Perez-Corzo.vcf"
+            },
+            {
+              "iconUrl": "/wh.svg",
+              "text": "WhatsApp",
+              "link": "https://wa.me/525541331607"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:5595979304"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:corredor@cp43cdmx.com"
+            }
+          ],
+          "vCardUrl": "/uploads/cor-43-cdmx/Alejandro-Perez-Corzo.vcf"
+        },
+        "servicesPage": {
+          "title": "Servicios Mercantiles",
+          "services": [
+            {
+              "title": "Fe Pública Mercantil",
+              "description": "Constitución de sociedades y actas de asamblea."
+            },
+            {
+              "title": "Valuación",
+              "description": "Avalúos de inmuebles, marcas y empresas."
+            },
+            {
+              "title": "Mediación",
+              "description": "Solución alternativa de conflictos comerciales."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-03-02T19:11:26.320Z"
+        }
+      }
+    },
+    {
+      "id": "not-19-tj",
+      "slug": "not-19-tj",
+      "data": {
+        "theme": {
+          "color1": "#382F2D",
+          "color2": "#E58A53",
+          "angle": "135",
+          "fontImportUrl": "",
+          "fontFamily": ""
+        },
+        "metadata": {
+          "title": "Notaría Pública 19 - Tijuana",
+          "description": "Lic. María Esther López Estrada - Seguridad jurídica en la Zona Río."
+        },
+        "navigation": [
+          {
+            "text": "Inicio",
+            "link": "/"
+          },
+          {
+            "text": "Ubicación",
+            "link": "/ubicacion"
+          },
+          {
+            "text": "Contacto",
+            "link": "/contacto"
+          }
+        ],
+        "hero": {
+          "title": "Lic. María Esther López Estrada",
+          "subtitle": "Notaria Titular No. 19 de Tijuana",
+          "videoUrl": "",
+          "logoUrl": "/uploads/not-19-tj/hero_logo.png",
+          "button": {
+            "text": "Contactar",
+            "link": "/contacto"
+          },
+          "backgroundImageUrl": "/uploads/not-19-tj/tijuana.jpg"
+        },
+        "about": {
+          "title": "Compromiso y Ética",
+          "text": "Brindamos servicios notariales de excelencia en Tijuana, Baja California, con un enfoque en la agilidad y la seguridad de su patrimonio.",
+          "imageUrl": ""
+        },
+        "mainContact": {
+          "title": "Asesoría Notarial",
+          "text": "Estamos para servirle en todos sus trámites inmobiliarios y corporativos.",
+          "button": {
+            "text": "Nuestros Servicios",
+            "link": "/servicios"
+          }
+        },
+        "locationPage": {
+          "address": "Ave. José María Velasco 2440, PH2, Torre 21, Zona Río, C.P. 22010 Tijuana, B.C.",
+          "mapIframeUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.123456789012!2d-117.0156789!3d32.5245678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9484444444445%3A0x4444444444444444!2sNotar%C3%ADa%20P%C3%BAblica%2019!5e0!3m2!1ses-419!2smx!4v1710000000000!5m2!1ses-419!2smx"
+        },
+        "contactPage": {
+          "title": "Centro de Contacto",
+          "actions": [
+            {
+              "iconUrl": "/card.png",
+              "text": "Guardar contacto",
+              "link": "/uploads/not-19-tj/Maria-Esther-Lopez-Estrada.vcf"
+            },
+            {
+              "iconUrl": "/sm.webp",
+              "text": "Llamar Ahora",
+              "link": "tel:6646342919"
+            },
+            {
+              "iconUrl": "/ml.webp",
+              "text": "Enviar Email",
+              "link": "mailto:elopez@notaria19tj.com"
+            },
+            {
+              "iconUrl": "/uploads/not23edomex/icons/web.svg",
+              "text": "Página Web",
+              "link": "https://www.notaria19tj.com"
+            }
+          ],
+          "vCardUrl": "/uploads/not-19-tj/Maria-Esther-Lopez-Estrada.vcf"
+        },
+        "servicesPage": {
+          "title": "Servicios Notariales",
+          "services": [
+            {
+              "title": "Inmobiliarios",
+              "description": "Compraventas, hipotecas y donaciones."
+            },
+            {
+              "title": "Corporativos",
+              "description": "Constitución de sociedades y actas de asamblea."
+            },
+            {
+              "title": "Personales",
+              "description": "Testamentos y poderes notariales."
+            }
+          ]
+        },
+        "splashScreen": {
+          "enabled": false,
+          "videoUrl": ""
+        },
+        "lastModification": {
+          "timestamp": "2026-03-02T18:40:08.867Z"
         }
       }
     }

@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Alejandro Pérez Corzo
+ORG:Correduría Pública No. 43 CDMX
+TITLE:Corredor Público
+TEL;TYPE=WORK,VOICE:5595979304
+TEL;TYPE=WORK,VOICE:5595979305
+TEL;TYPE=CELL,VOICE:5541331607
+EMAIL:corredor@cp43cdmx.com
+ADR;TYPE=WORK:;;Indiana 260 Despacho 701, Col. Ciudad de los Deportes;CDMX;;03710;México
+END:VCARD

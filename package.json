@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "bun next dev --webpack",
     "dev:clean": "./scripts/clean-dev.sh",
-    "date": "npm run build && npm run dev:clean",
+    "date": "bun build && bun dev:clean",
     "build": "./scripts/build.sh",
-    "build:core": "next build --webpack",
-    "start": "next start"
+    "build:core": "bun next build --webpack",
+    "start": "bun next start"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
