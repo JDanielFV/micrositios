@@ -1,12 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { HexColorPicker } from 'react-colorful';
 import styles from '../../Admin.module.css';
 import Link from 'next/link';
 
+// New components
+import CollapsibleSection from '@/components/admin/CollapsibleSection';
+import PreviewPanel from '@/components/admin/PreviewPanel';
+import StatusBar from '@/components/admin/StatusBar';
+import ConfirmDialog from '@/components/admin/ConfirmDialog';
 
+// New hooks
+import { useAutoSave, validateSiteData, useHistory } from '@/hooks/useAdminForms';
 
 interface Service {
   title: string;
@@ -43,6 +50,70 @@ const defaultSiteData = {
   splashScreen: { enabled: false, videoUrl: "" }
 };
 
+// Icons for sections
+const sectionIcons = {
+  general: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+    </svg>
+  ),
+  theme: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a10 10 0 0 1 10 10" />
+    </svg>
+  ),
+  seo: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="11" cy="11" r="8" />
+      <path d="M21 21l-4.35-4.35" />
+    </svg>
+  ),
+  hero: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
+    </svg>
+  ),
+  about: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  ),
+  contact: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  ),
+  location: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+  services: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  ),
+  splash: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+      <line x1="7" y1="2" x2="7" y2="22" />
+      <line x1="17" y1="2" x2="17" y2="22" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <line x1="2" y1="7" x2="7" y2="7" />
+      <line x1="2" y1="17" x2="7" y2="17" />
+      <line x1="17" y1="17" x2="22" y2="17" />
+      <line x1="17" y1="7" x2="22" y2="7" />
+    </svg>
+  )
+};
+
 export default function EditSitePage() {
   const params = useParams();
   const router = useRouter();
@@ -61,7 +132,20 @@ export default function EditSitePage() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [validationErrors, setValidationErrors] = useState<any[]>([]);
 
+  // Preview panel state
+  const [showPreview, setShowPreview] = useState(false);
+  const [isSidePanel, setIsSidePanel] = useState(false);
+  const [panelWidth, setPanelWidth] = useState<'compact' | 'normal' | 'wide'>('normal');
+
+  // Delete confirmation
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  // History for undo/redo
+  const history = useHistory(defaultSiteData, 30);
+
+  // Load site data
   useEffect(() => {
     if (slug) {
       const fetchSiteData = async () => {
@@ -72,6 +156,8 @@ export default function EditSitePage() {
             const data = await response.json();
             setSiteData(data.data);
             setId(data.id);
+            // Important: initialize history with the REAL data
+            history.set(data.data);
           } else {
             setError('No se pudo cargar la información del sitio.');
           }
@@ -84,6 +170,52 @@ export default function EditSitePage() {
       fetchSiteData();
     }
   }, [slug]);
+
+  // Auto-save handler
+  const handleSave = useCallback(async (data: any) => {
+    const formData = new FormData();
+    const updatedSiteData = JSON.parse(JSON.stringify(data));
+
+    if (vCardFile) {
+      updatedSiteData.contactPage.vCardUrl = `/uploads/${slug}/${vCardFile.name}`;
+    }
+
+    formData.append('siteData', JSON.stringify(updatedSiteData));
+    if (imageFile) formData.append('imageFile', imageFile);
+    if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
+    if (heroAudioFile) formData.append('heroAudioFile', heroAudioFile);
+    if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
+    if (vCardFile) formData.append('vCardFile', vCardFile);
+    if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
+    if (heroBackgroundImageFile) formData.append('heroBackgroundImageFile', heroBackgroundImageFile);
+    
+    // Icon files handling
+    iconFiles.forEach((file, index) => {
+      if (file) {
+        formData.append(`iconFile-${index}`, file);
+      }
+    });
+
+    const response = await fetch(`/qrs/api/sites/${slug}`, {
+      method: 'PUT',
+      body: formData,
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Error al guardar');
+    }
+    
+    setMessage(result.message);
+  }, [slug, imageFile, heroVideoFile, heroAudioFile, heroLogoFile, vCardFile, splashVideoFile, heroBackgroundImageFile, iconFiles]);
+
+  // Auto-save hook
+  const { isSaving, lastSaved, hasUnsavedChanges, saveNow, error: saveError } = useAutoSave({
+    data: siteData,
+    saveInterval: 30000,
+    onSave: handleSave,
+    enabled: !loading
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -210,84 +342,175 @@ export default function EditSitePage() {
     }));
   };
 
-
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage('');
     setError('');
 
-    const formData = new FormData();
-
-    // Create a deep copy to modify
-    const updatedSiteData = JSON.parse(JSON.stringify(siteData));
-
-    if (vCardFile) {
-      updatedSiteData.contactPage.vCardUrl = `/uploads/${slug}/${vCardFile.name}`;
+    // Validate before saving
+    const errors = validateSiteData(siteData);
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      setError(`Por favor corrige ${errors.length} error(s) antes de guardar.`);
+      // Scroll to first error
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
 
-    formData.append('siteData', JSON.stringify(updatedSiteData));
-
-    if (imageFile) formData.append('imageFile', imageFile);
-    if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
-    if (heroAudioFile) formData.append('heroAudioFile', heroAudioFile);
-    if (heroLogoFile) formData.append('heroLogoFile', heroLogoFile);
-    if (vCardFile) formData.append('vCardFile', vCardFile);
-    if (splashVideoFile) formData.append('splashVideoFile', splashVideoFile);
-    if (heroBackgroundImageFile) formData.append('heroBackgroundImageFile', heroBackgroundImageFile);
-    iconFiles.forEach((file, index) => {
-      if (file) formData.append(`iconFile-${index}`, file);
-    });
+    setValidationErrors([]);
 
     try {
-      const response = await fetch(`/qrs/api/sites/${slug}`,
-        {
-          method: 'PUT',
-          body: formData,
-        }
-      );
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setMessage(result.message);
-        // Optionally redirect or update UI
-        // router.push('/admin'); // Redirect to admin list after successful update
-      } else {
-        setError(result.message);
-      }
+      await handleSave(siteData);
+      await saveNow();
     } catch (err) {
-      setError('Ocurrió un error al enviar el formulario.');
+      setError(err instanceof Error ? err.message : 'Ocurrió un error al guardar');
+    }
+  };
+
+  const handleUndo = () => {
+    const previousState = history.undo();
+    if (previousState) {
+      setSiteData(previousState);
+    }
+  };
+
+  const handleRedo = () => {
+    const nextState = history.redo();
+    if (nextState) {
+      setSiteData(nextState);
     }
   };
 
   if (loading) {
-    return <div className={styles.container}>Cargando...</div>;
+    return (
+      <div className={styles.container}>
+        <div className={styles.loadingState}>
+          <svg className={styles.loadingSpinner} width="48" height="48" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.25" />
+            <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" fill="none" />
+          </svg>
+          <p>Cargando datos del sitio...</p>
+        </div>
+      </div>
+    );
   }
 
-  if (error) {
+  if (error && !siteData.metadata) {
     return <div className={styles.container}><p className={styles.errorMessage}>{error}</p></div>;
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Editando Sitio: {id}</h1>
+    <div className={`${styles.editPageWrapper} ${isSidePanel && showPreview ? styles.withSidePanel : ''}`}>
+      <div className={styles.twoColumnLayout}>
+        {/* Left Column - Form */}
+        <div className={`${styles.formColumn} ${isSidePanel && showPreview ? styles.formColumnWithPanel : ''}`}>
+          {/* Header with actions */}
+          <div className={styles.pageHeader}>
+        <div>
+          <h1 className={styles.pageTitle}>Editando: {id}</h1>
+          <p className={styles.pageSubtitle}>{slug}</p>
+        </div>
+        <div className={styles.headerActions}>
+          <button
+            onClick={handleUndo}
+            disabled={!history.canUndo}
+            className={`${styles.iconButton} ${!history.canUndo ? styles.disabled : ''}`}
+            title="Deshacer (Ctrl+Z)"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 7v6h6" />
+              <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+            </svg>
+          </button>
+          <button
+            onClick={handleRedo}
+            disabled={!history.canRedo}
+            className={`${styles.iconButton} ${!history.canRedo ? styles.disabled : ''}`}
+            title="Rehacer (Ctrl+Y)"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 7v6h-6" />
+              <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 3.7" />
+            </svg>
+          </button>
+          <button
+            onClick={() => {
+              setIsSidePanel(!isSidePanel);
+              setShowPreview(true);
+            }}
+            className={`${styles.previewButton} ${isSidePanel && showPreview ? styles.active : ''}`}
+            title={isSidePanel ? "Cerrar panel lateral" : "Abrir panel lateral"}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="9" y1="3" x2="9" y2="21" />
+            </svg>
+            {isSidePanel && showPreview ? 'Panel' : 'Vista Previa'}
+          </button>
+          {isSidePanel && showPreview && (
+            <div className={styles.widthToggle}>
+              <button
+                onClick={() => setPanelWidth('compact')}
+                className={`${styles.widthButton} ${panelWidth === 'compact' ? styles.active : ''}`}
+                title="Panel estrecho"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="5" y="3" width="6" height="18" rx="1" />
+                  <rect x="13" y="3" width="6" height="18" rx="1" opacity="0.3" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setPanelWidth('normal')}
+                className={`${styles.widthButton} ${panelWidth === 'normal' ? styles.active : ''}`}
+                title="Panel normal"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="4" y="3" width="7" height="18" rx="1" />
+                  <rect x="13" y="3" width="7" height="18" rx="1" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setPanelWidth('wide')}
+                className={`${styles.widthButton} ${panelWidth === 'wide' ? styles.active : ''}`}
+                title="Panel ancho"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="6" height="18" rx="1" opacity="0.3" />
+                  <rect x="11" y="3" width="10" height="18" rx="1" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Validation errors */}
+      {validationErrors.length > 0 && (
+        <div className={styles.validationErrors}>
+          <h3>Errores de validación:</h3>
+          <ul>
+            {validationErrors.map((err, idx) => (
+              <li key={idx}>{err.message}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <form id="edit-site-form" onSubmit={handleSubmit} className={styles.form}>
-        {/* Form sections copied from AdminPage */}
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Datos Generales</h2>
+        {/* General Data */}
+        <CollapsibleSection title="Datos Generales" icon={sectionIcons.general}>
           <div className={styles.formGroup}>
             <label>ID</label>
-            <input type="text" value={id} readOnly />
+            <input type="text" value={id} readOnly className={styles.readonlyInput} />
           </div>
           <div className={styles.formGroup}>
             <label>Slug (URL)</label>
-            <input type="text" value={slug} readOnly />
+            <input type="text" value={slug} readOnly className={styles.readonlyInput} />
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Tema y Estilo</h2>
+        {/* Theme */}
+        <CollapsibleSection title="Tema y Estilo" icon={sectionIcons.theme} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="theme.color1">Color 1</label>
             <HexColorPicker color={siteData.theme.color1} onChange={(color) => handleColorChange('color1', color)} />
@@ -340,22 +563,22 @@ export default function EditSitePage() {
               placeholder="'Roboto', sans-serif"
             />
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Metadatos (SEO)</h2>
+        {/* SEO */}
+        <CollapsibleSection title="Metadatos (SEO)" icon={sectionIcons.seo} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="metadata.title">Título del Sitio</label>
             <input type="text" id="metadata.title" name="metadata.title" value={siteData.metadata.title} onChange={handleInputChange} />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="metadata.description">Descripción del Sitio</label>
-            <input type="text" id="metadata.description" name="metadata.description" value={siteData.metadata.description} onChange={handleInputChange} />
+            <textarea id="metadata.description" name="metadata.description" value={siteData.metadata.description} onChange={handleInputChange} rows={3} />
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Sección Principal (Hero)</h2>
+        {/* Hero */}
+        <CollapsibleSection title="Sección Principal (Hero)" icon={sectionIcons.hero}>
           <div className={styles.formGroup}>
             <label htmlFor="heroLogoFile">Logo (opcional)</label>
             <input
@@ -365,7 +588,7 @@ export default function EditSitePage() {
               accept="image/*"
               onChange={handleFileChange}
             />
-            {siteData.hero.logoUrl && <p>Logo actual: {siteData.hero.logoUrl}</p>}
+            {siteData.hero.logoUrl && <p className={styles.fileInfo}>Logo actual: {siteData.hero.logoUrl}</p>}
           </div>
 
           <div className={styles.formGroup}>
@@ -383,24 +606,24 @@ export default function EditSitePage() {
           <div className={styles.formGroup}>
             <label htmlFor="heroVideoFile">Nuevo Video de Fondo (Opcional)</label>
             <input type="file" id="heroVideoFile" name="heroVideoFile" accept="video/*" onChange={handleFileChange} />
-            {siteData.hero.videoUrl && <p>Video actual: {siteData.hero.videoUrl}</p>}
+            {siteData.hero.videoUrl && <p className={styles.fileInfo}>Video actual: {siteData.hero.videoUrl}</p>}
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="heroBackgroundImageFile">Imagen de Fondo del Hero (Opcional - si no hay video)</label>
             <input type="file" id="heroBackgroundImageFile" name="heroBackgroundImageFile" accept="image/*" onChange={handleFileChange} />
-            {(siteData.hero as any).backgroundImageUrl && <p>Imagen actual: {(siteData.hero as any).backgroundImageUrl}</p>}
+            {(siteData.hero as any).backgroundImageUrl && <p className={styles.fileInfo}>Imagen actual: {(siteData.hero as any).backgroundImageUrl}</p>}
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="heroAudioFile">Nuevo Audio (Opcional - se reproduce al interactuar)</label>
             <input type="file" id="heroAudioFile" name="heroAudioFile" accept="audio/*" onChange={handleFileChange} />
-            {(siteData.hero as any).audioUrl && <p>Audio actual: {(siteData.hero as any).audioUrl}</p>}
+            {(siteData.hero as any).audioUrl && <p className={styles.fileInfo}>Audio actual: {(siteData.hero as any).audioUrl}</p>}
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Sección "Acerca de"</h2>
+        {/* About */}
+        <CollapsibleSection title="Sección &quot;Acerca de&quot;" icon={sectionIcons.about}>
           <div className={styles.formGroup}>
             <label htmlFor="about.title">Título</label>
             <input type="text" id="about.title" name="about.title" value={siteData.about.title} onChange={handleInputChange} />
@@ -412,12 +635,12 @@ export default function EditSitePage() {
           <div className={styles.formGroup}>
             <label htmlFor="imageFile">Nueva Imagen de Fondo (Opcional)</label>
             <input type="file" id="imageFile" name="imageFile" onChange={handleFileChange} />
-            {siteData.about.imageUrl && <p>Imagen actual: {siteData.about.imageUrl}</p>}
+            {siteData.about.imageUrl && <p className={styles.fileInfo}>Imagen actual: {siteData.about.imageUrl}</p>}
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Sección Contacto Principal</h2>
+        {/* Main Contact */}
+        <CollapsibleSection title="Sección Contacto Principal" icon={sectionIcons.contact} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="mainContact.title">Título</label>
             <input type="text" id="mainContact.title" name="mainContact.title" value={siteData.mainContact.title} onChange={handleInputChange} />
@@ -430,10 +653,10 @@ export default function EditSitePage() {
             <label htmlFor="mainContact.button.text">Texto del Botón</label>
             <input type="text" id="mainContact.button.text" name="mainContact.button.text" value={siteData.mainContact.button.text} onChange={handleInputChange} />
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Página de Ubicación</h2>
+        {/* Location */}
+        <CollapsibleSection title="Página de Ubicación" icon={sectionIcons.location} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="locationPage.address">Dirección</label>
             <input type="text" id="locationPage.address" name="locationPage.address" value={siteData.locationPage.address} onChange={handleInputChange} />
@@ -442,10 +665,10 @@ export default function EditSitePage() {
             <label htmlFor="locationPage.mapIframeUrl">URL del Iframe de Google Maps</label>
             <input type="text" id="locationPage.mapIframeUrl" name="locationPage.mapIframeUrl" value={siteData.locationPage.mapIframeUrl} onChange={handleInputChange} />
           </div>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Página de Servicios</h2>
+        {/* Services */}
+        <CollapsibleSection title="Página de Servicios" icon={sectionIcons.services}>
           <div className={styles.formGroup}>
             <label htmlFor="servicesPage.title">Título de la Página</label>
             <input type="text" id="servicesPage.title" name="servicesPage.title" value={siteData.servicesPage.title} onChange={handleInputChange} />
@@ -464,10 +687,10 @@ export default function EditSitePage() {
             </div>
           ))}
           <button type="button" onClick={addService} className={styles.addButton}>Añadir Servicio</button>
-        </div>
+        </CollapsibleSection>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Página de Contacto</h2>
+        {/* Contact Page */}
+        <CollapsibleSection title="Página de Contacto" icon={sectionIcons.contact} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="contactPage.title">Título de la Página</label>
             <input
@@ -488,7 +711,7 @@ export default function EditSitePage() {
               name="contactPage.vCardUrl"
               value={siteData.contactPage.vCardUrl}
               onChange={handleInputChange}
-              readOnly // This will be auto-generated
+              readOnly
             />
           </div>
           <div className={styles.formGroup}>
@@ -501,7 +724,7 @@ export default function EditSitePage() {
               onChange={handleFileChange}
             />
             {siteData.contactPage.vCardUrl && (
-              <p>Archivo actual: <a href={`/qrs${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
+              <p className={styles.fileInfo}>Archivo actual: <a href={`/qrs${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
             )}
           </div>
 
@@ -512,11 +735,10 @@ export default function EditSitePage() {
                 <label>Icono (SVG)</label>
                 <input
                   type="file"
-                  name={`iconFile-${index}`} // Unique name for each file input
+                  name={`iconFile-${index}`}
                   accept=".svg"
                   onChange={(e) => handleIconFileChange(index, e)}
-                  disabled={index < 4} // Disable file input for fixed icons
-                  title={index < 4 ? 'Icono fijo para acciones básicas' : ''}
+                  disabled={index < 4}
                 />
                 {action.iconUrl && (
                   <div className={styles.iconPreview}>
@@ -532,8 +754,7 @@ export default function EditSitePage() {
                   name="text"
                   value={action.text}
                   onChange={(e) => handleContactActionChange(index, e)}
-                  readOnly={index < 4 && action.text !== 'Guardar contacto'} // Make first 4 texts read-only unless it's the vCard button
-                  title={index < 4 && action.text !== 'Guardar contacto' ? 'Texto fijo para acciones básicas' : ''}
+                  readOnly={index < 4 && action.text !== 'Guardar contacto'}
                 />
               </div>
               <div className={styles.formGroup}>
@@ -544,10 +765,9 @@ export default function EditSitePage() {
                   value={action.link}
                   onChange={(e) => handleContactActionChange(index, e)}
                   disabled={action.text === 'Guardar contacto'}
-                  title={action.text === 'Guardar contacto' ? 'El enlace se genera automáticamente para la vCard' : ''}
                 />
               </div>
-              {index >= 4 && ( // Only show remove button for actions beyond the first 4
+              {index >= 4 && (
                 <button type="button" onClick={() => removeContactAction(index)} className={styles.removeButton}>
                   Eliminar Acción
                 </button>
@@ -557,11 +777,10 @@ export default function EditSitePage() {
           <button type="button" onClick={addContactAction} className={styles.addButton}>
             Añadir Acción de Contacto
           </button>
-        </div>
+        </CollapsibleSection>
 
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Pantalla de Bienvenida (Splash Screen)</h2>
+        {/* Splash Screen */}
+        <CollapsibleSection title="Pantalla de Bienvenida (Splash Screen)" icon={sectionIcons.splash} defaultOpen={false}>
           <div className={styles.formGroup}>
             <label htmlFor="splashScreen.enabled">Habilitar Splash Screen</label>
             <input
@@ -573,6 +792,7 @@ export default function EditSitePage() {
                 ...prevData,
                 splashScreen: { ...prevData.splashScreen, enabled: e.target.checked }
               }))}
+              className={styles.checkbox}
             />
           </div>
           <div className={styles.formGroup}>
@@ -584,15 +804,25 @@ export default function EditSitePage() {
               accept="video/*"
               onChange={handleFileChange}
             />
-            {siteData.splashScreen.videoUrl && <p>Video actual: {siteData.splashScreen.videoUrl}</p>}
+            {siteData.splashScreen.videoUrl && <p className={styles.fileInfo}>Video actual: {siteData.splashScreen.videoUrl}</p>}
           </div>
-        </div>
-
+        </CollapsibleSection>
       </form>
-      {message && <p className={styles.successMessage}>{message}</p>
-      }
+
+      {/* Messages */}
+      {message && <p className={styles.successMessage}>{message}</p>}
       {error && <p className={styles.errorMessage}>{error}</p>}
 
+      {/* Status Bar */}
+      <StatusBar
+        isSaving={isSaving}
+        lastSaved={lastSaved}
+        hasUnsavedChanges={hasUnsavedChanges}
+        error={saveError || (validationErrors.length > 0 ? `${validationErrors.length} errores de validación` : null)}
+        success={message}
+      />
+
+      {/* Bottom Action Bar */}
       <div className={styles.bottomBar}>
         <button
           type="button"
@@ -604,13 +834,40 @@ export default function EditSitePage() {
           </svg>
           <span>Volver</span>
         </button>
-        <button type="submit" form="edit-site-form" className={`${styles.bottomBarButton} ${styles.saveButton}`}>
+        <button
+          type="button"
+          onClick={async () => {
+            try {
+              await saveNow();
+            } catch (err) {
+              // Error already shown in StatusBar
+            }
+          }}
+          disabled={isSaving || !hasUnsavedChanges}
+          className={`${styles.bottomBarButton} ${styles.saveButton} ${isSaving || !hasUnsavedChanges ? styles.disabled : ''}`}
+        >
           <svg viewBox="0 0 24 24" width="24" height="24">
             <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
           </svg>
-          <span>Guardar</span>
+          <span>{isSaving ? 'Guardando...' : hasUnsavedChanges ? 'Guardar' : 'Guardado'}</span>
         </button>
       </div>
-    </div >
+        </div>
+
+        {/* Right Column - Preview Panel */}
+        {isSidePanel && showPreview && (
+          <div className={styles.previewColumn}>
+            <PreviewPanel
+              siteData={siteData}
+              slug={slug}
+              isVisible={true}
+              isSidePanel={true}
+              panelWidth={panelWidth}
+              onClose={() => setShowPreview(false)}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

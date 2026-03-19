@@ -1,50 +1,44 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const visitsFilePath = path.join(process.cwd(), 'public', 'visits.json');
-
-// Helper to read visits
-function getVisits() {
-    if (!fs.existsSync(visitsFilePath)) {
-        return [];
-    }
-    const fileContent = fs.readFileSync(visitsFilePath, 'utf-8');
-    try {
-        return JSON.parse(fileContent);
-    } catch (error) {
-        return [];
-    }
-}
+import { visitQueries } from '@/lib/db';
 
 // GET: Retrieve all visits
 export async function GET() {
-    const visits = getVisits();
-    return NextResponse.json(visits);
+    try {
+        const visits = await visitQueries.getRecent(1000);
+        return NextResponse.json(visits);
+    } catch (error) {
+        console.error('Error fetching visits:', error);
+        return NextResponse.json(
+            { error: 'Failed to fetch visits' },
+            { status: 500 }
+        );
+    }
 }
 
 // POST: Record a new visit
 export async function POST(request: Request) {
     try {
-        const { page } = await request.json();
+        const { page, slug } = await request.json();
 
-        // Get IP address (simplified for Next.js)
-        const ip = request.headers.get('x-forwarded-for') || 'unknown';
+        // Get IP address
+        const forwardedFor = request.headers.get('x-forwarded-for');
+        const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
 
-        const newVisit = {
-            timestamp: new Date().toISOString(),
-            page,
-            ip
-        };
+        // Get user agent
+        const userAgent = request.headers.get('user-agent') || 'unknown';
 
-        const visits = getVisits();
-        visits.push(newVisit);
+        // Get referrer
+        const referrer = request.headers.get('referer') || request.headers.get('referrer') || '';
 
-        fs.writeFileSync(visitsFilePath, JSON.stringify(visits, null, 2));
+        // Record visit
+        await visitQueries.record(slug || 'unknown', page || 'unknown', ip, userAgent, referrer);
 
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error('Error recording visit:', error);
-        return NextResponse.json({ error: 'Failed to record visit' }, { status: 500 });
+        return NextResponse.json(
+            { error: 'Failed to record visit' },
+            { status: 500 }
+        );
     }
 }

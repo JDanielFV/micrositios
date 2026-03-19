@@ -1,9 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { HexColorPicker } from 'react-colorful';
-import Link from 'next/link';
 import styles from './Admin.module.css';
+import Link from 'next/link';
+
+// New components
+import SiteSearch from '@/components/admin/SiteSearch';
+import ConfirmDialog from '@/components/admin/ConfirmDialog';
+import CollapsibleSection from '@/components/admin/CollapsibleSection';
+import StatusBar from '@/components/admin/StatusBar';
 
 interface Service {
   title: string;
@@ -82,6 +89,7 @@ const defaultSiteData = {
 };
 
 export default function AdminPage() {
+  const router = useRouter();
   const [id, setId] = useState('');
   const [slug, setSlug] = useState('');
   const [siteData, setSiteData] = useState(defaultSiteData);
@@ -99,6 +107,11 @@ export default function AdminPage() {
 
   const [isExistingSitesOpen, setIsExistingSitesOpen] = useState(true);
   const [isNewSiteOpen, setIsNewSiteOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // AI Generation State
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -109,6 +122,9 @@ export default function AdminPage() {
   // Analytics State
   const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
   const [visits, setVisits] = useState<any[]>([]);
+
+  // Delete confirmation
+  const [siteToDelete, setSiteToDelete] = useState<string | null>(null);
 
   const handleGenerate = async () => {
     if (!aiPrompt.trim()) return;
@@ -130,7 +146,6 @@ export default function AdminPage() {
         setSiteData(prev => ({
           ...prev,
           ...result.data,
-          // Preserve empty file states as they can't be generated
         }));
         setMessage('¡Sitio generado con IA exitosamente! Revisa los campos.');
         setIsAiOpen(false);
@@ -146,10 +161,17 @@ export default function AdminPage() {
 
   const fetchSites = async () => {
     try {
+      console.log('Fetching sites from /qrs/api/sites...');
       const response = await fetch('/qrs/api/sites');
+      console.log('Response status:', response.status);
       if (response.ok) {
         const data = await response.json();
+        console.log('Sites data:', data);
         setSites(data);
+      } else {
+        console.error('Failed to fetch sites:', response.status);
+        const error = await response.json();
+        console.error('Error details:', error);
       }
     } catch (err) {
       console.error("Error fetching sites:", err);
@@ -162,7 +184,7 @@ export default function AdminPage() {
       if (response.ok) {
         const data = await response.json();
         if (Array.isArray(data)) {
-          setVisits(data.reverse()); // Show newest first
+          setVisits(data.reverse());
         }
       }
     } catch (err) {
@@ -300,23 +322,32 @@ export default function AdminPage() {
     }));
   };
 
-  const handleDelete = async (slug: string) => {
-    if (window.confirm(`¿Estás seguro de que quieres eliminar el sitio "${slug}"? Esta acción no se puede deshacer.`)) {
-      try {
-        const response = await fetch(`/qrs/api/sites/${slug}`, {
-          method: 'DELETE',
-        });
-        const result = await response.json();
-        if (response.ok) {
-          setMessage(result.message);
-          fetchSites(); // Refresh the list
-        } else {
-          setError(result.message);
-        }
-      } catch (err) {
-        setError('Ocurrió un error al eliminar el sitio.');
+  const confirmDelete = (slug: string) => {
+    setSiteToDelete(slug);
+  };
+
+  const handleDelete = async () => {
+    if (!siteToDelete) return;
+
+    try {
+      const response = await fetch(`/qrs/api/sites/${siteToDelete}`, {
+        method: 'DELETE',
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setMessage(result.message);
+        fetchSites();
+        setSiteToDelete(null);
+      } else {
+        setError(result.message);
       }
+    } catch (err) {
+      setError('Ocurrió un error al eliminar el sitio.');
     }
+  };
+
+  const handleEdit = (slug: string) => {
+    router.push(`/admin/edit/${slug}`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -349,14 +380,13 @@ export default function AdminPage() {
     try {
       const response = await fetch('/qrs/api/sites', {
         method: 'POST',
-        body: formData, // No headers needed, browser sets it
+        body: formData,
       });
 
       const result = await response.json();
 
       if (response.ok) {
         setMessage(result.message);
-        // Optionally reset form
         setId('');
         setSlug('');
         setSiteData(defaultSiteData);
@@ -366,7 +396,7 @@ export default function AdminPage() {
         setHeroLogoFile(null);
         setVCardFile(null);
         setSplashVideoFile(null);
-        fetchSites(); // Refresh the list
+        fetchSites();
       } else {
         setError(result.message);
       }
@@ -378,126 +408,127 @@ export default function AdminPage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.mainTitle}>Constructor de micrositios</h1>
-      <br />
-
-      {/* Analytics Section */}
-      <div className={styles.section} style={{ marginBottom: '3rem' }}>
-        <h2
-          className={styles.sectionTitle}
-          onClick={() => setIsAnalyticsOpen(!isAnalyticsOpen)}
-          style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-        >
-          Estadísticas de Visitas
-          <span>{isAnalyticsOpen ? '▼' : '▶'}</span>
-        </h2>
-        {isAnalyticsOpen && (
-          <div>
-            <div className={styles.statsGrid}>
-              <div className={styles.statCard}>
-                <div className={styles.statValue}>{visits.length}</div>
-                <div className={styles.statLabel}>Visitas Totales</div>
-              </div>
-              <div className={styles.statCard}>
-                <div className={styles.statValue}>
-                  {new Set(visits.map(v => v.ip)).size}
-                </div>
-                <div className={styles.statLabel}>Usuarios Únicos</div>
-              </div>
-              <div className={styles.statCard}>
-                <div className={styles.statValue}>
-                  {visits.filter(v => {
-                    const date = new Date(v.timestamp);
-                    const now = new Date();
-                    return date.getDate() === now.getDate() &&
-                      date.getMonth() === now.getMonth() &&
-                      date.getFullYear() === now.getFullYear();
-                  }).length}
-                </div>
-                <div className={styles.statLabel}>Visitas Hoy</div>
-              </div>
-            </div>
-
-            <h3 className={styles.subSectionTitle}>Páginas Más Visitadas</h3>
-            <div className={styles.tableContainer}>
-              <table className={styles.analyticsTable}>
-                <thead>
-                  <tr>
-                    <th>Página</th>
-                    <th>Visitas</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(visits.reduce((acc, curr) => {
-                    acc[curr.page] = (acc[curr.page] || 0) + 1;
-                    return acc;
-                  }, {} as Record<string, number>))
-                    .sort(([, a], [, b]) => (b as number) - (a as number))
-                    .slice(0, 5)
-                    .map(([page, count]) => (
-                      <tr key={page}>
-                        <td>{page}</td>
-                        <td>{count as number}</td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-
-            <h3 className={styles.subSectionTitle}>Registro Reciente</h3>
-            <div className={styles.tableContainer}>
-              <table className={styles.analyticsTable}>
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Página</th>
-                    <th>IP</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visits.slice(0, 10).map((visit, index) => (
-                    <tr key={index}>
-                      <td>{visit.timestamp}</td>
-                      <td>{visit.page}</td>
-                      <td>{visit.ip}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      
+      {!mounted ? (
+        <div className={styles.loadingState}>
+          <div className={styles.loadingSpinner}>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+            </svg>
           </div>
-        )}
-      </div>
-      <div className={styles.section} style={{ marginBottom: '3rem' }}>
-        <h2
-          className={styles.sectionTitle}
+          <p>Cargando panel...</p>
+        </div>
+      ) : (
+        <>
+          {/* Analytics Section */}
+      <CollapsibleSection 
+        title={`Estadísticas de Visitas (${visits.length} visitas)`}
+        defaultOpen={false}
+        icon={
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+        }
+      >
+        <div className={styles.statsGrid}>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>{visits.length}</div>
+            <div className={styles.statLabel}>Visitas Totales</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>
+              {new Set(visits.map(v => v.ip)).size}
+            </div>
+            <div className={styles.statLabel}>Usuarios Únicos</div>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.statValue}>
+              {visits.filter(v => {
+                const date = new Date(v.timestamp);
+                const now = new Date();
+                return date.getDate() === now.getDate() &&
+                  date.getMonth() === now.getMonth() &&
+                  date.getFullYear() === now.getFullYear();
+              }).length}
+            </div>
+            <div className={styles.statLabel}>Visitas Hoy</div>
+          </div>
+        </div>
+
+        <h3 className={styles.subSectionTitle}>Páginas Más Visitadas</h3>
+        <div className={styles.tableContainer}>
+          <table className={styles.analyticsTable}>
+            <thead>
+              <tr>
+                <th>Página</th>
+                <th>Visitas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(visits.reduce((acc, curr) => {
+                acc[curr.page] = (acc[curr.page] || 0) + 1;
+                return acc;
+              }, {} as Record<string, number>))
+                .sort(([, a], [, b]) => (b as number) - (a as number))
+                .slice(0, 5)
+                .map(([page, count]) => (
+                  <tr key={page}>
+                    <td>{page}</td>
+                    <td>{count as number}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className={styles.subSectionTitle}>Registro Reciente</h3>
+        <div className={styles.tableContainer}>
+          <table className={styles.analyticsTable}>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Página</th>
+                <th>IP</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visits.slice(0, 10).map((visit, index) => (
+                <tr key={index}>
+                  <td>{visit.timestamp}</td>
+                  <td>{visit.page}</td>
+                  <td>{visit.ip}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </CollapsibleSection>
+
+      {/* Existing Sites with Search */}
+      <div className={styles.section}>
+        <div 
+          className={styles.sectionHeader}
           onClick={() => setIsExistingSitesOpen(!isExistingSitesOpen)}
-          style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
-          Sitios Existentes
-          <span>{isExistingSitesOpen ? '▼' : '▶'}</span>
-        </h2>
-        {isExistingSitesOpen && (
-          <ul className={styles.siteList}>
-            {sites.map(site => (
-              <li key={site.id} className={styles.siteItem}>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span>{site.data.metadata.title} ({site.slug})</span>
-                  {site.data.lastModification && (
-                    <span translate="no" style={{ fontSize: '0.8rem', color: '#888', marginTop: '4px' }}>
-                      Última mod: {new Date(site.data.lastModification.timestamp).toLocaleString()}
-                    </span>
-                  )}
-                </div>
-                <div className={styles.siteActions}>
-                  <Link href={`/admin/edit/${site.slug}`} className={styles.editButton}>Editar</Link>
-                  <button onClick={() => handleDelete(site.slug)} className={styles.removeButton}>Borrar</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <h2 className={styles.sectionTitle}>
+            <span style={{ marginRight: '0.5rem' }}>📁</span>
+            Sitios Existentes
+          </h2>
+          <span className={styles.chevron}>{mounted ? (isExistingSitesOpen ? '▼' : '▶') : '▼'}</span>
+        </div>
+        
+        {mounted && isExistingSitesOpen && (
+          <SiteSearch 
+            sites={sites}
+            onEdit={handleEdit}
+            onDelete={confirmDelete}
+          />
         )}
       </div>
 
+      {/* New Site Form */}
       <div className={styles.section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2
@@ -505,6 +536,7 @@ export default function AdminPage() {
             onClick={() => setIsNewSiteOpen(!isNewSiteOpen)}
             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', margin: 0, flex: 1 }}
           >
+            <span style={{ marginRight: '0.5rem' }}>➕</span>
             Añadir Nuevo Sitio
             <span style={{ marginLeft: '10px' }}>{isNewSiteOpen ? '▼' : '▶'}</span>
           </h2>
@@ -514,13 +546,17 @@ export default function AdminPage() {
             className={styles.aiButton}
             onClick={(e) => {
               e.stopPropagation();
-              setIsNewSiteOpen(true); // Ensure section is open
+              setIsNewSiteOpen(true);
               setIsAiOpen(!isAiOpen);
             }}
           >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z" />
+              <path d="M12 8v4l3 3" />
+            </svg>
             Gemini AI
           </button>
-        </div>{/* Header End */}
+        </div>
 
         {isAiOpen && (
           <div className={styles.aiContainer}>
@@ -555,8 +591,7 @@ export default function AdminPage() {
 
         {isNewSiteOpen && (
           <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Datos Generales</h2>
+            <CollapsibleSection title="Datos Generales" defaultOpen={true}>
               <div className={styles.formGroup}>
                 <label htmlFor="id">ID</label>
                 <input
@@ -577,10 +612,9 @@ export default function AdminPage() {
                   required
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Tema y Estilo</h2>
+            <CollapsibleSection title="Tema y Estilo" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="theme.color1">Color 1</label>
                 <HexColorPicker color={siteData.theme.color1} onChange={(color) => handleColorChange('color1', color)} />
@@ -633,10 +667,9 @@ export default function AdminPage() {
                   placeholder="'Roboto', sans-serif"
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Metadatos (SEO)</h2>
+            <CollapsibleSection title="Metadatos (SEO)" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="metadata.title">Título del Sitio</label>
                 <input
@@ -657,10 +690,9 @@ export default function AdminPage() {
                   onChange={handleInputChange}
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Sección Principal (Hero)</h2>
+            <CollapsibleSection title="Sección Principal (Hero)" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="heroLogoFile">Logo (opcional)</label>
                 <input
@@ -735,20 +767,9 @@ export default function AdminPage() {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="heroVideoFile">Video de Fondo</label>
-                <input
-                  type="file"
-                  id="heroVideoFile"
-                  name="heroVideoFile"
-                  accept="video/*"
-                  onChange={handleFileChange}
-                />
-              </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Sección "Acerca de"</h2>
+            <CollapsibleSection title="Sección &quot;Acerca de&quot;" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="about.title">Título</label>
                 <input
@@ -766,11 +787,11 @@ export default function AdminPage() {
                   name="about.text"
                   value={siteData.about.text}
                   onChange={handleInputChange}
-                  rows={5}
+                  rows={4}
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="imageFile">Imagen de Fondo</label>
+                <label htmlFor="imageFile">Imagen de Fondo (opcional)</label>
                 <input
                   type="file"
                   id="imageFile"
@@ -778,10 +799,9 @@ export default function AdminPage() {
                   onChange={handleFileChange}
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Sección Contacto Principal</h2>
+            <CollapsibleSection title="Contacto Principal" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="mainContact.title">Título</label>
                 <input
@@ -812,10 +832,9 @@ export default function AdminPage() {
                   onChange={handleInputChange}
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Página de Ubicación</h2>
+            <CollapsibleSection title="Ubicación" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="locationPage.address">Dirección</label>
                 <input
@@ -836,10 +855,9 @@ export default function AdminPage() {
                   onChange={handleInputChange}
                 />
               </div>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Página de Servicios</h2>
+            <CollapsibleSection title="Servicios" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="servicesPage.title">Título de la Página</label>
                 <input
@@ -878,10 +896,9 @@ export default function AdminPage() {
               <button type="button" onClick={addService} className={styles.addButton}>
                 Añadir Servicio
               </button>
-            </div>
+            </CollapsibleSection>
 
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Página de Contacto</h2>
+            <CollapsibleSection title="Página de Contacto" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="contactPage.title">Título de la Página</label>
                 <input
@@ -902,7 +919,7 @@ export default function AdminPage() {
                   name="contactPage.vCardUrl"
                   value={siteData.contactPage.vCardUrl}
                   onChange={handleInputChange}
-                  readOnly // This will be auto-generated
+                  readOnly
                 />
               </div>
               <div className={styles.formGroup}>
@@ -914,9 +931,6 @@ export default function AdminPage() {
                   accept=".vcf"
                   onChange={handleFileChange}
                 />
-                {siteData.contactPage.vCardUrl && (
-                  <p>Archivo actual: <a href={`/qrs${siteData.contactPage.vCardUrl}`} target="_blank" rel="noopener noreferrer">{siteData.contactPage.vCardUrl}</a></p>
-                )}
               </div>
 
               <h3 className={styles.subSectionTitle}>Acciones de Contacto</h3>
@@ -926,11 +940,10 @@ export default function AdminPage() {
                     <label>Icono (SVG)</label>
                     <input
                       type="file"
-                      name={`iconFile-${index}`} // Unique name for each file input
+                      name={`iconFile-${index}`}
                       accept=".svg"
                       onChange={(e) => handleIconFileChange(index, e)}
-                      disabled={index < 4} // Disable file input for fixed icons
-                      title={index < 4 ? 'Icono fijo para acciones básicas' : ''}
+                      disabled={index < 4}
                     />
                     {action.iconUrl && (
                       <div className={styles.iconPreview}>
@@ -946,8 +959,7 @@ export default function AdminPage() {
                       name="text"
                       value={action.text}
                       onChange={(e) => handleContactActionChange(index, e)}
-                      readOnly={index < 4 && action.text !== 'Guardar contacto'} // Make first 4 texts read-only unless it's the vCard button
-                      title={index < 4 && action.text !== 'Guardar contacto' ? 'Texto fijo para acciones básicas' : ''}
+                      readOnly={index < 4 && action.text !== 'Guardar contacto'}
                     />
                   </div>
                   <div className={styles.formGroup}>
@@ -958,10 +970,9 @@ export default function AdminPage() {
                       value={action.link}
                       onChange={(e) => handleContactActionChange(index, e)}
                       disabled={action.text === 'Guardar contacto'}
-                      title={action.text === 'Guardar contacto' ? 'El enlace se genera automáticamente para la vCard' : ''}
                     />
                   </div>
-                  {index >= 4 && ( // Only show remove button for actions beyond the first 4
+                  {index >= 4 && (
                     <button type="button" onClick={() => removeContactAction(index)} className={styles.removeButton}>
                       Eliminar Acción
                     </button>
@@ -971,11 +982,9 @@ export default function AdminPage() {
               <button type="button" onClick={addContactAction} className={styles.addButton}>
                 Añadir Acción de Contacto
               </button>
-            </div>
+            </CollapsibleSection>
 
-
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Pantalla de Bienvenida (Splash Screen)</h2>
+            <CollapsibleSection title="Splash Screen" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="splashScreen.enabled">Habilitar Splash Screen</label>
                 <input
@@ -990,7 +999,7 @@ export default function AdminPage() {
                 />
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="splashVideoFile">Video de Fondo para Splash (Opcional)</label>
+                <label htmlFor="splashVideoFile">Video de Fondo para Splash</label>
                 <input
                   type="file"
                   id="splashVideoFile"
@@ -998,18 +1007,35 @@ export default function AdminPage() {
                   accept="video/*"
                   onChange={handleFileChange}
                 />
-                {siteData.splashScreen.videoUrl && <p>Video actual: {siteData.splashScreen.videoUrl}</p>}
               </div>
+            </CollapsibleSection>
+
+            <div className={styles.formActions}>
+              <button type="submit" className={styles.button}>
+                Crear Sitio
+              </button>
             </div>
-
-
-            <button type="submit" className={styles.button}>Crear Sitio</button>
           </form>
         )}
       </div>
+
+        </>
+      )}
+
       {message && <p className={styles.successMessage}>{message}</p>}
       {error && <p className={styles.errorMessage}>{error}</p>}
 
-    </div >
+      {/* Delete Confirmation Dialog */}
+      <ConfirmDialog
+        isOpen={!!siteToDelete}
+        title="Eliminar Sitio"
+        message={`¿Estás seguro de que quieres eliminar el sitio "${siteToDelete}"? Esta acción no se puede deshacer.`}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+        variant="danger"
+        onConfirm={handleDelete}
+        onCancel={() => setSiteToDelete(null)}
+      />
+    </div>
   );
 }

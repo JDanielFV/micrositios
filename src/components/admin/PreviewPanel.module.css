@@ -1,0 +1,321 @@
+/* Base Container */
+.container {
+  width: 500px;
+  height: 100vh;
+  background: var(--admin-preview-bg, #0d0d0d);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Default: fixed position for modal/overlay mode */
+.container:not(.embedded) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border-left: 1px solid var(--admin-container-border, rgba(255, 255, 255, 0.08));
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Embedded mode - when inside two-column layout */
+.container.embedded {
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-left: none;
+  box-shadow: none;
+  z-index: auto;
+}
+
+/* Width Variations - only apply when NOT embedded */
+.container:not(.embedded).compact {
+  width: 400px;
+}
+
+.container:not(.embedded).normal {
+  width: 500px;
+}
+
+.container:not(.embedded).wide {
+  width: 650px;
+}
+
+/* Embedded always takes full width of parent */
+.container.embedded.compact,
+.container.embedded.normal,
+.container.embedded.wide {
+  width: 100% !important;
+}
+
+/* Side Panel Mode - only when NOT embedded */
+.container:not(.embedded).sidePanel {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Mode (Mobile) */
+.container.modal {
+  width: 100%;
+  max-width: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #111111;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #e5e5e5;
+}
+
+.headerLeft h3 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.openLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.15s ease;
+}
+
+.openLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.slugBadge {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'SF Mono', 'Monaco', monospace;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.closeButton {
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  border-radius: 6px;
+  padding: 0.375rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Iframe Container */
+.iframeContainer {
+  flex: 1;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  display: block;
+}
+
+/* Loading Overlay */
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+
+.spinner {
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.2);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingOverlay p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Error Overlay */
+.errorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  text-align: center;
+}
+
+.errorOverlay svg {
+  margin-bottom: 0.75rem;
+  color: rgba(255, 69, 58, 0.5);
+}
+
+.errorOverlay p {
+  margin: 0 0 1rem 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.retryButton {
+  background: rgba(78, 117, 246, 0.15);
+  border: 1px solid rgba(78, 117, 246, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  color: #6295F8;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.retryButton:hover {
+  background: rgba(78, 117, 246, 0.2);
+  border-color: rgba(78, 117, 246, 0.5);
+  color: #fff;
+}
+
+/* Footer */
+.footer {
+  height: 40px;
+  padding: 0 1rem;
+  background: #111111;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .container {
+    width: 450px;
+  }
+  
+  .container.compact {
+    width: 380px;
+  }
+  
+  .container.normal {
+    width: 450px;
+  }
+  
+  .container.wide {
+    width: 550px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 400px;
+  }
+  
+  .container.compact {
+    width: 350px;
+  }
+  
+  .container.normal {
+    width: 400px;
+  }
+  
+  .container.wide {
+    width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100% !important;
+  }
+  
+  .sidePanel {
+    animation: fadeIn 0.2s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

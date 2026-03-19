@@ -8,10 +8,15 @@
     "date": "bun build && bun dev:clean",
     "build": "./scripts/build.sh",
     "build:core": "bun next build --webpack",
-    "start": "bun next start"
+    "start": "bun next start",
+    "db:migrate": "bun run scripts/migrate-from-json.ts",
+    "db:list": "bun run scripts/list-sites.ts",
+    "db:create": "bun run scripts/create-site.ts",
+    "db:export": "bun run scripts/export-db.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@libsql/client": "^0.17.0",
     "@vercel/speed-insights": "^1.2.0",
     "next": "^16.1.0",
     "react": "latest",
@@ -20,9 +25,11 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "bun-types": "^1.3.10",
     "ignore-loader": "^0.1.2",
     "tailwindcss": "^4",
     "typescript": "^5"

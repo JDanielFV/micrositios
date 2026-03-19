@@ -1,0 +1,122 @@
+.container {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  animation: slideUpFade 0.3s ease forwards;
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  font-size: 0.825rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.saving,
+.unsaved,
+.saved,
+.ready {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.saving {
+  color: #ffd60a;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.unsaved {
+  color: #ff9f0a;
+}
+
+.saved {
+  color: #30d158;
+}
+
+.ready {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-size: 0.825rem;
+  pointer-events: auto;
+  animation: fadeIn 0.2s ease;
+}
+
+.error {
+  color: #ff453a;
+  border-color: rgba(255, 69, 58, 0.3);
+}
+
+.success {
+  color: #30d158;
+  border-color: rgba(48, 209, 88, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    bottom: 90px;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+  }
+
+  .status,
+  .message {
+    justify-content: center;
+  }
+}
