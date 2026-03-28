@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-# Fetch available sites from db.json using bun directly
+# Fetch available sites from SQLite using a dedicated script
 echo "Fetching available sites..."
-SLUGS=$(bun -e "const db = require('./db.json'); console.log(db.sites.map(s => s.slug).join(' '));")
+SLUGS=$(bun scripts/get-slugs.ts)
 
 # Convert SLUGS to array
 IFS=' ' read -r -a SLUG_ARRAY <<< "$SLUGS"
