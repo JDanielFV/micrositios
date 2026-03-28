@@ -16,6 +16,14 @@ interface VCardModalProps {
   };
 }
 
+const getSafeUrl = (url: string | null) => {
+  if (!url) return '';
+  if (url.startsWith('blob:') || url.startsWith('http')) return url;
+  // If it already starts with /qrs, don't duplicate it
+  if (url.startsWith('/qrs')) return url;
+  return `/qrs${url}`;
+};
+
 export default function VCardModal({ isOpen, onClose, onSave, data }: VCardModalProps) {
   const [mounted, setMounted] = useState(false);
 
@@ -36,7 +44,7 @@ export default function VCardModal({ isOpen, onClose, onSave, data }: VCardModal
         <div className={styles.previewCard}>
           <div className={styles.logoContainer}>
             {data.logoPreview ? (
-              <img src={data.logoPreview} alt="Logo" className={styles.logo} />
+              <img src={getSafeUrl(data.logoPreview)} alt="Logo" className={styles.logo} />
             ) : (
               <div style={{ color: '#ccc', fontSize: '0.7rem' }}>Sin Logo</div>
             )}
