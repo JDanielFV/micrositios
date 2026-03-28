@@ -10,6 +10,7 @@ import Link from 'next/link';
 import PreviewPanel from '@/components/admin/PreviewPanel';
 import StatusBar from '@/components/admin/StatusBar';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
+import VCardModal from '@/components/admin/VCardModal';
 
 // New hooks
 import { useAutoSave, validateSiteData, useHistory } from '@/hooks/useAdminForms';
@@ -78,6 +79,11 @@ export default function EditSitePage() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [validationErrors, setValidationErrors] = useState<any[]>([]);
+
+  // vCard Modal State
+  const [showVCardModal, setShowVCardModal] = useState(false);
+  const [vCardPreviewData, setVCardPreviewData] = useState<any>(null);
+  const [tempVCardFile, setTempVCardFile] = useState<File | null>(null);
 
   // File states for persistence
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -333,16 +339,47 @@ export default function EditSitePage() {
       const blob = new Blob([vCardContent], { type: 'text/vcard' });
       const file = new File([blob], 'contacto.vcf', { type: 'text/vcard' });
       
-      setVCardFile(file);
-      setSiteData(prev => ({
-        ...prev,
-        contactPage: { ...prev.contactPage, vCardUrl: `/uploads/${slug}/contacto.vcf` }
-      }));
-      
-      setMessage('¡vCard generada y lista para guardar!');
-      setTimeout(() => setMessage(''), 3000);
+      // Open modal for review
+      setTempVCardFile(file);
+      setVCardPreviewData({
+        name,
+        phone,
+        whatsapp,
+        email,
+        logoPreview: logoSource
+      });
+      setShowVCardModal(true);
+      setMessage('');
     } catch (err) {
       setError('Error al generar vCard: El logo debe estar en un formato válido.');
+    }
+  };
+
+  const finalizeVCard = async () => {
+    if (tempVCardFile) {
+      // 1. Assign to state
+      setVCardFile(tempVCardFile);
+      
+      // 2. Update site data URL
+      const newSiteData = {
+        ...siteData,
+        contactPage: { ...siteData.contactPage, vCardUrl: `/uploads/${slug}/contacto.vcf` }
+      };
+      setSiteData(newSiteData);
+      
+      setShowVCardModal(false);
+      setMessage('¡vCard generada! Guardando cambios...');
+
+      // 3. Auto-trigger save immediately
+      setTimeout(async () => {
+        try {
+          await handleSave(newSiteData);
+          setMessage('¡vCard guardada y asignada con éxito!');
+          setTimeout(() => setMessage(''), 3000);
+        } catch (e) {
+          setError('vCard generada pero hubo un error al persistir los datos.');
+        }
+      }, 100);
     }
   };
 
@@ -781,6 +818,15 @@ export default function EditSitePage() {
           />
         </div>
       </div>
+
+      {vCardPreviewData && (
+        <VCardModal
+          isOpen={showVCardModal}
+          onClose={() => setShowVCardModal(false)}
+          onSave={finalizeVCard}
+          data={vCardPreviewData}
+        />
+      )}
     </div>
   );
 }
