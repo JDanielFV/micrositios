@@ -294,11 +294,14 @@ export default function EditSitePage() {
       setMessage('Generando vCard con logo...');
       
       const name = siteData.metadata.title || 'Contacto';
-      const whatsapp = siteData.contactPage.actions.find(a => a.text === 'WhatsApp')?.link || '';
+      const whatsappRaw = siteData.contactPage.actions.find(a => a.text === 'WhatsApp')?.link || '';
+      // Clean WhatsApp to get only the number
+      const whatsapp = whatsappRaw.replace(/https?:\/\/(wa\.me|wa\.ms)\//, '').replace(/\//g, '').trim();
+      
       const phone = siteData.contactPage.actions.find(a => a.text === 'Llamar Ahora')?.link.replace('tel:', '') || '';
       const email = siteData.contactPage.actions.find(a => a.text === 'Enviar Email')?.link.replace('mailto:', '') || '';
       
-      // Process Logo to 1:1 Canvas
+      // Process Logo to 1:1 Canvas with Inversion (to make it black on white)
       let logoBase64 = '';
       const logoSource = localPreviews.logo || (siteData.hero.logoUrl ? `/qrs${siteData.hero.logoUrl}` : null);
       
@@ -317,9 +320,13 @@ export default function EditSitePage() {
         canvas.height = size;
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.fillStyle = "#FFFFFF"; // Background for logo
+          ctx.fillStyle = "#FFFFFF"; // Background white for vCard standard
           ctx.fillRect(0, 0, size, size);
+          
+          // Apply invert filter to make white logos black
+          ctx.filter = 'invert(100%)';
           ctx.drawImage(img, (size - img.width) / 2, (size - img.height) / 2);
+          
           logoBase64 = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
         }
       }
