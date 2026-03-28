@@ -91,11 +91,37 @@
   color: #e5e5e5;
 }
 
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  background: #32d74b;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(50, 215, 75, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(50, 215, 75, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(50, 215, 75, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(50, 215, 75, 0); }
+}
+
 .headerLeft h3 {
   margin: 0;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 800;
   color: #fff;
+  letter-spacing: 1px;
+}
+
+.routeIndicator {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--admin-accent, #007AFF);
+  background: rgba(0, 122, 255, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  text-transform: uppercase;
 }
 
 .headerActions {

@@ -8,6 +8,12 @@ interface ContactContentProps {
   slug: string;
 }
 
+const getSafeUrl = (url: string | undefined) => {
+  if (!url) return '';
+  if (url.startsWith('blob:') || url.startsWith('http')) return url;
+  return `/qrs${url}`;
+};
+
 export default function ContactContent({ initialSite, slug }: ContactContentProps) {
   const [site, setSite] = useState(initialSite);
 
@@ -51,12 +57,12 @@ export default function ContactContent({ initialSite, slug }: ContactContentProp
             return (
               <a
                 key={index}
-                href={`/qrs${encodeURI(site.data.contactPage.vCardUrl || '')}`}
+                href={getSafeUrl(site.data.contactPage.vCardUrl)}
                 className={`${styles.actionButton} animate-scale-in delay-${(index + 1) * 100}`}
                 download
               >
                 <img
-                  src={`/qrs${action.iconUrl}`}
+                  src={getSafeUrl(action.iconUrl)}
                   alt={`${action.text} icon`}
                   width={36}
                   height={36}
@@ -74,7 +80,7 @@ export default function ContactContent({ initialSite, slug }: ContactContentProp
               className={`${styles.actionButton} animate-scale-in delay-${(index + 1) * 100}`}
             >
               <img
-                src={`/qrs${action.iconUrl}`}
+                src={getSafeUrl(action.iconUrl)}
                 alt={`${action.text} icon`}
                 width={36}
                 height={36}

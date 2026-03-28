@@ -221,13 +221,77 @@
   line-height: 1.6;
 }
 
-/* Dynamic Items */
+/* Dynamic Items (Services, Actions) - Shadcn Style */
 .dynamicItem {
-  background: var(--admin-section-bg);
-  border: 1px solid var(--admin-section-border);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--admin-container-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.dynamicItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.shadcnInput, .shadcnTextarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--admin-input-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--admin-text);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.shadcnInput:focus, .shadcnTextarea:focus {
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.15);
+}
+
+.removeButton {
+  background: rgba(255, 59, 48, 0.1);
+  color: #ff453a;
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-end;
+}
+
+.removeButton:hover {
+  background: #ff453a;
+  color: #fff;
+}
+
+.addButton {
+  width: 100%;
+  background: var(--admin-button-bg);
+  color: var(--admin-text);
+  border: 1px dashed var(--admin-container-border);
   padding: 1rem;
   border-radius: 12px;
-  margin-top: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.addButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--admin-accent);
+  color: var(--admin-accent);
 }
 
 /* Buttons */
@@ -494,50 +558,185 @@
   min-height: 100vh;
   background: var(--admin-bg);
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .withSidePanel {
   height: 100vh;
-  overflow: hidden; /* Lock the main page scroll */
+  overflow: hidden;
+}
+
+/* Wizard Stepper */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 3rem;
+  background: var(--admin-container-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--admin-container-border);
+  z-index: 150;
+  gap: 1rem;
+}
+
+.stepIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--admin-button-bg);
+  border: 1px solid var(--admin-button-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--admin-text-muted);
+  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stepActive .stepIcon {
+  background: var(--admin-accent);
+  border-color: var(--admin-accent);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.4);
+}
+
+.stepLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--admin-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stepActive .stepLabel {
+  color: var(--admin-text-strong);
 }
 
 .twoColumnLayout {
   display: flex;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: calc(100vh - 65px); /* Reduced for compact stepper */
 }
 
 .formColumn {
   flex: 1;
-  padding: 2rem 3rem 6rem 3rem;
+  display: flex;
+  flex-direction: column;
   max-width: 1000px;
   margin: 0 auto;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-width: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .formColumnWithPanel {
   margin: 0;
   max-width: none;
-  padding-right: 2rem;
-  height: 100vh;
-  overflow-y: auto; /* Enable independent scroll for the form */
-  padding-bottom: 120px; /* Extra space for the fixed bottom bar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--admin-container-border) transparent;
+  padding-right: 0;
 }
 
 .previewColumn {
   flex-shrink: 0;
-  width: 500px;
+  width: 450px;
   background: var(--admin-preview-bg);
   border-left: 1px solid var(--admin-container-border);
-  height: 100vh;
-  position: relative; /* No longer needs sticky as parent doesn't scroll */
+  height: 100%;
+  position: relative;
   z-index: 100;
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Wizard Content */
+.wizardStepContent {
+  flex: 1;
+  padding: 2rem 3rem 2rem 3rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wizardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--admin-text-strong);
+}
+
+.wizardDescription {
+  font-size: 0.9rem;
+  color: var(--admin-text-muted);
+  margin-bottom: 2rem;
+}
+
+/* File Preview Grid */
+.filePreviewContainer {
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  max-height: 200px;
+  width: fit-content;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--admin-container-border);
+}
+
+.filePreviewImg, .filePreviewVideo {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+/* Bottom Bar Overhaul */
+.bottomBar {
+  flex-shrink: 0;
+  height: 60px; /* Reduced height */
+  background: var(--admin-container-bg);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  border-top: 1px solid var(--admin-container-border);
+  z-index: 110;
+}
+
+.navButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nextButton {
+  background: var(--admin-accent);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nextButton:hover {
+  background: var(--admin-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
 }
 
 /* Width control for preview column from page.tsx */
@@ -575,16 +774,9 @@
   }
 }
 
-/* Other classes */
+/* Existing Page Header (hidden in wizard mode but kept for safety) */
 .pageHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--admin-container-border);
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: none;
 }
 
 .pageTitle {

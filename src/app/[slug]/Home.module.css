@@ -73,6 +73,8 @@
 
 .heroLogo {
   max-width: 250px;
+  max-height: 150px;
+  object-fit: contain;
   margin-bottom: 1.5rem;
 }
 

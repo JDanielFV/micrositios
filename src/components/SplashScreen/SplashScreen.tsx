@@ -19,6 +19,13 @@ export default function SplashScreen({ enabled, videoUrl }: SplashScreenProps) {
 
   useEffect(() => {
     if (hasMounted) {
+      // No mostrar splash screen si estamos dentro de un iframe (Vista previa)
+      const isIframe = typeof window !== 'undefined' && window.self !== window.top;
+      if (isIframe) {
+        setShowSplash(false);
+        return;
+      }
+
       const splashShown = sessionStorage.getItem('splashScreenShown') === 'true';
 
       if (enabled && !splashShown) {

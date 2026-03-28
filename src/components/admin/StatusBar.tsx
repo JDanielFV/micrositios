@@ -18,7 +18,16 @@ export default function StatusBar({
   error = null,
   success = null
 }: StatusBarProps) {
-  const [showSuccess, setShowSuccess] = useState(!!success);
+  const [showStatus, setShowStatus] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    if (lastSaved && !isSaving && !hasUnsavedChanges) {
+      setShowStatus(true);
+      const timer = setTimeout(() => setShowStatus(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [lastSaved, isSaving, hasUnsavedChanges]);
 
   useEffect(() => {
     if (success) {
@@ -27,6 +36,12 @@ export default function StatusBar({
       return () => clearTimeout(timer);
     }
   }, [success]);
+
+  if (isSaving || hasUnsavedChanges || showStatus || showSuccess || error) {
+    // Show component
+  } else {
+    return null;
+  }
 
   return (
     <div className={styles.container}>
@@ -47,7 +62,7 @@ export default function StatusBar({
             </svg>
             <span>Cambios sin guardar</span>
           </div>
-        ) : lastSaved ? (
+        ) : lastSaved && showStatus ? (
           <div className={styles.saved}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -55,11 +70,7 @@ export default function StatusBar({
             </svg>
             <span>Guardado: {lastSaved.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' })}</span>
           </div>
-        ) : (
-          <div className={styles.ready}>
-            <span>Listo</span>
-          </div>
-        )}
+        ) : null}
       </div>
 
       {/* Error message */}

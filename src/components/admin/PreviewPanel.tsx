@@ -6,19 +6,17 @@ import styles from './PreviewPanel.module.css';
 interface PreviewPanelProps {
   siteData: any;
   slug: string;
-  isVisible: boolean;
-  isSidePanel?: boolean;
   panelWidth?: 'compact' | 'normal' | 'wide';
-  onClose: () => void;
+  subRoute?: string; // New: handle navigation to /, /contacto, etc.
+  currentSection?: string; // New: handle scrolling to specific IDs
 }
 
 export default function PreviewPanel({ 
   siteData, 
   slug, 
-  isVisible, 
-  isSidePanel = false,
   panelWidth = 'normal',
-  onClose 
+  subRoute = '',
+  currentSection = 'top'
 }: PreviewPanelProps) {
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,12 +27,38 @@ export default function PreviewPanel({
     setMounted(true);
   }, []);
 
-  // Build preview URL
+  // Build fixed preview URL (Home)
   const previewUrl = typeof window !== 'undefined' 
     ? `${window.location.origin}/qrs/${slug}/`
     : `/qrs/${slug}/`;
 
-  // Reset loading state when slug changes
+  const cleanSubRoute = subRoute.startsWith('/') ? subRoute : `/${subRoute}`;
+  const displayRouteName = cleanSubRoute === '/' ? 'Inicio' : cleanSubRoute.substring(1).toUpperCase();
+
+  // Use subRoute change to trigger internal navigation message
+  useEffect(() => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage({
+        type: 'NAVIGATE',
+        route: subRoute || '/'
+      }, window.location.origin);
+    }
+  }, [subRoute]);
+
+  // Use currentSection change to trigger scroll message
+  useEffect(() => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      // Small delay to ensure navigation happened if route changed too
+      setTimeout(() => {
+        iframeRef.current?.contentWindow?.postMessage({
+          type: 'SCROLL_TO',
+          section: currentSection
+        }, window.location.origin);
+      }, 300);
+    }
+  }, [currentSection, subRoute]); // Re-scroll even if route changed
+
+  // Reset loading state when slug changes (only on full site change)
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -42,13 +66,13 @@ export default function PreviewPanel({
 
   // Send updates to iframe when siteData changes
   useEffect(() => {
-    if (iframeRef.current && iframeRef.current.contentWindow && !isLoading) {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
       iframeRef.current.contentWindow.postMessage({
         type: 'UPDATE_SITE_DATA',
         data: siteData
       }, window.location.origin);
     }
-  }, [siteData, isLoading]);
+  }, [siteData]);
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -70,48 +94,10 @@ export default function PreviewPanel({
 
   if (!mounted) return null;
   
-  // Don't render if not visible and not side panel mode
-  if (!isVisible && !isSidePanel) return null;
-
   const widthClass = styles[panelWidth] || styles.normal;
 
   return (
-    <div 
-      className={`${styles.container} ${isSidePanel ? styles.sidePanel : styles.modal} ${widthClass} ${isSidePanel ? styles.embedded : ''}`}
-    >
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-            <circle cx="12" cy="12" r="3" />
-          </svg>
-          <h3>Vista Previa</h3>
-        </div>
-        <div className={styles.headerActions}>
-          <a 
-            href={`/qrs/${slug}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.openLink}
-            title="Abrir en nueva pestaña"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-          <span className={styles.slugBadge}>/{slug}</span>
-          {!isSidePanel && (
-            <button onClick={onClose} className={styles.closeButton}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
-          )}
-        </div>
-      </div>
-
+    <div className={`${styles.container} ${styles.embedded} ${widthClass}`}>
       <div className={styles.iframeContainer}>
         {isLoading && (
           <div className={styles.loadingOverlay}>

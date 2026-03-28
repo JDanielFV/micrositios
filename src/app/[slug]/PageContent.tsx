@@ -14,6 +14,12 @@ const ActionButton = ({ text, link }: { text: string, link: string }) => (
   <Link href={link} className={styles.actionButton}>{text}</Link>
 );
 
+const getSafeUrl = (url: string | undefined) => {
+  if (!url) return '';
+  if (url.startsWith('blob:') || url.startsWith('http')) return url;
+  return `/qrs${url}`;
+};
+
 export default function PageContent({ initialSite, slug }: PageContentProps) {
   const [site, setSite] = useState(initialSite);
 
@@ -37,15 +43,17 @@ export default function PageContent({ initialSite, slug }: PageContentProps) {
   return (
     <div className={styles.container}>
       {/* Hero Section */}
-      <HeroSection hero={hero} slug={slug} />
+      <div id="hero">
+        <HeroSection hero={hero} slug={slug} />
+      </div>
 
       {/* About Section */}
       {
         about && about.title && (
-          <section className={`${styles.section} animate-slide-up delay-200`}>
+          <section id="about" className={`${styles.section} animate-slide-up delay-200`}>
             <h2 className={styles.sectionTitle}>{about.title}</h2>
             <p>{about.text}</p>
-            {about.imageUrl && <img src={`/qrs${about.imageUrl}`} alt="About" className={styles.aboutImage} />}
+            {about.imageUrl && <img src={getSafeUrl(about.imageUrl)} alt="About" className={styles.aboutImage} />}
           </section>
         )
       }
@@ -53,7 +61,7 @@ export default function PageContent({ initialSite, slug }: PageContentProps) {
       {/* Main Contact Section */}
       {
         mainContact && mainContact.title && (
-          <section className={`${styles.section} animate-slide-up delay-300`}>
+          <section id="main-contact" className={`${styles.section} animate-slide-up delay-300`}>
             <h2 className={styles.sectionTitle}>{mainContact.title}</h2>
             <p>{mainContact.text}</p>
             {mainContact.button && mainContact.button.text && (
