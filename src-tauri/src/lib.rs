@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::Path;
 use std::sync::Mutex;
-use tauri::{AppHandle, Manager, State};
+use tauri::{AppHandle, State};
 use tauri_plugin_shell::ShellExt;
 
 #[derive(Serialize, Deserialize, Clone)]
@@ -24,19 +24,22 @@ async fn get_sites(state: State<'_, DbState>) -> Result<Vec<Site>, String> {
         .prepare("SELECT id, slug, data, created_at, updated_at FROM sites ORDER BY slug")
         .map_err(|e| e.to_string())?;
     
-    let sites = stmt
+    let sites_iter = stmt
         .query_map([], |row| {
             Ok(Site {
-                id: row.get(0)?,
-                slug: row.get(1)?,
-                data: row.get(2)?,
-                created_at: row.get(3)?,
-                updated_at: row.get(4)?,
+                id: row.get::<_, String>(0)?,
+                slug: row.get::<_, String>(1)?,
+                data: row.get::<_, String>(2)?,
+                created_at: row.get::<_, String>(3)?,
+                updated_at: row.get::<_, String>(4)?,
             })
         })
-        .map_err(|e| e.to_string())?
-        .collect::<Result<Vec<_>, _>>()
         .map_err(|e| e.to_string())?;
+    
+    let mut sites = Vec::new();
+    for site in sites_iter {
+        sites.push(site.map_err(|e| e.to_string())?);
+    }
     
     Ok(sites)
 }
@@ -52,11 +55,11 @@ async fn get_site(slug: String, state: State<'_, DbState>) -> Result<Option<Site
     
     if let Some(row) = rows.next().map_err(|e| e.to_string())? {
         Ok(Some(Site {
-            id: row.get(0)?,
-            slug: row.get(1)?,
-            data: row.get(2)?,
-            created_at: row.get(3)?,
-            updated_at: row.get(4)?,
+            id: row.get::<_, String>(0).map_err(|e| e.to_string())?,
+            slug: row.get::<_, String>(1).map_err(|e| e.to_string())?,
+            data: row.get::<_, String>(2).map_err(|e| e.to_string())?,
+            created_at: row.get::<_, String>(3).map_err(|e| e.to_string())?,
+            updated_at: row.get::<_, String>(4).map_err(|e| e.to_string())?,
         }))
     } else {
         Ok(None)
@@ -129,6 +132,16 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![get_sites, get_site, save_site, export_site])
+        .setup(|app| {
+            if cfg!(debug_assertions) {
+                app.handle().plugin(
+                    tauri_plugin_log::Builder::default()
+                        .level(log::LevelFilter::Info)
+                        .build(),
+                )?;
+            }
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
