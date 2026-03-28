@@ -255,6 +255,91 @@ export default function EditSitePage() {
     });
   };
 
+  const addContactAction = () => {
+    setSiteData(prevData => ({
+      ...prevData,
+      contactPage: {
+        ...prevData.contactPage,
+        actions: [...prevData.contactPage.actions, { iconUrl: '/link.svg', text: 'Nuevo Enlace', link: '' } as ContactAction]
+      }
+    }));
+  };
+
+  const removeContactAction = (index: number) => {
+    if (index < 4) return; // Protect default templates
+    setSiteData(prevData => ({
+      ...prevData,
+      contactPage: {
+        ...prevData.contactPage,
+        actions: prevData.contactPage.actions.filter((_, i) => i !== index)
+      }
+    }));
+  };
+
+  // vCard Generation Logic
+  const generateVCard = async () => {
+    try {
+      setMessage('Generando vCard con logo...');
+      
+      const name = siteData.metadata.title || 'Contacto';
+      const whatsapp = siteData.contactPage.actions.find(a => a.text === 'WhatsApp')?.link || '';
+      const phone = siteData.contactPage.actions.find(a => a.text === 'Llamar Ahora')?.link.replace('tel:', '') || '';
+      const email = siteData.contactPage.actions.find(a => a.text === 'Enviar Email')?.link.replace('mailto:', '') || '';
+      
+      // Process Logo to 1:1 Canvas
+      let logoBase64 = '';
+      const logoSource = localPreviews.logo || (siteData.hero.logoUrl ? `/qrs${siteData.hero.logoUrl}` : null);
+      
+      if (logoSource) {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = logoSource;
+        });
+
+        const canvas = document.createElement('canvas');
+        const size = Math.max(img.width, img.height);
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.fillStyle = "#FFFFFF"; // Background for logo
+          ctx.fillRect(0, 0, size, size);
+          ctx.drawImage(img, (size - img.width) / 2, (size - img.height) / 2);
+          logoBase64 = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+        }
+      }
+
+      const vCardContent = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        `FN:${name}`,
+        `ORG:${name}`,
+        phone ? `TEL;TYPE=WORK,VOICE:${phone}` : '',
+        whatsapp ? `TEL;TYPE=CELL,VOICE:${whatsapp}` : '',
+        email ? `EMAIL;TYPE=PREF,INTERNET:${email}` : '',
+        logoBase64 ? `PHOTO;ENCODING=b;TYPE=JPEG:${logoBase64}` : '',
+        'END:VCARD'
+      ].filter(line => line !== '').join('\n');
+
+      const blob = new Blob([vCardContent], { type: 'text/vcard' });
+      const file = new File([blob], 'contacto.vcf', { type: 'text/vcard' });
+      
+      setVCardFile(file);
+      setSiteData(prev => ({
+        ...prev,
+        contactPage: { ...prev.contactPage, vCardUrl: `/uploads/${slug}/contacto.vcf` }
+      }));
+      
+      setMessage('¡vCard generada y lista para guardar!');
+      setTimeout(() => setMessage(''), 3000);
+    } catch (err) {
+      setError('Error al generar vCard: El logo debe estar en un formato válido.');
+    }
+  };
+
   const handleUndo = () => {
     const prev = history.undo();
     if (prev) setSiteData(prev);
@@ -454,13 +539,86 @@ export default function EditSitePage() {
                 <p className={styles.wizardDescription}>Ayuda a tus clientes a encontrarte fácilmente.</p>
                 
                 <div className={styles.formGroup}>
-                  <label>Dirección Física</label>
-                  <textarea name="locationPage.address" value={siteData.locationPage.address} onChange={handleInputChange} rows={3} />
+                  <label>Dirección Física (Texto que verán los clientes)</label>
+                  <textarea 
+                    name="locationPage.address" 
+                    value={siteData.locationPage.address} 
+                    onChange={handleInputChange} 
+                    rows={3} 
+                    className={styles.shadcnTextarea}
+                    placeholder="Ej: Av. Independencia 123, Col. Centro..."
+                  />
                 </div>
 
-                <div className={styles.formGroup}>
-                  <label>URL de Google Maps (Iframe)</label>
-                  <input type="text" name="locationPage.mapIframeUrl" value={siteData.locationPage.mapIframeUrl} onChange={handleInputChange} placeholder="https://www.google.com/maps/embed?..." />
+                <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid var(--admin-container-border)' }}>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: '600', marginBottom: '1rem', color: 'var(--admin-accent)' }}>Buscador de Mapa</h3>
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '1rem' }}>
+                    <input 
+                      type="text" 
+                      id="map-search-input"
+                      placeholder="Busca un lugar (Ej: Notaría 178 CDMX)" 
+                      className={styles.shadcnInput}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          const query = (e.target as HTMLInputElement).value;
+                          if (query) {
+                            const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+                            setSiteData(prev => ({
+                              ...prev,
+                              locationPage: { ...prev.locationPage, mapIframeUrl: embedUrl }
+                            }));
+                          }
+                        }
+                      }}
+                    />
+                    <button 
+                      type="button"
+                      className={styles.nextButton}
+                      style={{ padding: '0 1rem', width: 'auto' }}
+                      onClick={() => {
+                        const input = document.getElementById('map-search-input') as HTMLInputElement;
+                        if (input.value) {
+                          const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(input.value)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+                          setSiteData(prev => ({
+                            ...prev,
+                            locationPage: { ...prev.locationPage, mapIframeUrl: embedUrl }
+                          }));
+                        }
+                      }}
+                    >
+                      Buscar
+                    </button>
+                  </div>
+                  
+                  <p style={{ fontSize: '0.75rem', color: 'var(--admin-text-muted)', marginBottom: '1rem' }}>
+                    Escribe el nombre del lugar o la dirección y presiona Buscar. El mapa de abajo y la vista previa se actualizarán automáticamente.
+                  </p>
+
+                  {siteData.locationPage.mapIframeUrl && (
+                    <div style={{ width: '100%', height: '200px', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <iframe
+                        src={siteData.locationPage.mapIframeUrl}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                      ></iframe>
+                    </div>
+                  )}
+                </div>
+
+                <div className={styles.formGroup} style={{ marginTop: '1.5rem' }}>
+                  <label>URL del Iframe (Auto-generado)</label>
+                  <input 
+                    type="text" 
+                    name="locationPage.mapIframeUrl" 
+                    value={siteData.locationPage.mapIframeUrl} 
+                    onChange={handleInputChange} 
+                    className={styles.shadcnInput}
+                    style={{ fontSize: '0.8rem', opacity: 0.8 }}
+                    placeholder="https://www.google.com/maps/embed?..." 
+                  />
                 </div>
               </div>
             )}
@@ -468,41 +626,94 @@ export default function EditSitePage() {
             {currentStep === 7 && (
               <div className="animate-in">
                 <h2 className={styles.wizardTitle}>Conexión (Contacto)</h2>
-                <p className={styles.wizardDescription}>Configura los canales de comunicación directa.</p>
+                <p className={styles.wizardDescription}>Configura los canales de comunicación y genera tu vCard digital.</p>
                 
+                <div style={{ marginBottom: '2rem', padding: '1.5rem', background: 'rgba(0, 122, 255, 0.05)', borderRadius: '12px', border: '1px solid rgba(0, 122, 255, 0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px' }}>Tarjeta de Contacto (vCard)</h3>
+                    <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Genera el archivo que los clientes descargarán en sus celulares.</p>
+                  </div>
+                  <button 
+                    type="button" 
+                    onClick={generateVCard}
+                    className={styles.nextButton}
+                    style={{ background: 'var(--admin-accent)', padding: '0.6rem 1.2rem' }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '8px' }}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+                    Generar vCard
+                  </button>
+                </div>
+
                 <div className={styles.formGroup}>
-                  <label>Título de Contacto</label>
+                  <label>Título de Contacto en Pantalla</label>
                   <input type="text" name="contactPage.title" value={siteData.contactPage.title} onChange={handleInputChange} className={styles.shadcnInput} />
                 </div>
 
                 <div style={{ marginTop: '2rem' }}>
-                  <label style={{ fontSize: '0.85rem', color: 'var(--admin-text-muted)', marginBottom: '1rem', display: 'block' }}>Canales de Comunicación</label>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                    <label style={{ fontSize: '0.85rem', color: 'var(--admin-text-muted)', fontWeight: '600' }}>BOTONES DE ACCIÓN</label>
+                  </div>
+                  
                   {siteData.contactPage.actions.map((action, idx) => (
-                    <div key={idx} className={styles.dynamicItem} style={{ padding: '1rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '8px', borderRadius: '8px', display: 'flex' }}>
-                          {action.text === 'WhatsApp' && <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.506-.173-.007-.371-.007-.57-.007-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.13.57-.074 1.758-.706 2.006-1.388.248-.682.248-1.265.174-1.388-.074-.124-.272-.198-.57-.347m-4.821 7.454c-1.893 0-3.748-.511-5.36-1.478l-.384-.227-3.982 1.044 1.063-3.885-.249-.396c-1.062-1.69-1.622-3.663-1.622-5.708 0-5.86 4.766-10.626 10.626-10.626 2.839 0 5.507 1.105 7.513 3.112 2.006 2.007 3.111 4.675 3.111 7.514 0 5.861-4.766 10.627-10.627 10.627m8.945-18.462C19.116 1.065 16.1 0 12.651 0 5.723 0 .083 5.64.083 12.567c0 2.212.578 4.371 1.676 6.304L0 24l5.122-1.343c1.867 1.02 3.976 1.558 6.123 1.558 6.928 0 12.569-5.64 12.569-12.568 0-3.356-1.306-6.511-3.678-8.883"/></svg>}
-                          {action.text === 'Llamar Ahora' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>}
-                          {action.text === 'Enviar Email' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>}
-                          {action.text === 'Guardar contacto' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>}
+                    <div key={idx} className={styles.dynamicItem} style={{ padding: '1.2rem' }}>
+                      <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                        {/* Icon Slot */}
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                          <div style={{ width: '48px', height: '48px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyItems: 'center', padding: '10px' }}>
+                            <img src={getSafeUrl(action.iconUrl)} alt="icon" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                          </div>
+                          {idx >= 4 && (
+                            <label className={styles.editButton} style={{ padding: '4px 8px', fontSize: '0.65rem', cursor: 'pointer' }}>
+                              Cambiar
+                              <input type="file" accept=".svg" style={{ display: 'none' }} onChange={(e) => handleIconFileChange(idx, e)} />
+                            </label>
+                          )}
                         </div>
-                        <div style={{ flex: 1 }}>
-                          <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--admin-text-muted)', display: 'block', marginBottom: '4px' }}>{action.text}</span>
-                          <input 
-                            type="text" 
-                            name="link" 
-                            value={action.link} 
-                            onChange={(e) => handleContactActionChange(idx, e)} 
-                            placeholder={action.text === 'WhatsApp' ? '52...' : 'Enlace o dato...'} 
-                            className={styles.shadcnInput}
-                            style={{ padding: '0.5rem 0.75rem' }}
-                            disabled={action.text === 'Guardar contacto'}
-                          />
+
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                          <div style={{ display: 'flex', gap: '10px' }}>
+                            <div style={{ flex: 1 }}>
+                              <span style={{ fontSize: '0.7rem', fontWeight: '700', opacity: 0.6, textTransform: 'uppercase', marginBottom: '4px', display: 'block' }}>Etiqueta</span>
+                              <input 
+                                type="text" 
+                                name="text" 
+                                value={action.text} 
+                                onChange={(e) => handleContactActionChange(idx, e)} 
+                                readOnly={idx < 4 && action.text !== 'Guardar contacto'}
+                                className={styles.shadcnInput}
+                                style={{ padding: '0.5rem' }}
+                              />
+                            </div>
+                            <div style={{ flex: 2 }}>
+                              <span style={{ fontSize: '0.7rem', fontWeight: '700', opacity: 0.6, textTransform: 'uppercase', marginBottom: '4px', display: 'block' }}>Enlace / Dato</span>
+                              <input 
+                                type="text" 
+                                name="link" 
+                                value={action.link} 
+                                onChange={(e) => handleContactActionChange(idx, e)} 
+                                disabled={action.text === 'Guardar contacto'}
+                                placeholder={action.text === 'WhatsApp' ? '52...' : action.text === 'Llamar Ahora' ? 'tel:...' : 'https://...'}
+                                className={styles.shadcnInput}
+                                style={{ padding: '0.5rem' }}
+                              />
+                            </div>
+                          </div>
                         </div>
+
+                        {idx >= 4 && (
+                          <button type="button" onClick={() => removeContactAction(idx)} className={styles.removeButton}>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                          </button>
+                        )}
                       </div>
                     </div>
                   ))}
                 </div>
+
+                <button type="button" onClick={addContactAction} className={styles.addButton}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '8px' }}><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Añadir Canal Personalizado (Instagram, LinkedIn, etc.)
+                </button>
               </div>
             )}
           </div>
