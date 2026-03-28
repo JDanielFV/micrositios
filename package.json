@@ -12,11 +12,15 @@
     "db:migrate": "bun run scripts/migrate-from-json.ts",
     "db:list": "bun run scripts/list-sites.ts",
     "db:create": "bun run scripts/create-site.ts",
-    "db:export": "bun run scripts/export-db.ts"
+    "db:export": "bun run scripts/export-db.ts",
+    "prod": "bun run build && mv out /Users/DanielFlores/Downloads/out_$(date +%Y%m%d)"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@libsql/client": "^0.17.0",
+    "@tauri-apps/plugin-dialog": "^2.6.0",
+    "@tauri-apps/plugin-fs": "^2.4.5",
+    "@tauri-apps/plugin-shell": "^2.3.5",
     "@vercel/speed-insights": "^1.2.0",
     "next": "^16.1.0",
     "react": "latest",
@@ -25,6 +29,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tauri-apps/api": "^2.10.1",
+    "@tauri-apps/cli": "^2.10.1",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^18",

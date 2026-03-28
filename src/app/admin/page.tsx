@@ -12,6 +12,9 @@ import ConfirmDialog from '@/components/admin/ConfirmDialog';
 import CollapsibleSection from '@/components/admin/CollapsibleSection';
 import StatusBar from '@/components/admin/StatusBar';
 
+// Tauri utilities
+import { isTauri, tauriInvoke } from '@/utils/tauri';
+
 interface Service {
   title: string;
   description: string;
@@ -161,17 +164,27 @@ export default function AdminPage() {
 
   const fetchSites = async () => {
     try {
-      console.log('Fetching sites from /qrs/api/sites...');
+      console.log('Fetching sites...');
+      
+      // If in Tauri, use native Rust command
+      if (isTauri()) {
+        const nativeSites = await tauriInvoke<any[]>('get_sites');
+        if (nativeSites) {
+          // Parse data string from SQLite to object
+          const parsedSites = nativeSites.map(s => ({
+            ...s,
+            data: typeof s.data === 'string' ? JSON.parse(s.data) : s.data
+          }));
+          setSites(parsedSites);
+          return;
+        }
+      }
+
+      // Fallback to standard web API
       const response = await fetch('/qrs/api/sites');
-      console.log('Response status:', response.status);
       if (response.ok) {
         const data = await response.json();
-        console.log('Sites data:', data);
         setSites(data);
-      } else {
-        console.error('Failed to fetch sites:', response.status);
-        const error = await response.json();
-        console.error('Error details:', error);
       }
     } catch (err) {
       console.error("Error fetching sites:", err);

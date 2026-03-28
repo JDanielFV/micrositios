@@ -12,6 +12,9 @@ import StatusBar from '@/components/admin/StatusBar';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
 import VCardModal from '@/components/admin/VCardModal';
 
+// Tauri utilities
+import { isTauri, tauriInvoke, selectDirectory } from '@/utils/tauri';
+
 // New hooks
 import { useAutoSave, validateSiteData, useHistory } from '@/hooks/useAdminForms';
 
@@ -78,6 +81,7 @@ export default function EditSitePage() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [isExporting, setIsExporting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<any[]>([]);
 
   // vCard Modal State
@@ -103,13 +107,31 @@ export default function EditSitePage() {
 
   // Auto-save handler
   const handleSave = useCallback(async (data: any) => {
-    const formData = new FormData();
     const updatedSiteData = JSON.parse(JSON.stringify(data));
 
     if (vCardFile) {
       updatedSiteData.contactPage.vCardUrl = `/uploads/${slug}/${vCardFile.name}`;
     }
 
+    // If in Tauri, use native Rust command
+    if (isTauri()) {
+      try {
+        await tauriInvoke('save_site', { 
+          slug, 
+          data: JSON.stringify(updatedSiteData) 
+        });
+        
+        setMessage('Cambios guardados localmente');
+        setTimeout(() => setMessage(''), 3000);
+        return;
+      } catch (err) {
+        console.error('Native save error:', err);
+        throw new Error('Error al guardar en la base de datos local');
+      }
+    }
+
+    // Fallback to standard web API
+    const formData = new FormData();
     formData.append('siteData', JSON.stringify(updatedSiteData));
     if (imageFile) formData.append('imageFile', imageFile);
     if (heroVideoFile) formData.append('heroVideoFile', heroVideoFile);
@@ -144,13 +166,28 @@ export default function EditSitePage() {
     onSave: handleSave,
     enabled: !loading
   });
+// Load site data
+useEffect(() => {
+  if (slug) {
+    const fetchSiteData = async () => {
+      try {
+        setLoading(true);
 
-  useEffect(() => {
-    if (slug) {
-      const fetchSiteData = async () => {
-        try {
-          setLoading(true);
-          const response = await fetch(`/qrs/api/sites/${slug}`);
+        // If in Tauri, use native Rust command
+        if (isTauri()) {
+          const nativeSite: any = await tauriInvoke('get_site', { slug });
+          if (nativeSite) {
+            const parsedData = typeof nativeSite.data === 'string' ? JSON.parse(nativeSite.data) : nativeSite.data;
+            setSiteData(parsedData);
+            setId(nativeSite.id);
+            history.set(parsedData);
+            setLoading(false);
+            return;
+          }
+        }
+
+        const response = await fetch(`/qrs/api/sites/${slug}`);
+
           if (response.ok) {
             const data = await response.json();
             setSiteData(data.data);
@@ -406,6 +443,27 @@ export default function EditSitePage() {
           setError('vCard generada pero hubo un error al persistir los datos.');
         }
       }, 100);
+    }
+  };
+
+  const handleNativeExport = async () => {
+    const targetDir = await selectDirectory();
+    if (!targetDir) return;
+
+    setIsExporting(true);
+    setMessage('Iniciando exportación nativa...');
+    
+    try {
+      const result = await tauriInvoke<string>('export_site', { 
+        slug, 
+        targetParentDir: targetDir 
+      });
+      setMessage(result || 'Exportación completada');
+      setTimeout(() => setMessage(''), 5000);
+    } catch (err) {
+      setError(typeof err === 'string' ? err : 'Error durante la exportación');
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -697,6 +755,34 @@ export default function EditSitePage() {
                 <h2 className={styles.wizardTitle}>Conexión (Contacto)</h2>
                 <p className={styles.wizardDescription}>Configura los canales de comunicación y genera tu vCard digital.</p>
                 
+                {isTauri() && (
+                  <div style={{ marginBottom: '1.5rem', padding: '1.5rem', background: 'rgba(50, 215, 75, 0.05)', borderRadius: '12px', border: '1px solid rgba(50, 215, 75, 0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px', color: '#32d74b' }}>Exportación Nativa</h3>
+                      <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Genera el build y guarda los archivos directamente en tu computadora.</p>
+                    </div>
+                    <button 
+                      type="button" 
+                      onClick={handleNativeExport}
+                      disabled={isExporting}
+                      className={styles.nextButton}
+                      style={{ background: '#32d74b', color: '#000', padding: '0.6rem 1.2rem' }}
+                    >
+                      {isExporting ? (
+                        <>
+                          <svg className={styles.loadingSpinner} width="16" height="16" viewBox="0 0 24 24" style={{ marginRight: '8px' }}><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" opacity="0.25" /><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" fill="none" /></svg>
+                          Exportando...
+                        </>
+                      ) : (
+                        <>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '8px' }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                          Exportar a PC
+                        </>
+                      )}
+                    </button>
+                  </div>
+                )}
+
                 <div style={{ marginBottom: '2rem', padding: '1.5rem', background: 'rgba(0, 122, 255, 0.05)', borderRadius: '12px', border: '1px solid rgba(0, 122, 255, 0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '4px' }}>Tarjeta de Contacto (vCard)</h3>
