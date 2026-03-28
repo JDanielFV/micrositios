@@ -40,10 +40,10 @@ const defaultSiteData = {
   locationPage: { address: "", mapIframeUrl: "" },
   contactPage: {
     title: "", vCardUrl: "", actions: [
-      { iconUrl: "/file.svg", text: "Guardar contacto", link: "" },
-      { iconUrl: "/whatsapp.svg", text: "WhatsApp", link: "" },
-      { iconUrl: "/phone.svg", text: "Llamar Ahora", link: "" },
-      { iconUrl: "/mail.svg", text: "Enviar Email", link: "" }
+      { iconUrl: "/card.png", text: "Guardar contacto", link: "" },
+      { iconUrl: "/wh.svg", text: "WhatsApp", link: "" },
+      { iconUrl: "/sm.webp", text: "Llamar Ahora", link: "" },
+      { iconUrl: "/ml.webp", text: "Enviar Email", link: "" }
     ]
   },
   servicesPage: { title: "", services: [] as Service[] },
@@ -59,6 +59,12 @@ const STEPS = [
   { id: 6, label: 'Ubicación', route: '/ubicacion', section: 'top' },
   { id: 7, label: 'Conexión', route: '/contacto', section: 'top' }
 ];
+
+const getSafeUrl = (url: string | undefined) => {
+  if (!url) return '';
+  if (url.startsWith('blob:') || url.startsWith('http')) return url;
+  return `/qrs${url}`;
+};
 
 export default function EditSitePage() {
   const params = useParams();
@@ -260,7 +266,7 @@ export default function EditSitePage() {
       ...prevData,
       contactPage: {
         ...prevData.contactPage,
-        actions: [...prevData.contactPage.actions, { iconUrl: '/link.svg', text: 'Nuevo Enlace', link: '' } as ContactAction]
+        actions: [...prevData.contactPage.actions, { iconUrl: '/globe.svg', text: 'Nuevo Enlace', link: '' } as ContactAction]
       }
     }));
   };
