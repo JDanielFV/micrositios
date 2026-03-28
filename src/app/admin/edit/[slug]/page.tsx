@@ -229,6 +229,25 @@ export default function EditSitePage() {
     }
   };
 
+  const handleIconFileChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const blobUrl = URL.createObjectURL(file);
+      
+      // Update the file array for the final upload
+      const newIconFiles = [...iconFiles];
+      newIconFiles[index] = file;
+      setIconFiles(newIconFiles);
+
+      // Update the site data iconUrl with the blob for live preview
+      setSiteData(prevData => {
+        const newActions = [...prevData.contactPage.actions];
+        newActions[index] = { ...newActions[index], iconUrl: blobUrl };
+        return { ...prevData, contactPage: { ...prevData.contactPage, actions: newActions } };
+      });
+    }
+  };
+
   const handleServiceChange = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setSiteData(prevData => {
