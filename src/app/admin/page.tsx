@@ -48,6 +48,7 @@ const defaultSiteData = {
     subtitle: "",
     videoUrl: "",
     logoUrl: "",
+    logoWidth: 200,
     button: {
       text: "",
       link: "/servicios"
@@ -708,6 +709,14 @@ export default function AdminPage() {
             <CollapsibleSection title="Sección Principal (Hero)" defaultOpen={false}>
               <div className={styles.formGroup}>
                 <label htmlFor="heroLogoFile">Logo (opcional)</label>
+                {siteData.hero.logoUrl && (
+                  <div className={styles.fileInfo}>
+                    Logo actual: <a href={siteData.hero.logoUrl} target="_blank" rel="noreferrer">Ver archivo</a>
+                    <div className={styles.iconPreview} style={{ background: 'rgba(0,0,0,0.1)', padding: '10px', marginTop: '5px' }}>
+                      <img src={siteData.hero.logoUrl} alt="Logo actual" style={{ maxHeight: '60px', objectFit: 'contain' }} />
+                    </div>
+                  </div>
+                )}
                 <input
                   type="file"
                   id="heroLogoFile"
@@ -718,7 +727,25 @@ export default function AdminPage() {
               </div>
 
               <div className={styles.formGroup}>
+                <label>Ancho del Logo (px): {siteData.hero.logoWidth || 150}px</label>
+                <input 
+                  type="range" 
+                  name="hero.logoWidth" 
+                  min="50" 
+                  max="500" 
+                  step="5"
+                  value={siteData.hero.logoWidth || 150} 
+                  onChange={handleInputChange}
+                  style={{ width: '100%', accentColor: 'var(--admin-accent)' }}
+                />
+              </div>
+              <div className={styles.formGroup}>
                 <label className={styles.label}>Video de fondo (opcional)</label>
+                {siteData.hero.videoUrl && (
+                  <div className={styles.fileInfo}>
+                    Video actual: <a href={siteData.hero.videoUrl} target="_blank" rel="noreferrer">Ver archivo</a>
+                  </div>
+                )}
                 <input
                   type="file"
                   name="heroVideoFile"
@@ -730,6 +757,14 @@ export default function AdminPage() {
 
               <div className={styles.formGroup}>
                 <label className={styles.label}>Imagen de fondo (opcional - si no hay video)</label>
+                {siteData.hero.backgroundImageUrl && (
+                  <div className={styles.fileInfo}>
+                    Imagen actual: <a href={siteData.hero.backgroundImageUrl} target="_blank" rel="noreferrer">Ver archivo</a>
+                    <div className={styles.iconPreview} style={{ marginTop: '5px' }}>
+                      <img src={siteData.hero.backgroundImageUrl} alt="Fondo actual" style={{ maxHeight: '100px', borderRadius: '8px' }} />
+                    </div>
+                  </div>
+                )}
                 <input
                   type="file"
                   name="heroBackgroundImageFile"
@@ -805,6 +840,14 @@ export default function AdminPage() {
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="imageFile">Imagen de Fondo (opcional)</label>
+                {siteData.about.imageUrl && (
+                  <div className={styles.fileInfo}>
+                    Imagen actual: <a href={siteData.about.imageUrl} target="_blank" rel="noreferrer">Ver archivo</a>
+                    <div className={styles.iconPreview} style={{ marginTop: '5px' }}>
+                      <img src={siteData.about.imageUrl} alt="Imagen Acerca de" style={{ maxHeight: '100px', borderRadius: '8px' }} />
+                    </div>
+                  </div>
+                )}
                 <input
                   type="file"
                   id="imageFile"
@@ -1013,6 +1056,11 @@ export default function AdminPage() {
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="splashVideoFile">Video de Fondo para Splash</label>
+                {siteData.splashScreen.videoUrl && (
+                  <div className={styles.fileInfo}>
+                    Video actual: <a href={siteData.splashScreen.videoUrl} target="_blank" rel="noreferrer">Ver archivo</a>
+                  </div>
+                )}
                 <input
                   type="file"
                   id="splashVideoFile"

@@ -12,6 +12,7 @@ interface HeroProps {
         imageUrl?: string;
         backgroundImageUrl?: string;
         logoUrl?: string;
+        logoWidth?: string | number;
         audioUrl?: string;
         button?: {
             text: string;
@@ -56,7 +57,18 @@ export default function HeroSection({ hero, slug }: HeroProps) {
                 <img src={getSafeUrl(hero.backgroundImageUrl)} alt="Hero Background" className={styles.heroBackgroundImage} />
             ) : null}
             <div className={styles.heroContent}>
-                {hero.logoUrl && <img src={getSafeUrl(hero.logoUrl)} alt="Logo" className={styles.heroLogo} />}
+                {hero.logoUrl && (
+                    <img 
+                        src={getSafeUrl(hero.logoUrl)} 
+                        alt="Logo" 
+                        className={styles.heroLogo} 
+                        style={{ 
+                            width: hero.logoWidth ? `${hero.logoWidth}px` : undefined,
+                            maxWidth: hero.logoWidth ? '90vw' : undefined,
+                            maxHeight: hero.logoWidth ? 'none' : undefined
+                        }} 
+                    />
+                )}
                 <h1 className={styles.heroTitle}>{hero.title}</h1>
                 <p className={styles.heroSubtitle}>{hero.subtitle}</p>
                 {hero.button && hero.button.text && (

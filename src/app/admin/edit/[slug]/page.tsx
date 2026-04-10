@@ -38,7 +38,7 @@ const defaultSiteData = {
     { text: "Ubicación", link: "/ubicacion" },
     { text: "Contacto", link: "/contacto" }
   ],
-  hero: { title: "", subtitle: "", videoUrl: "", backgroundImageUrl: "", logoUrl: "", button: { text: "", link: "" } },
+  hero: { title: "", subtitle: "", videoUrl: "", backgroundImageUrl: "", logoUrl: "", logoWidth: 200, button: { text: "", link: "" } },
   about: { title: "", text: "", imageUrl: "" },
   mainContact: { title: "", text: "", button: { text: "", link: "" } },
   locationPage: { address: "", mapIframeUrl: "" },
@@ -554,13 +554,49 @@ useEffect(() => {
                 <div className={styles.formGroup}>
                   <label>Logo de la Notaría</label>
                   <input type="file" name="heroLogoFile" accept="image/*" onChange={handleFileChange} />
-                  {localPreviews.logo && <div className={styles.filePreviewContainer}><img src={localPreviews.logo} className={styles.filePreviewImg} /></div>}
+                  {(localPreviews.logo || siteData.hero.logoUrl) && (
+                    <div className={styles.filePreviewContainer} style={{ background: 'rgba(0,0,0,0.1)', padding: '10px' }}>
+                      <img src={localPreviews.logo || getSafeUrl(siteData.hero.logoUrl)} className={styles.filePreviewImg} style={{ maxHeight: '80px', objectFit: 'contain' }} />
+                    </div>
+                  )}
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Ancho del Logo (px): {siteData.hero.logoWidth || 150}px</label>
+                  <input 
+                    type="range" 
+                    name="hero.logoWidth" 
+                    min="50" 
+                    max="500" 
+                    step="5"
+                    value={siteData.hero.logoWidth || 150} 
+                    onChange={handleInputChange}
+                    style={{ width: '100%', accentColor: 'var(--admin-accent)' }}
+                  />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--admin-text-muted)' }}>
+                    <span>Pequeño</span>
+                    <span>Grande</span>
+                  </div>
                 </div>
 
                 <div className={styles.formGroup}>
                   <label>Video de Fondo (Recomendado)</label>
                   <input type="file" name="heroVideoFile" accept="video/*" onChange={handleFileChange} />
-                  {localPreviews.heroVideo && <div className={styles.filePreviewContainer}><video src={localPreviews.heroVideo} autoPlay muted loop className={styles.filePreviewVideo} /></div>}
+                  {(localPreviews.heroVideo || siteData.hero.videoUrl) && (
+                    <div className={styles.filePreviewContainer}>
+                      <video src={localPreviews.heroVideo || getSafeUrl(siteData.hero.videoUrl)} autoPlay muted loop className={styles.filePreviewVideo} style={{ maxHeight: '150px' }} />
+                    </div>
+                  )}
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Imagen de Fondo (Si no hay video)</label>
+                  <input type="file" name="heroBackgroundImageFile" accept="image/*" onChange={handleFileChange} />
+                  {(localPreviews.heroImage || siteData.hero.backgroundImageUrl) && (
+                    <div className={styles.filePreviewContainer}>
+                      <img src={localPreviews.heroImage || getSafeUrl(siteData.hero.backgroundImageUrl)} className={styles.filePreviewImg} style={{ maxHeight: '150px' }} />
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -583,7 +619,11 @@ useEffect(() => {
                 <div className={styles.formGroup}>
                   <label>Imagen de Apoyo</label>
                   <input type="file" name="imageFile" accept="image/*" onChange={handleFileChange} />
-                  {localPreviews.aboutImage && <div className={styles.filePreviewContainer}><img src={localPreviews.aboutImage} className={styles.filePreviewImg} /></div>}
+                  {(localPreviews.aboutImage || siteData.about.imageUrl) && (
+                    <div className={styles.filePreviewContainer}>
+                      <img src={localPreviews.aboutImage || getSafeUrl(siteData.about.imageUrl)} className={styles.filePreviewImg} style={{ maxHeight: '150px' }} />
+                    </div>
+                  )}
                 </div>
               </div>
             )}
