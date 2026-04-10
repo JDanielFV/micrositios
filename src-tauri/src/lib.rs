@@ -126,6 +126,18 @@ pub fn run() {
     let db_path = "micrositios.db";
     let conn = Connection::open(db_path).expect("failed to open database");
 
+    // Initialize tables if they don't exist
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS sites (
+            id TEXT PRIMARY KEY,
+            slug TEXT UNIQUE NOT NULL,
+            data TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )",
+        [],
+    ).expect("failed to create sites table");
+
     tauri::Builder::default()
         .manage(DbState(Mutex::new(conn)))
         .plugin(tauri_plugin_fs::init())
