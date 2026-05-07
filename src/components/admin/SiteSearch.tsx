@@ -114,6 +114,20 @@ export default function SiteSearch({ sites, onEdit, onDelete }: SiteSearchProps)
               )}
             </div>
             <div className={styles.siteActions}>
+              <a 
+                href={`/qrs/${site.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.viewButton}
+                title="Ver sitio en vivo"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+                Ver
+              </a>
               <button 
                 onClick={() => onEdit(site.slug)}
                 className={styles.editButton}
@@ -131,7 +145,6 @@ export default function SiteSearch({ sites, onEdit, onDelete }: SiteSearchProps)
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                 </svg>
-                Eliminar
               </button>
             </div>
           </li>

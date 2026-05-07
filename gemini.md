@@ -11,7 +11,36 @@ Refactorizar un proyecto Next.js de sitio único a un generador multi-sitio esca
 *   **Framework:** Next.js 14.2.3
 *   **Librería UI:** React 18
 *   **Estilos:** CSS Modules
-*   **Base de Datos (simulada):** `db.json` (para almacenar la configuración de los sitios)
+*   **Base de Datos:** SQLite (`micrositios.db`) - Ver `DATABASE.md` para detalles técnicos.
+
+## Protocolo de Creación de Micrositios
+
+Cuando Danny solicite la creación de un nuevo micrositio, se seguirá este flujo de trabajo:
+
+### 1. Nomenclatura de Slugs (Mandatorio)
+Se debe seguir el patrón: `[tipo]-[número]-[distintivo]`
+*   **`tipo`**: `not` (Notaría) o `cor` (Correduría).
+*   **`número`**: Número oficial de la institución.
+*   **`distintivo`**: Estado, municipio o referencia identificativa (ej. `edomex`, `tulum`, `cdmx`).
+*   *Ejemplo:* `not-31-tulum`.
+
+### 2. Cuestionario Inicial
+Antes de crear el sitio, se debe preguntar a Danny qué información tiene disponible de la siguiente lista:
+*   ID/Slug/Título.
+*   Información de contacto (Teléfono, WhatsApp, Email).
+*   Ubicación (Dirección física).
+*   Archivos específicos (Logo, vCard `.vcf`, Videos).
+
+### 3. Investigación y Generación de Contenido
+La información que Danny no proporcione debe ser obtenida mediante investigación en internet:
+*   **Prioridad Alta:** Logo oficial, dirección exacta para Google Maps y datos de contacto actualizados.
+*   **Contenido General:** Se debe investigar la historia de la notaría/correduría para llenar la sección "Acerca de", sus servicios principales para la sección "Servicios", y redactar textos atractivos para el Hero y la sección de contacto.
+*   **Estética:** Seleccionar colores de tema que armonicen con el logo investigado.
+
+### 4. Ejecución Técnica
+1.  **Creación:** `bun run db:create <id> <slug> "[Título]"`
+2.  **Configuración:** Actualizar los datos en la base de datos con la información recopilada.
+3.  **Archivos:** Solicitar a Danny los archivos pesados (videos) o específicos que no se puedan obtener por investigación directa.
 
 ## Funcionalidades Implementadas
 

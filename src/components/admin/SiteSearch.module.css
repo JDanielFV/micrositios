@@ -1,244 +1,255 @@
 .container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .searchBar {
   position: relative;
-  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .searchIcon {
   position: absolute;
   left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--admin-text-muted);
   pointer-events: none;
 }
 
 .searchInput {
   width: 100%;
-  padding: 1rem 3rem 1rem 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1rem 1rem 3rem;
+  background: var(--admin-input-bg);
+  border: 1px solid var(--admin-input-border);
   border-radius: 16px;
-  color: #fff;
+  color: var(--admin-text);
   font-size: 1rem;
   transition: all 0.2s ease;
 }
 
 .searchInput:focus {
+  border-color: var(--admin-accent);
+  background: var(--admin-input-focus-bg);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
   outline: none;
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 .clearButton {
   position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
+  right: 1rem;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  padding: 0.375rem;
+  color: var(--admin-text-muted);
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.6);
+  padding: 0.25rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
 .clearButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--admin-text-strong);
 }
 
 .sortControls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
 }
 
 .sortLabel {
-  color: rgba(255, 255, 255, 0.6);
   font-size: 0.875rem;
-  font-weight: 500;
+  color: var(--admin-text-muted);
 }
 
 .sortButton {
+  background: var(--admin-button-bg);
+  border: 1px solid var(--admin-button-border);
+  color: var(--admin-text-muted);
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
-  color: rgba(255, 255, 255, 0.7);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
 }
 
 .sortButton:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--admin-button-hover-bg);
+  color: var(--admin-text-strong);
 }
 
 .sortButton.active {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--admin-accent);
+  border-color: var(--admin-accent);
+  color: white;
 }
 
 .results {
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .resultsCount {
-  color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
+  color: var(--admin-text-muted);
 }
 
 .siteList {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
 .siteItem {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: var(--admin-site-item-bg);
+  border: 1px solid var(--admin-section-border);
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .siteItem:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: translateX(4px);
+  background: var(--admin-site-item-hover-bg);
+  border-color: var(--admin-section-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--admin-card-shadow);
 }
 
 .siteInfo {
-  flex: 1;
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .siteTitle {
-  margin: 0 0 0.25rem 0;
-  font-size: 1rem;
+  margin: 0;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--admin-text-strong);
 }
 
 .siteSlug {
-  margin: 0 0 0.5rem 0;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: monospace;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--admin-accent);
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
 }
 
 .siteDate {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--admin-text-muted);
+  margin-top: 0.25rem;
 }
 
 .siteActions {
   display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
-  margin-left: 1rem;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.editButton,
-.deleteButton {
+.viewButton, .editButton, .deleteButton {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
-  padding: 0.5rem 0.875rem;
-  border-radius: 10px;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 12px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.viewButton {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.viewButton:hover {
+  background: #3b82f6;
+  color: white;
 }
 
 .editButton {
-  background: rgba(78, 117, 246, 0.1);
-  color: #6295F8;
-  border: 1px solid rgba(78, 117, 246, 0.2);
+  background: var(--admin-button-bg);
+  color: var(--admin-text);
+  border: 1px solid var(--admin-button-border);
 }
 
 .editButton:hover {
-  background: rgba(78, 117, 246, 0.2);
-  border-color: rgba(78, 117, 246, 0.4);
+  background: var(--admin-button-hover-bg);
+  border-color: var(--admin-accent);
 }
 
 .deleteButton {
-  background: rgba(255, 69, 58, 0.1);
-  color: #ff6b6b;
-  border: 1px solid rgba(255, 69, 58, 0.2);
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 0.625rem;
 }
 
 .deleteButton:hover {
-  background: rgba(255, 69, 58, 0.15);
-  border-color: rgba(255, 69, 58, 0.3);
+  background: #ef4444;
+  color: white;
 }
 
 .emptyState {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 4rem 2rem;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.emptyState svg {
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
-.emptyState p {
-  margin: 0 0 1.5rem 0;
-  font-size: 1rem;
+  background: var(--admin-section-bg);
+  border: 1px dashed var(--admin-section-border);
+  border-radius: 24px;
+  color: var(--admin-text-muted);
+  text-align: center;
+  gap: 1rem;
 }
 
 .clearSearchButton {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--admin-accent);
+  color: white;
   border: none;
+  padding: 0.5rem 1.25rem;
   border-radius: 10px;
-  padding: 0.5rem 1rem;
-  color: #fff;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  margin-top: 0.5rem;
 }
 
-.clearSearchButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .siteItem {
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
-
+  
   .siteActions {
     width: 100%;
-    justify-content: flex-end;
-    margin-left: 0;
+    justify-content: space-between;
   }
-
-  .sortControls {
-    justify-content: flex-start;
+  
+  .viewButton, .editButton {
+    flex: 1;
+    justify-content: center;
   }
 }
