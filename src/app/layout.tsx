@@ -1,6 +1,5 @@
 import { Inter } from 'next/font/google';
 import "./globals.css";
-import VisitTracker from '@/components/VisitTracker';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        <VisitTracker />
         {children}
       </body>
     </html>

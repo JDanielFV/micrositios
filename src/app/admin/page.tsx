@@ -125,7 +125,6 @@ export default function AdminPage() {
 
   // Analytics State
   const [isAnalyticsOpen, setIsAnalyticsOpen] = useState(false);
-  const [visits, setVisits] = useState<any[]>([]);
 
   // Delete confirmation
   const [siteToDelete, setSiteToDelete] = useState<string | null>(null);
@@ -192,23 +191,8 @@ export default function AdminPage() {
     }
   };
 
-  const fetchVisits = async () => {
-    try {
-      const response = await fetch('https://tuqr.com.mx/qrs/tracker.php');
-      if (response.ok) {
-        const data = await response.json();
-        if (Array.isArray(data)) {
-          setVisits(data.reverse());
-        }
-      }
-    } catch (err) {
-      console.error("Error fetching visits:", err);
-    }
-  };
-
   useEffect(() => {
     fetchSites();
-    fetchVisits();
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -434,141 +418,27 @@ export default function AdminPage() {
         </div>
       ) : (
         <>
-          {/* Analytics Section */}
-      <CollapsibleSection 
-        title={`Estadísticas de Visitas (${visits.length} visitas)`}
-        defaultOpen={false}
-        icon={
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="18" y1="20" x2="18" y2="10" />
-            <line x1="12" y1="20" x2="12" y2="4" />
-            <line x1="6" y1="20" x2="6" y2="14" />
-          </svg>
-        }
-      >
-        <div className={styles.statsGrid}>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon} style={{ color: '#3b82f6' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
+          {/* Existing Sites with Search */}
+          <div className={styles.section}>
+            <div 
+              className={styles.sectionHeader}
+              onClick={() => setIsExistingSitesOpen(!isExistingSitesOpen)}
+            >
+              <h2 className={styles.sectionTitle}>
+                <span style={{ marginRight: '0.5rem' }}>📁</span>
+                Sitios Existentes
+              </h2>
+              <span className={styles.chevron}>{mounted ? (isExistingSitesOpen ? '▼' : '▶') : '▼'}</span>
             </div>
-            <div className={styles.statContent}>
-              <div className={styles.statValue}>{visits.length}</div>
-              <div className={styles.statLabel}>Visitas Totales</div>
-            </div>
+            
+            {mounted && isExistingSitesOpen && (
+              <SiteSearch 
+                sites={sites}
+                onEdit={handleEdit}
+                onDelete={confirmDelete}
+              />
+            )}
           </div>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon} style={{ color: '#8b5cf6' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div className={styles.statContent}>
-              <div className={styles.statValue}>
-                {new Set(visits.map(v => v.ip)).size}
-              </div>
-              <div className={styles.statLabel}>Usuarios Únicos</div>
-            </div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statIcon} style={{ color: '#10b981' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-            </div>
-            <div className={styles.statContent}>
-              <div className={styles.statValue}>
-                {visits.filter(v => {
-                  const date = new Date(v.timestamp);
-                  const now = new Date();
-                  return date.getDate() === now.getDate() &&
-                    date.getMonth() === now.getMonth() &&
-                    date.getFullYear() === now.getFullYear();
-                }).length}
-              </div>
-              <div className={styles.statLabel}>Visitas Hoy</div>
-            </div>
-          </div>
-        </div>
-
-        <h3 className={styles.subSectionTitle}>Páginas Más Visitadas</h3>
-        <div className={styles.tableContainer}>
-          <table className={styles.analyticsTable}>
-            <thead>
-              <tr>
-                <th>Página</th>
-                <th>Visitas</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(visits.reduce((acc, curr) => {
-                acc[curr.page] = (acc[curr.page] || 0) + 1;
-                return acc;
-              }, {} as Record<string, number>))
-                .sort(([, a], [, b]) => (b as number) - (a as number))
-                .slice(0, 5)
-                .map(([page, count]) => (
-                  <tr key={page}>
-                    <td>{page}</td>
-                    <td>{count as number}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3 className={styles.subSectionTitle}>Registro Reciente</h3>
-        <div className={styles.tableContainer}>
-          <table className={styles.analyticsTable}>
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Página</th>
-                <th>IP</th>
-              </tr>
-            </thead>
-            <tbody>
-              {visits.slice(0, 10).map((visit, index) => (
-                <tr key={index}>
-                  <td>{visit.timestamp}</td>
-                  <td>{visit.page}</td>
-                  <td>{visit.ip}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </CollapsibleSection>
-
-      {/* Existing Sites with Search */}
-      <div className={styles.section}>
-        <div 
-          className={styles.sectionHeader}
-          onClick={() => setIsExistingSitesOpen(!isExistingSitesOpen)}
-        >
-          <h2 className={styles.sectionTitle}>
-            <span style={{ marginRight: '0.5rem' }}>📁</span>
-            Sitios Existentes
-          </h2>
-          <span className={styles.chevron}>{mounted ? (isExistingSitesOpen ? '▼' : '▶') : '▼'}</span>
-        </div>
-        
-        {mounted && isExistingSitesOpen && (
-          <SiteSearch 
-            sites={sites}
-            onEdit={handleEdit}
-            onDelete={confirmDelete}
-          />
-        )}
-      </div>
 
       {/* New Site Form */}
       <div className={styles.section}>
