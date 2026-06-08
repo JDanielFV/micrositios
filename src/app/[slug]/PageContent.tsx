@@ -41,7 +41,7 @@ export default function PageContent({ initialSite, slug }: PageContentProps) {
   const { hero, about, mainContact } = site.data;
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles['site-' + slug]}`}>
       {/* Hero Section */}
       <div id="hero">
         <HeroSection hero={hero} slug={slug} />

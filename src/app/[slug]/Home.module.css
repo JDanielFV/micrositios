@@ -100,13 +100,7 @@
   text-align: center;
   border-radius: 16px;
   background-color: transparent;
-  /* Make it fully transparent */
-  /* Temporarily remove backdrop-filter and border to isolate background issue */
-  /* backdrop-filter: blur(10px); */
-  /* -webkit-backdrop-filter: blur(10px); */
-  /* border: 1px solid rgba(255, 255, 255, 0.1); */
   margin: 0 20px;
-  /* Add some horizontal margin */
 }
 
 .sectionTitle {
@@ -123,6 +117,16 @@
   opacity: 0.8;
   max-width: 750px;
   margin: 0 auto 1.5rem;
+  white-space: pre-wrap;
+}
+
+/* --- Site Specific Styles --- */
+.site-cus-39-loma .section {
+  text-align: left;
+}
+
+.site-cus-39-loma .section p {
+  margin: 0 0 1.5rem 0;
 }
 
 .aboutImage {

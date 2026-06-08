@@ -100,7 +100,7 @@ export default function SiteSearch({ sites, onEdit, onDelete }: SiteSearchProps)
           <li key={site.id} className={styles.siteItem}>
             <div className={styles.siteInfo}>
               <h3 className={styles.siteTitle}>{site.data.metadata.title}</h3>
-              <p className={styles.siteSlug}>{site.slug}</p>
+              <p className={styles.siteSlug}>https://www.tuqr.com.mx/qrs/{site.slug}</p>
               {site.data.lastModification && (
                 <span className={styles.siteDate}>
                   Modificado: {new Date(site.data.lastModification.timestamp).toLocaleDateString('es-MX', {
