@@ -129,6 +129,16 @@
   margin: 0 0 1.5rem 0;
 }
 
+/* --- Lic. Cristian Mota Balancán: sin máscara oscura en el Hero --- */
+.site-lic-cristian-mota-balancan .heroContent {
+  background-color: transparent;
+}
+
+.site-lic-cristian-mota-balancan .heroTitle,
+.site-lic-cristian-mota-balancan .heroSubtitle {
+  color: #041E42;
+}
+
 .aboutImage {
   width: 100%;
   max-width: 450px;
